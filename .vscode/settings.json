@@ -1,0 +1,14 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.ignorePaths": [
+    "package.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".eslintrc.js"
+  ],
+  "cSpell.words": [
+    "Mojie"
+  ],
+}
