@@ -1,14 +1,21 @@
 {
-  "name": "@mojie/utils",
+  "name": "@youjie/utils",
   "version": "1.0.0",
   "description": "Utility function",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "author": "Mojie",
   "license": "MIT",
   "scripts": {
+    "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
+    "dev": "npm run build -- --watch",
+    "build": "rimraf dist && tsup src/index.ts --format cjs,esm --dts",
+    "release": "npx bumpp --commit --push --tag",
     "lint:eslint": "eslint --ext .ts . --fix",
-    "lint:prettier": "prettier --write \"**/*.{ts,json,md}\""
+    "lint:prettier": "prettier --write \"**/*.{ts,json,md}\"",
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/jayfongs/utils/issues"
@@ -16,21 +23,33 @@
   "homepage": "https://github.com/jayfongs/utils#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jayfongs/utils.git"
+    "url": "git+https://github.com/jayfongs/utils.git"
   },
   "keywords": [
     "utils"
   ],
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "dayjs": "^1.10.7"
+  },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
+    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.3.0",
     "@typescript-eslint/parser": "^5.3.0",
+    "dayjs": "^1.10.7",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
+    "jest": "^27.3.1",
     "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.0.7",
+    "tsup": "^5.6.0",
     "typescript": "^4.4.4"
   }
 }

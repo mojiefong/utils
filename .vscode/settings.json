@@ -6,9 +6,8 @@
     "vscode-extension",
     ".git/objects",
     ".vscode",
-    ".eslintrc.js"
+    ".eslintrc.js",
+    "*.md"
   ],
-  "cSpell.words": [
-    "Mojie"
-  ],
+  "cSpell.words": ["Mojie"]
 }
