@@ -22,3 +22,8 @@ type RequestFullScreen = HTMLElement & {
  * 索引签名
  */
 type IndexSign = { [key: string]: AnyType }
+
+/**
+ * 本地存储类型
+ */
+type StorageType = 'local' | 'session'
