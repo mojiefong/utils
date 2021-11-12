@@ -82,6 +82,8 @@ export const isEven = (val: number): boolean => val % 2 === 0
 export const isOdd = (val: number): boolean => val % 2 !== 0
 export const isPositive = (val: number): boolean => Math.sign(val) === 1
 export const isNegative = (val: number): boolean => Math.sign(val) === -1
+export const isFile = (val: unknown): val is File => getTypeof(val) === 'File'
+export const isBlob = (val: unknown): val is Blob => getTypeof(val) === 'Blob'
 
 /**
  * 用于判断滚动条是否到底部

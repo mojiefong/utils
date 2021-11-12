@@ -27,6 +27,8 @@ import {
   isPositive,
   isNegative,
   isEmpty,
+  isFile,
+  isBlob,
 } from '../is'
 
 describe('Is Utils', () => {
@@ -159,5 +161,12 @@ describe('Is Utils', () => {
     expect(isEmpty(undefined)).toEqual(true)
     expect(isEmpty(0)).toEqual(false)
     expect(isEmpty(false)).toEqual(false)
+  })
+  test('isFile', () => {
+    expect(isFile(new File([new Blob()], 'test'))).toEqual(true)
+    expect(isFile(new File(['foo'], 'test'))).toEqual(true)
+  })
+  test('isBlob', () => {
+    expect(isBlob(new Blob())).toEqual(true)
   })
 })
