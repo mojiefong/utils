@@ -83,3 +83,18 @@ export const stringifyQuery = (obj: object, isEncode = false): string => {
     .filter((item) => item)
     .join('&')
 }
+
+/**
+ * 根据key对一组对象进行分组
+ * @param { Array } arr
+ * @param { string } property
+ * @returns { Object }
+ */
+export const groupBy = <T extends Record<string, AnyType>, K extends keyof T>(
+  arr: T[],
+  property: K
+): Record<string, T[]> => {
+  return arr.reduce((acc, item) => {
+    return (acc[item[property]] = [...(acc[item[property]] || []), item]), acc
+  }, {} as Record<string, T[]>)
+}
