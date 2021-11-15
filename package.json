@@ -11,7 +11,7 @@
     "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
     "dev": "npm run build -- --watch",
-    "build": "rimraf dist && tsup src/index.ts --format cjs,esm --dts",
+    "build": "rimraf dist && tsup src/index.ts --format esm --dts",
     "release": "npx bumpp --commit --push --tag",
     "lint:eslint": "eslint --ext .ts . --fix",
     "lint:prettier": "prettier --write \"**/*.{ts,json,md}\"",
