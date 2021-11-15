@@ -8,7 +8,7 @@
  * @param { Object } obj
  * @returns { FormData }
  */
-export const toFormData = <T>(obj: T): FormData => {
+export const objectToFormData = <T>(obj: T): FormData => {
   const formData = new FormData()
   Object.keys(obj).forEach((key) => {
     formData.append(key, (obj as IndexSign)[key])
