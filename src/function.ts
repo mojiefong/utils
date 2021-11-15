@@ -63,17 +63,21 @@ export const parseQuery = (query: string): object => {
 /**
  * 将 Object 对象转为查询字符串
  * @param { Object } obj
+ * @param { boolean } [isEncode]
  * @returns { string }
  */
-export const stringifyQuery = (obj: object): string => {
+export const stringifyQuery = (obj: object, isEncode = false): string => {
   if (!obj) return ''
   if (isEmpty(obj)) return ''
 
   const keys = Object.keys(obj)
   return keys
     .map((key) => {
-      const value = (obj as IndexSign)[key]
+      let value = (obj as IndexSign)[key]
       if (!value) return ''
+      if (isEncode) {
+        value = encode(value)
+      }
       return `${key}=${value}`
     })
     .filter((item) => item)

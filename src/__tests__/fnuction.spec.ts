@@ -15,8 +15,11 @@ describe('Function Utils', () => {
   })
   test('parseQuery', () => {
     expect(parseQuery('a=1&b=2')).toEqual({ a: '1', b: '2' })
+    expect(parseQuery('name=%E6%9D%B0')).toEqual({ name: '杰' })
   })
   test('stringifyQuery', () => {
     expect(stringifyQuery({ a: 1, b: 2 })).toEqual('a=1&b=2')
+    expect(stringifyQuery({ name: '杰' })).toEqual('name=杰')
+    expect(stringifyQuery({ name: '杰' }, true)).toEqual('name=%E6%9D%B0')
   })
 })
