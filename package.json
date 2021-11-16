@@ -11,7 +11,7 @@
     "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
     "dev": "npm run build -- --watch",
-    "build": "rimraf dist && tsup src/index.ts --format esm --dts",
+    "build": "rimraf dist && tsup src/index.ts --format esm,cjs --dts",
     "release": "npx bumpp --commit --push --tag",
     "lint:eslint": "eslint --ext .ts . --fix",
     "lint:prettier": "prettier --write \"**/*.{ts,json,md}\"",
@@ -38,10 +38,10 @@
     "@commitlint/cli": "^14.1.0",
     "@commitlint/config-conventional": "^14.1.0",
     "@types/jest": "^27.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "dayjs": "^1.10.7",
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
@@ -49,7 +49,7 @@
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",
-    "tsup": "^5.6.0",
+    "tsup": "^5.7.0",
     "typescript": "^4.4.4"
   }
 }
