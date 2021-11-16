@@ -3,7 +3,7 @@
  * @Date: 2021-11-15 13:57:58
  */
 
-import { isEmpty } from './is'
+import { isEmpty, isArray, isObject } from './is'
 
 /**
  * 字符解码
@@ -97,4 +97,71 @@ export const groupBy = <T extends Record<string, AnyType>, K extends keyof T>(
   return arr.reduce((acc, item) => {
     return (acc[item[property]] = [...(acc[item[property]] || []), item]), acc
   }, {} as Record<string, T[]>)
+}
+
+/**
+ * 节流
+ * 在指定时间间隔内只会触发一次
+ * @param { Function } callback
+ * @param { number } [delay]
+ * @returns { Function }
+ */
+export const throttle = <T extends unknown[]>(
+  callback: (...args: T) => unknown,
+  delay = 0
+): ((...args: T) => void) => {
+  let timer: unknown = null
+  return function (this: unknown, ...args: T) {
+    if (!timer) {
+      timer = setTimeout(() => {
+        callback.apply(this, args)
+        timer = null
+      }, delay)
+    }
+  }
+}
+
+/**
+ * 防抖
+ * 事件触发n秒后执行回调，如果在这个n秒又被触发，则重新计时
+ * @param { Function } callback
+ * @param { number } delay
+ * @returns { Function }
+ */
+export const debounce = <T extends unknown[]>(
+  callback: (...args: T) => unknown,
+  delay = 0
+): ((...args: T) => void) => {
+  let timer: ReturnType<typeof setTimeout>
+  return function (this: unknown, ...args: T) {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      callback.apply(this, args)
+    }, delay)
+  }
+}
+
+/**
+ * 深拷贝
+ * https://gist.github.com/erikvullings/ada7af09925082cbb89f40ed962d475e
+ * @param { Object | Array } target
+ * @returns { * }
+ */
+export const deepClone = <T>(target: T): T => {
+  if (!target) return target
+  if (isArray(target)) {
+    const clone = [] as unknown[]
+    target.forEach((v) => {
+      clone.push(v)
+    })
+    return clone.map((n) => deepClone(n)) as AnyType
+  }
+  if (isObject(target)) {
+    const clone: IndexSign = { ...target }
+    Object.keys(clone).forEach((k) => {
+      clone[k] = deepClone(clone[k])
+    })
+    return clone as T
+  }
+  return target
 }
