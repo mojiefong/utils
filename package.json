@@ -14,7 +14,7 @@
     "build": "rimraf dist && tsup src/index.ts --format esm,cjs --dts",
     "release": "npx bumpp --commit --push --tag",
     "docs": "typedoc",
-    "docs:html": "npm run docs -- --plugin typedoc-plugin-missing-exports",
+    "docs:html": "npm run docs -- --out docs-html --plugin typedoc-plugin-missing-exports",
     "lint:eslint": "eslint --ext .ts . --fix",
     "lint:prettier": "prettier --write \"**/*.{ts,json,md}\"",
     "test": "jest",
