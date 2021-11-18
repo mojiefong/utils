@@ -12,22 +12,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 6.15.1
+      # - name: Install pnpm
+      #   uses: pnpm/action-setup@v2.0.1
+      #   with:
+      #     version: 6.22.2
 
       - name: Use Node.js 16
         uses: actions/setup-node@v2
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-          cache: "pnpm"
+          cache: "npm"
 
       - name: Build
         run: |
-          pnpm install
-          pnpm run build
+          npm install
+          npm run build
 
       - name: Public
         run: npm publish --access public
