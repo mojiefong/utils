@@ -15,6 +15,8 @@ describe('Math Utils', () => {
   test('thousandsFormat', () => {
     expect(thousandsFormat(1000)).toEqual('1,000')
     expect(thousandsFormat(1234.123456789)).toEqual('1,234.123456789')
+    expect(thousandsFormat(0)).toEqual(0)
+    expect(thousandsFormat('$1234')).toEqual('$1,234')
   })
   test('bytesToSize', () => {
     expect(bytesToSize(1000)).toEqual('1000.00 B')
@@ -26,6 +28,7 @@ describe('Math Utils', () => {
   test('outOfNum', () => {
     expect(outOfNum(99, 99)).toEqual(99)
     expect(outOfNum(100, 99)).toEqual('99+')
+    expect(outOfNum('100', 99)).toEqual('99+')
   })
   test('toNumber', () => {
     expect(toNumber('12')).toEqual(12)

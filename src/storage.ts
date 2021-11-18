@@ -3,35 +3,16 @@
  * @Date: 2021-11-08 14:03:58
  */
 
-/**
- * 序列化
- * @param { * } val
- * @returns { string }
- */
-function serialize(val: unknown): string {
-  return JSON.stringify(val)
-}
-
-/**
- * 反序列化
- * @param { string } val
- * @returns { * }
- */
-function deserialize(val: string): unknown {
-  try {
-    return JSON.parse(val)
-  } catch {
-    return val
-  }
-}
+import { deserialize, serialize } from './function'
 
 /*********************************
  * localStorage
  *********************************/
 /**
- * localStorage.getItem
- * @param { string } key
- * @returns { * }
+ * 获取localStorage
+ * @param key 需要获取的key名称
+ * @category WebStorage
+ * @returns 返回key对应的值。如果不存在则返回null
  */
 export const localGet = (key: string): unknown => {
   // TODO: localGet('key1', 'key2', 'key3');
@@ -39,26 +20,29 @@ export const localGet = (key: string): unknown => {
 }
 
 /**
- * localStorage.setItem
- * @param { string }  key
- * @param { * } value
+ * 设置localStorage
+ * @param key 需要存储的key名称
+ * @param value 存储key对应的值
+ * @category WebStorage
  */
 export const localSet = (key: string, value: unknown): void => {
   localStorage.setItem(key, serialize(value))
 }
 
 /**
- * localStorage.removeItem
- * @param { string} key
+ * 移除localStorage
+ * @param key 需要移除的key名称
+ * @category WebStorage
  */
 export const localRemove = (key: string): void => {
   localStorage.removeItem(key)
 }
 
 /**
- * 判断 localStorage 中是否存在指定的key
- * @param { string } key
- * @returns { boolean }
+ * 判断localStorage中是否存在指定的key
+ * @param key 需要查询的key名称
+ * @category WebStorage
+ * @returns 如果存在则返回true，否则返回false
  */
 export const localHas = (key: string): boolean => localGet(key) !== null
 
@@ -66,35 +50,39 @@ export const localHas = (key: string): boolean => localGet(key) !== null
  * sessionStorage
  *********************************/
 /**
- * sessionStorage.getItem
- * @param { string } key
- * @returns { * }
+ * 获取sessionStorage
+ * @param key 需要获取key名称
+ * @category WebStorage
+ * @returns 返回key对应的值。如果不存在则返回null
  */
 export const sessionGet = (key: string): unknown => {
   return deserialize(sessionStorage.getItem(key) as string)
 }
 
 /**
- * sessionStorage.setItem
- * @param { string } key
- * @param { * } value
+ * 设置sessionStorage
+ * @param key 需要存储的key名称
+ * @param value 存储key对应的值
+ * @category WebStorage
  */
 export const sessionSet = (key: string, value: unknown): void => {
   sessionStorage.setItem(key, serialize(value))
 }
 
 /**
- * sessionStorage.removeItem
- * @param { string } key
+ * 移除sessionStorage
+ * @param key 需要移除的key名称
+ * @category WebStorage
  */
 export const sessionRemove = (key: string): void => {
   sessionStorage.removeItem(key)
 }
 
 /**
- * 判断 sessionRemove 中是否存在指定的key
- * @param { string } key
- * @returns { boolean }
+ * 判断sessionRemove中是否存在指定的key
+ * @param key 需要查询的key名称
+ * @category WebStorage
+ * @returns 如果存在则返回true，否则返回false
  */
 export const sessionHas = (key: string): boolean => sessionGet(key) !== null
 
@@ -103,7 +91,8 @@ export const sessionHas = (key: string): boolean => sessionGet(key) !== null
  *********************************/
 /**
  * 清空 localStorage 和 sessionStorage
- * @param { string } storageType
+ * @param storageType 用于指定清除 localStorage 还是 sessionStorage。默认是清除所有
+ * @category WebStorage
  */
 export const storageClear = (storageType?: StorageType): void => {
   if (!storageType) {

@@ -3,7 +3,7 @@
  * @Date: 2021-11-03 14:51:36
  */
 
-export { version } from '../package.json'
+// export { version } from '../package.json'
 export * from './array'
 export * from './date-time'
 export * from './dom'

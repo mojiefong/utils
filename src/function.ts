@@ -7,8 +7,13 @@ import { isEmpty, isArray, isObject } from './is'
 
 /**
  * 字符解码
- * @param { string } str
- * @returns { string }
+ * @param str 需要解码的字符
+ * @category Code
+ * @returns 返回解码后的字符。如果解码失败则返回原字符
+ * @example
+ * ``` typescript
+ * decode('%E4%BD%A0%E5%A5%BD') // '你好'
+ * ```
  */
 export const decode = (str: string): string => {
   try {
@@ -20,8 +25,13 @@ export const decode = (str: string): string => {
 
 /**
  * 字符转码
- * @param { string } str
- * @returns { string }
+ * @param str 需要转码的字符
+ * @category Code
+ * @returns 返回转码后的字符
+ * @example
+ * ``` typescript
+ * encode('你好') // '%E4%BD%A0%E5%A5%BD'
+ * ```
  */
 export const encode = (str: string): string => {
   const encodeReserveRE = /[!'()*]/g
@@ -36,8 +46,16 @@ export const encode = (str: string): string => {
 
 /**
  * 解析 url 的查询对象
- * @param { string } query
- * @returns { object }
+ * @param query 需要解析的字符
+ * @returns 返回解析后的对象
+ * @category Serialize
+ * @example
+ * ``` typescript
+ * parseQuery('a=1&b=2') // { a: '1', b: '2' }
+ * parseQuery('foo=%E4%BD%A0%E5%A5%BD') // { foo: '你好' }
+ * // 解析当前url的查询对象
+ * parseQuery(location.search)
+ * ```
  */
 export const parseQuery = (query: string): object => {
   const res: IndexSign = {}
@@ -62,9 +80,16 @@ export const parseQuery = (query: string): object => {
 
 /**
  * 将 Object 对象转为查询字符串
- * @param { Object } obj
- * @param { boolean } [isEncode]
- * @returns { string }
+ * @param obj 需要转换的对象
+ * @param isEncode 是否需要转码。默认为false
+ * @category Serialize
+ * @returns 返回查询字符串
+ * @example
+ * ``` typescript
+ * stringifyQuery({ a: 1, b: 2 }) // 'a=1&b=2'
+ * stringifyQuery({ foo: '你好' }) // 'foo=你好'
+ * stringifyQuery({ foo: '你好' }, true) // 'foo=%E4%BD%A0%E5%A5%BD'
+ * ```
  */
 export const stringifyQuery = (obj: object, isEncode = false): string => {
   if (!obj) return ''
@@ -85,36 +110,48 @@ export const stringifyQuery = (obj: object, isEncode = false): string => {
 }
 
 /**
- * 根据key对一组对象进行分组
- * @param { Array } arr
- * @param { string } property
- * @returns { Object }
+ * 序列化成JSON字符串
+ * @param val 需要序列化的对象
+ * @category Serialize
+ * @returns 返回一个JSON字符串
  */
-export const groupBy = <T extends Record<string, AnyType>, K extends keyof T>(
-  arr: T[],
-  property: K
-): Record<string, T[]> => {
-  return arr.reduce((acc, item) => {
-    return (acc[item[property]] = [...(acc[item[property]] || []), item]), acc
-  }, {} as Record<string, T[]>)
+export const serialize = (val: unknown): string => JSON.stringify(val)
+
+/**
+ * 反序列化JSON字符串
+ * @description 解析JSON字符串
+ * @param val 需要被解析的字符串
+ * @category Serialize
+ * @returns 返回指定的JSON对象。如果字符串不符合JSON规则，则返回原值
+ */
+export const deserialize = (val: string): unknown => {
+  try {
+    return JSON.parse(val)
+  } catch {
+    return val
+  }
 }
 
 /**
- * 节流
- * 在指定时间间隔内只会触发一次
- * @param { Function } callback
- * @param { number } [delay]
- * @returns { Function }
+ * 节流函数
+ * @description 在指定时间间隔内只会触发一次
+ * @module function
+ * @param func 需要节流的函数
+ * @param delay 指定时间间隔
+ * @returns 返回新的节流函数
  */
 export const throttle = <T extends unknown[]>(
-  callback: (...args: T) => unknown,
+  /**
+   * @param args 上下文的参数
+   */
+  func: (...args: T) => unknown,
   delay = 0
 ): ((...args: T) => void) => {
   let timer: unknown = null
   return function (this: unknown, ...args: T) {
     if (!timer) {
       timer = setTimeout(() => {
-        callback.apply(this, args)
+        func.apply(this, args)
         timer = null
       }, delay)
     }
@@ -122,30 +159,34 @@ export const throttle = <T extends unknown[]>(
 }
 
 /**
- * 防抖
- * 事件触发n秒后执行回调，如果在这个n秒又被触发，则重新计时
- * @param { Function } callback
- * @param { number } delay
- * @returns { Function }
+ * 防抖函数
+ * @description 事件触发n秒后执行回调，如果在这个n秒又被触发，则重新计时
+ * @param func 需要防抖的函数
+ * @param delay 指定时间间隔
+ * @returns 返回新的防抖函数
  */
 export const debounce = <T extends unknown[]>(
-  callback: (...args: T) => unknown,
+  /**
+   * @param args 上下文的参数
+   */
+  func: (...args: T) => unknown,
   delay = 0
 ): ((...args: T) => void) => {
   let timer: ReturnType<typeof setTimeout>
   return function (this: unknown, ...args: T) {
     clearTimeout(timer)
     timer = setTimeout(() => {
-      callback.apply(this, args)
+      func.apply(this, args)
     }, delay)
   }
 }
 
 /**
  * 深拷贝
- * https://gist.github.com/erikvullings/ada7af09925082cbb89f40ed962d475e
- * @param { Object | Array } target
- * @returns { * }
+ * @description 支持对象和数组深拷贝
+ * @description 转载https://gist.github.com/erikvullings/ada7af09925082cbb89f40ed962d475e
+ * @param target 需要拷贝的对象或数组
+ * @returns 返回深拷贝的对象或数组
  */
 export const deepClone = <T>(target: T): T => {
   if (!target) return target
