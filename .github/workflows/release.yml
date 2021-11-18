@@ -6,16 +6,33 @@ on:
       - v*
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6.22.2
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
         with:
           node-version: 16
-      - run: npm publish --access public
+
+      - name: Build
+        run: |
+          pnpm install
+          pnpm run build
+
+      - name: Public
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npx conventional-github-releaser -p angular
+
+      - name: Github Release
+        run: npx conventional-github-releaser -p angular
         env:
           CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
