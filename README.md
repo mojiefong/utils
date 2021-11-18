@@ -1,4 +1,4 @@
-# utils
+# @mojiee/utils
 
 整理的一些常用的 utils 工具函数
 
