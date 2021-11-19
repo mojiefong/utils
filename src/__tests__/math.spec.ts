@@ -8,7 +8,7 @@ import {
   bytesToSize,
   outOfNum,
   toNumber,
-  getFileExtension,
+  round,
 } from '../math'
 
 describe('Math Utils', () => {
@@ -35,8 +35,12 @@ describe('Math Utils', () => {
     expect(toNumber('1000')).toEqual(1000)
     expect(toNumber('123.123456789')).toEqual(123.123456789)
   })
-  test('getFileExtension', () => {
-    expect(getFileExtension('utils.ts')).toEqual('ts')
-    expect(getFileExtension('img.PNG')).toEqual('png')
+  test('round', () => {
+    expect(round(12.1)).toEqual(12)
+    expect(round(12.5)).toEqual(13)
+    expect(round(12.55, 1)).toEqual(12.6)
+    expect(round(12.514, 2)).toEqual(12.51)
+    expect(round(12.5144, 3)).toEqual(12.514)
+    expect(round('18.888', 2)).toEqual(18.89)
   })
 })

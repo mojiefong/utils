@@ -100,18 +100,32 @@ export const outOfNum = (
  * toNumber('a') // NaN
  * ```
  */
-export const toNumber = (val: string): number => +val
+export const toNumber = (val: string | number): number => +val
 
 /**
- * 获取文件后缀名
- * @param fileName 文件名称
+ * 将数字四舍五入到指定的位数
+ * @param val 需要指定的数值
+ * @param precision 指定多少位小数
  * @category Math
- * @returns 返回文件后缀名
+ * @returns 返回四舍五入后指定的位数的数值
  * @example
  * ``` typescript
- * getFileExtension('file-name.pdf') // 'pdf'
+ * round(12.1) // 12
+ * round(12.5) // 13
+ * round(12.55, 1) // 12.6
+ * round(12.514, 2) // 12.51
+ * round(12.5144, 3) // 12.514
+ * round('18.888', 2) // 18.89
  * ```
  */
-export const getFileExtension = (fileName: string): string | undefined => {
-  return fileName.split('.').pop()?.toLowerCase()
+export const round = (val: string | number, precision = 0): number => {
+  const number = toNumber(val as string)
+  return (
+    Math.round(`${number}e${precision}` as unknown as number) /
+    Math.pow(10, precision)
+  )
+  // same as:
+  // return Number(
+  //   `${Math.round(`${number}e${precision}` as unknown as number)}e-${precision}`
+  // )
 }
