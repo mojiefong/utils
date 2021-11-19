@@ -1,4 +1,4 @@
-[一些常用的工具函数 By Mojie - v1.0.0](../README.md) / [Exports](../modules.md) / [<internal\>](internal_.md) / globalThis
+[一些常用的工具函数 By Mojie - v0.1.0](../README.md) / [Exports](../modules.md) / [<internal\>](internal_.md) / globalThis
 
 # Namespace: globalThis
 
