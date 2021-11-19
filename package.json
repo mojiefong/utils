@@ -1,6 +1,6 @@
 {
   "name": "@mojiee/utils",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Utility function",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "dev": "npm run build -- --watch",
     "build": "rimraf dist && tsup src/index.ts --format esm,cjs --dts",
-    "release": "npx bumpp --commit --push --tag",
+    "release": "npx bumpp --commit --push --tag --no-verify",
     "docs": "typedoc",
     "docs:html": "npm run docs -- --out docs-html --plugin typedoc-plugin-missing-exports",
     "lint:eslint": "eslint --ext .ts . --fix",
