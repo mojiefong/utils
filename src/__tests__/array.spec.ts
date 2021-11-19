@@ -3,7 +3,7 @@
  * @Date: 2021-11-04 10:14:14
  */
 
-import { toArray, groupBy } from '../array'
+import { toArray, groupBy, head, last } from '../array'
 
 describe('Array Utils', () => {
   test('toArray', () => {
@@ -41,5 +41,15 @@ describe('Array Utils', () => {
         { branch: 'ford', model: 'explorer', year: '2020' },
       ],
     })
+  })
+  test('head', () => {
+    expect(head([1, 2, 3])).toEqual(1)
+    expect(head([{ a: 1 }, { b: 2 }])).toEqual({ a: 1 })
+    expect(head([])).toEqual(undefined)
+  })
+  test('last', () => {
+    expect(last([1, 2, 3])).toEqual(3)
+    expect(last([{ a: 1 }, { b: 2 }])).toEqual({ b: 2 })
+    expect(last([])).toEqual(undefined)
   })
 })

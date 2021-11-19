@@ -3,6 +3,8 @@
  * @Date: 2021-11-03 11:08:07
  */
 
+import { isArray } from './is'
+
 /**
  * 将任意类型转成数组
  * @param target 目标数据
@@ -58,4 +60,40 @@ export const groupBy = <T>(arr: T[], property: string): object => {
   return arr.reduce((acc: AnyType, item: AnyType) => {
     return (acc[item[property]] = [...(acc[item[property]] || []), item]), acc
   }, {})
+}
+
+/**
+ * 获取数组的第一个元素
+ * @param arr 需要获取的数组
+ * @category Array
+ * @returns 返回数组的第一个元素。如果参数不是数组则返回原值
+ * @example
+ * ```
+ * head([1,2,3]) // 1
+ * head([{a: 1},{b: 2}]) // {a: 1}
+ * ```
+ */
+export const head = <T>(arr: T[]): unknown => {
+  if (isArray(arr)) {
+    return arr[0]
+  }
+  return arr
+}
+
+/**
+ * 获取数组的最后一个元素
+ * @param arr 需要获取的数组
+ * @category Array
+ * @returns 返回数组的最后一个元素。如果参数不是数组则返回原值
+ * @example
+ * ``` typescript
+ * last([1, 2, 3] // 3
+ * last([{a: 1}, {b: 2}]) // {b: 2}
+ * ```
+ */
+export const last = <T>(arr: T[]): unknown => {
+  if (isArray(arr)) {
+    return arr[arr.length - 1]
+  }
+  return arr
 }
