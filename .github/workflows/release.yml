@@ -24,7 +24,7 @@ jobs:
           version: latest
 
       - name: Build
-        run: pnpm install
+        run: pnpm i --frozen-lockfile
 
       - name: Public
         run: npm publish --access public
