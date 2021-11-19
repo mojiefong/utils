@@ -190,6 +190,7 @@ export const isNullOrUndef = (val: unknown): val is null | undefined => {
  * 检查空值
  * @description 将null、undefined、空字符串、空对象、空数组判断为空
  * @param val 需要进行检查的值
+ * @category Is
  * @returns 如果val为null、undefined、空字符串、空对象、空数组则返回true，否则返回false
  */
 export const isEmpty = (val: unknown): boolean => {
@@ -268,6 +269,7 @@ export const isBlob = (val: unknown): val is Blob => getTypeof(val) === 'Blob'
 
 /**
  * 判断滚动条是否到底部
+ * @category Is
  * @returns 如果滚动条到达底部则返回true，否则返回false
  */
 export const isAtBottom = (): boolean => {
