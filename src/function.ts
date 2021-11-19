@@ -135,7 +135,6 @@ export const deserialize = (val: string): unknown => {
 /**
  * 节流函数
  * @description 在指定时间间隔内只会触发一次
- * @module function
  * @param func 需要节流的函数
  * @param delay 指定时间间隔
  * @returns 返回新的节流函数
@@ -205,4 +204,20 @@ export const deepClone = <T>(target: T): T => {
     return clone as T
   }
   return target
+}
+
+/**
+ * 延迟异步函数执行
+ * @param delay 延迟的时间。单位毫秒
+ * @returns 返回一个Promise
+ * ``` typescript
+ * async function sleepWork() {
+ *  console.log("I'm going to sleep for 1 second.")
+ *  await sleep(1000)
+ *  console.log('I woke up after 1 second.')
+ * }
+ * ```
+ */
+export const sleep = (delay: number): Promise<undefined> => {
+  return new Promise((resolve) => setTimeout(resolve, delay))
 }
