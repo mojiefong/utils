@@ -1,4 +1,4 @@
-[一些常用的工具函数 By Mojie - v0.1.0](../README.md) / [Exports](../modules.md) / <internal\>
+[一些常用的工具函数 By Mojie - v0.0.1](../README.md) / [Exports](../modules.md) / <internal\>
 
 # Namespace: <internal\>
 
@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[types/types.d.ts:29](https://github.com/mojiefong/utils/blob/9d3fae7/types/types.d.ts#L29)
+[types/types.d.ts:29](https://github.com/mojiefong/utils/blob/64be8ae/types/types.d.ts#L29)
