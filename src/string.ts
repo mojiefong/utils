@@ -15,8 +15,8 @@ import { isString } from './is'
  * getFileExtension('file-name.pdf') // 'pdf'
  * ```
  */
-export const getFileExtension = (fileName: string): string | undefined => {
-  return fileName.split('.').pop()?.toLowerCase()
+export const getFileExtension = (fileName: string): string => {
+  return fileName.split('.').pop()?.toLowerCase() as string
 }
 
 /**
