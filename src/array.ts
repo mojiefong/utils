@@ -57,7 +57,7 @@ export const toArray = <T>(target?: T | T[]): T[] => {
  * ```
  */
 export const groupBy = <T>(arr: T[], property: string): object => {
-  return arr.reduce((acc: AnyType, item: AnyType) => {
+  return arr.reduce((acc: any, item: any) => {
     return (acc[item[property]] = [...(acc[item[property]] || []), item]), acc
   }, {})
 }

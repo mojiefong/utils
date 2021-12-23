@@ -19,7 +19,7 @@ import { isEmpty, isObject } from './is'
 export const objectToFormData = (obj: object): FormData => {
   const formData = new FormData()
   Object.keys(obj).forEach((key) => {
-    formData.append(key, (obj as IndexSign)[key])
+    formData.append(key, (obj as any)[key])
   })
   return formData
 }
@@ -32,7 +32,7 @@ export const objectToFormData = (obj: object): FormData => {
 export const deleteEmptyField = (obj: object) => {
   if (isObject(obj)) {
     Object.keys(obj).forEach((key) => {
-      const _obj = obj as AnyType
+      const _obj: any = obj
       if (isEmpty(_obj[key])) {
         delete _obj[key]
       }

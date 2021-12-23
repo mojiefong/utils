@@ -277,7 +277,7 @@ export const keywordHighlighting = (
  * ```
  */
 export const loadCss = (url: string, el?: HTMLElement): Promise<string> => {
-  el = el || (document.querySelector('head') as AnyType)
+  el = el || (document.querySelector('head') as any)
   return new Promise((resolve, reject) => {
     const link = document.createElement('link')
     link.type = 'text/css'
@@ -319,7 +319,7 @@ export const loadCss = (url: string, el?: HTMLElement): Promise<string> => {
  */
 export const loadScript = (url: string, el?: HTMLElement): Promise<string> => {
   return new Promise((resolve, reject) => {
-    el = el || (document.querySelector('head') as AnyType)
+    el = el || (document.querySelector('head') as any)
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.src = url

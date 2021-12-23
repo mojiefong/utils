@@ -58,7 +58,7 @@ export const encode = (str: string): string => {
  * ```
  */
 export const parseQuery = (query: string): object => {
-  const res: IndexSign = {}
+  const res: Indexable = {}
   if (!query) return res
   query = query.trim().replace(/^(\?|#|&)/, '')
   query.split('&').forEach((param) => {
@@ -98,7 +98,7 @@ export const stringifyQuery = (obj: object, isEncode = false): string => {
   const keys = Object.keys(obj)
   return keys
     .map((key) => {
-      let value = (obj as IndexSign)[key]
+      let value = (obj as Indexable)[key]
       if (!value) return ''
       if (isEncode) {
         value = encode(value)
@@ -194,10 +194,10 @@ export const deepClone = <T>(target: T): T => {
     target.forEach((v) => {
       clone.push(v)
     })
-    return clone.map((n) => deepClone(n)) as AnyType
+    return clone.map((n) => deepClone(n)) as any
   }
   if (isObject(target)) {
-    const clone: IndexSign = { ...target }
+    const clone: Indexable = { ...target }
     Object.keys(clone).forEach((k) => {
       clone[k] = deepClone(clone[k])
     })

@@ -3,9 +3,6 @@
  * @Date: 2021-11-04 14:45:34
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyType = any
-
 /**
  * 全屏API兼容
  */
@@ -21,7 +18,9 @@ type RequestFullScreen = HTMLElement & {
 /**
  * 索引签名
  */
-type IndexSign = { [key: string]: AnyType }
+interface Indexable<T = any> {
+  [key: string]: T
+}
 
 /**
  * 本地存储类型
