@@ -40,3 +40,16 @@ export const escapeRegExp = (str: string): string => {
   }
   return ''
 }
+
+/**
+ *  去除HTML标签
+ * @param str 需要去除的html字符串
+ * @category String
+ * @returns 返回去除标签后的字符串
+ * @example
+ * ``` typescript
+ * removeHtmlTag('<html>123</html>') // '123'
+ * removeHtmlTag('<html></html>') // ''
+ * ```
+ */
+export const removeHtmlTag = (str: string) => str.replace(/<[^>]+>/g, '')

@@ -3,7 +3,7 @@
  * @Date: 2021-11-19 14:52:45
  */
 
-import { getFileExtension, escapeRegExp } from '../string'
+import { getFileExtension, escapeRegExp, removeHtmlTag } from '../string'
 
 describe('String Utils', () => {
   test('getFileExtension', () => {
@@ -18,5 +18,9 @@ describe('String Utils', () => {
     expect('[Hello World]'.replace(new RegExp(escapeRegExp('[')), '')).toEqual(
       'Hello World]'
     )
+  })
+  test('removeHtmlTag', () => {
+    expect(removeHtmlTag('<html>123</html>')).toEqual('123')
+    expect(removeHtmlTag('<html></html>')).toEqual('')
   })
 })
