@@ -53,3 +53,23 @@ export const escapeRegExp = (str: string): string => {
  * ```
  */
 export const removeHtmlTag = (str: string) => str.replace(/<[^>]+>/g, '')
+
+/**
+ * 字符串截取
+ * @param str 需要截取的字符串
+ * @param endIndex 结束提取字符串的索引
+ * @param beginIndex 开始提取字符串的索引
+ * @param suffix 后缀
+ * @category String
+ * @returns 返回截取后的字符串和后缀
+ * @example
+ * ``` typescript
+ * truncate('JavaScript', 4) // 'Java...'
+ * ```
+ */
+export const truncate = (
+  str: string,
+  endIndex: number,
+  beginIndex = 0,
+  suffix = '...'
+) => str.slice(beginIndex, endIndex) + suffix
