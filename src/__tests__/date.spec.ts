@@ -3,7 +3,7 @@
  * @Date: 2021-11-08 16:38:18
  */
 
-import { formatDateTime } from '../date-time'
+import { formatDateTime } from '../date'
 
 describe('Date Time Utils', () => {
   test('formatDateTime', () => {
