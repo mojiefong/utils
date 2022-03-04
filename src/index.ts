@@ -3,11 +3,11 @@
  * @Date: 2021-11-03 14:51:36
  */
 
-// export { version } from '../package.json'
+import { version as pkgVersion } from '../package.json'
+export const version = pkgVersion
+
 export * from './array'
-export * from './date-time'
 export * from './dom'
-// export * from './event-emitter'
 export * from './function'
 export * from './is'
 export * from './math'
