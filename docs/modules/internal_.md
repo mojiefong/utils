@@ -1,25 +1,46 @@
-[一些常用的工具函数 By Mojie - v0.0.1](../README.md) / [Exports](../modules.md) / <internal\>
+[一些常用的工具函数 By Mojie - v0.0.5](../README.md) / [Exports](../modules.md) / <internal\>
 
 # Namespace: <internal\>
 
 ## Table of contents
 
-### Namespaces
-
-- [globalThis](internal_.globalThis.md)
-
 ### Type aliases
 
-- [StorageType](internal_.md#storagetype)
+- [Arrayable](internal_.md#arrayable)
+- [Nullable](internal_.md#nullable)
 
 ## Type aliases
 
-### StorageType
+### Arrayable
 
-Ƭ **StorageType**: ``"local"`` \| ``"session"``
+Ƭ **Arrayable**<`T`\>: `T` \| `T`[]
 
-本地存储类型
+Array 或者还没有
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 #### Defined in
 
-[types/types.d.ts:29](https://github.com/mojiefong/utils/blob/64be8ae/types/types.d.ts#L29)
+[types/types.d.ts:38](https://github.com/mojiefong/utils/blob/c2683ef/types/types.d.ts#L38)
+
+___
+
+### Nullable
+
+Ƭ **Nullable**<`T`\>: `T` \| ``null`` \| `undefined`
+
+null、undefined或者其它
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+[types/types.d.ts:33](https://github.com/mojiefong/utils/blob/c2683ef/types/types.d.ts#L33)

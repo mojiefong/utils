@@ -1,6 +1,6 @@
-[一些常用的工具函数 By Mojie - v0.0.1](README.md) / Exports
+[一些常用的工具函数 By Mojie - v0.0.5](README.md) / Exports
 
-# 一些常用的工具函数 By Mojie - v0.0.1
+# 一些常用的工具函数 By Mojie - v0.0.5
 
 ## Table of contents
 
@@ -11,6 +11,10 @@
 ### Is Variables
 
 - [isBrowser](modules.md#isbrowser)
+
+### Other Variables
+
+- [version](modules.md#version)
 
 ### Array Functions
 
@@ -53,10 +57,6 @@
 - [getScrollPosition](modules.md#getscrollposition)
 - [scrollToTop](modules.md#scrolltotop)
 - [smoothScroll](modules.md#smoothscroll)
-
-### DateTime Functions
-
-- [formatDateTime](modules.md#formatdatetime)
 
 ### Is Functions
 
@@ -121,6 +121,8 @@
 
 - [escapeRegExp](modules.md#escaperegexp)
 - [getFileExtension](modules.md#getfileextension)
+- [removeHtmlTag](modules.md#removehtmltag)
+- [truncate](modules.md#truncate)
 
 ### WebStorage Functions
 
@@ -138,7 +140,7 @@
 
 ### isBrowser
 
-• **isBrowser**: `boolean`
+• `Const` **isBrowser**: `boolean`
 
 检查是否浏览器环境
 
@@ -146,13 +148,25 @@
 
 #### Defined in
 
-[src/is.ts:27](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L27)
+[src/is.ts:27](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L27)
+
+___
+
+## Other Variables
+
+### version
+
+• `Const` **version**: `string` = `pkgVersion`
+
+#### Defined in
+
+[src/index.ts:7](https://github.com/mojiefong/utils/blob/c2683ef/src/index.ts#L7)
 
 ## Array Functions
 
 ### groupBy
 
-▸ `Const` **groupBy**<`T`\>(`arr`, `property`): `object`
+▸ **groupBy**<`T`\>(`arr`, `property`): `object`
 
 根据key对一组对象进行分组
 
@@ -203,13 +217,13 @@ groupBy(
 
 #### Defined in
 
-[src/array.ts:59](https://github.com/mojiefong/utils/blob/64be8ae/src/array.ts#L59)
+[src/array.ts:58](https://github.com/mojiefong/utils/blob/c2683ef/src/array.ts#L58)
 
 ___
 
 ### head
 
-▸ `Const` **head**<`T`\>(`arr`): `unknown`
+▸ **head**<`T`\>(`arr`): [`Nullable`](modules/internal_.md#nullable)<`T`\>
 
 获取数组的第一个元素
 
@@ -233,19 +247,19 @@ head([{a: 1},{b: 2}]) // {a: 1}
 
 #### Returns
 
-`unknown`
+[`Nullable`](modules/internal_.md#nullable)<`T`\>
 
 返回数组的第一个元素。如果参数不是数组则返回原值
 
 #### Defined in
 
-[src/array.ts:76](https://github.com/mojiefong/utils/blob/64be8ae/src/array.ts#L76)
+[src/array.ts:75](https://github.com/mojiefong/utils/blob/c2683ef/src/array.ts#L75)
 
 ___
 
 ### last
 
-▸ `Const` **last**<`T`\>(`arr`): `unknown`
+▸ **last**<`T`\>(`arr`): [`Nullable`](modules/internal_.md#nullable)<`T`\>
 
 获取数组的最后一个元素
 
@@ -269,19 +283,19 @@ last([{a: 1}, {b: 2}]) // {b: 2}
 
 #### Returns
 
-`unknown`
+[`Nullable`](modules/internal_.md#nullable)<`T`\>
 
 返回数组的最后一个元素。如果参数不是数组则返回原值
 
 #### Defined in
 
-[src/array.ts:94](https://github.com/mojiefong/utils/blob/64be8ae/src/array.ts#L94)
+[src/array.ts:88](https://github.com/mojiefong/utils/blob/c2683ef/src/array.ts#L88)
 
 ___
 
 ### toArray
 
-▸ `Const` **toArray**<`T`\>(`target?`): `T`[]
+▸ **toArray**<`T`\>(`target?`): `T`[]
 
 将任意类型转成数组
 
@@ -303,7 +317,7 @@ toArray('1,2,3') // ['1,2,3']
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `target?` | `T` \| `T`[] | 目标数据 |
+| `target?` | [`Nullable`](modules/internal_.md#nullable)<[`Arrayable`](modules/internal_.md#arrayable)<`T`\>\> | 目标数据 |
 
 #### Returns
 
@@ -313,7 +327,7 @@ toArray('1,2,3') // ['1,2,3']
 
 #### Defined in
 
-[src/array.ts:21](https://github.com/mojiefong/utils/blob/64be8ae/src/array.ts#L21)
+[src/array.ts:21](https://github.com/mojiefong/utils/blob/c2683ef/src/array.ts#L21)
 
 ___
 
@@ -321,7 +335,7 @@ ___
 
 ### decode
 
-▸ `Const` **decode**(`str`): `string`
+▸ **decode**(`str`): `string`
 
 字符解码
 
@@ -344,13 +358,13 @@ decode('%E4%BD%A0%E5%A5%BD') // '你好'
 
 #### Defined in
 
-[src/function.ts:18](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L18)
+[src/function.ts:18](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L18)
 
 ___
 
 ### encode
 
-▸ `Const` **encode**(`str`): `string`
+▸ **encode**(`str`): `string`
 
 字符转码
 
@@ -373,7 +387,7 @@ encode('你好') // '%E4%BD%A0%E5%A5%BD'
 
 #### Defined in
 
-[src/function.ts:36](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L36)
+[src/function.ts:36](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L36)
 
 ___
 
@@ -381,7 +395,7 @@ ___
 
 ### copyToClipboard
 
-▸ `Const` **copyToClipboard**(`text`): `void`
+▸ **copyToClipboard**(`text`): `void`
 
 复制内容到剪切板
 
@@ -397,13 +411,13 @@ ___
 
 #### Defined in
 
-[src/dom.ts:167](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L167)
+[src/dom.ts:167](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L167)
 
 ___
 
 ### exitFullScreen
 
-▸ `Const` **exitFullScreen**(): `void`
+▸ **exitFullScreen**(): `void`
 
 退出浏览器全屏
 
@@ -413,13 +427,13 @@ ___
 
 #### Defined in
 
-[src/dom.ts:201](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L201)
+[src/dom.ts:201](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L201)
 
 ___
 
 ### getSelectedText
 
-▸ `Const` **getSelectedText**(): `undefined` \| `string`
+▸ **getSelectedText**(): `undefined` \| `string`
 
 获取鼠标选中的文本
 
@@ -431,13 +445,13 @@ ___
 
 #### Defined in
 
-[src/dom.ts:176](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L176)
+[src/dom.ts:176](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L176)
 
 ___
 
 ### keywordHighlighting
 
-▸ `Const` **keywordHighlighting**(`content`, `keyword`, `backgroundColor?`): `string`
+▸ **keywordHighlighting**(`content`, `keyword`, `backgroundColor?`): `string`
 
 关键字高亮
 
@@ -465,13 +479,13 @@ keywordHighlighting('Hello World', 'Hello', 'blue')
 
 #### Defined in
 
-[src/dom.ts:244](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L244)
+[src/dom.ts:244](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L244)
 
 ___
 
 ### loadCss
 
-▸ `Const` **loadCss**(`url`, `el?`): `Promise`<`string`\>
+▸ **loadCss**(`url`, `el?`): `Promise`<`string`\>
 
 动态添加css
 
@@ -508,13 +522,13 @@ loadCss('./index.css')
 
 #### Defined in
 
-[src/dom.ts:279](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L279)
+[src/dom.ts:280](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L280)
 
 ___
 
 ### loadScript
 
-▸ `Const` **loadScript**(`url`, `el?`): `Promise`<`string`\>
+▸ **loadScript**(`url`, `el?`): `Promise`<`string`\>
 
 动态添加js
 
@@ -551,13 +565,13 @@ loadScript('./index.js')
 
 #### Defined in
 
-[src/dom.ts:320](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L320)
+[src/dom.ts:321](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L321)
 
 ___
 
 ### openFullScreen
 
-▸ `Const` **openFullScreen**(): `void`
+▸ **openFullScreen**(): `void`
 
 打开浏览器全屏
 
@@ -567,7 +581,7 @@ ___
 
 #### Defined in
 
-[src/dom.ts:184](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L184)
+[src/dom.ts:184](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L184)
 
 ___
 
@@ -575,7 +589,7 @@ ___
 
 ### addClass
 
-▸ `Const` **addClass**(`el`, ...`className`): `void`
+▸ **addClass**(`el`, ...`className`): `void`
 
 添加class
 
@@ -600,13 +614,13 @@ addClass(document.body, 'className1', 'className2', 'className3')
 
 #### Defined in
 
-[src/dom.ts:19](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L19)
+[src/dom.ts:19](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L19)
 
 ___
 
 ### hasClass
 
-▸ `Const` **hasClass**(`el`, `className`): `boolean`
+▸ **hasClass**(`el`, `className`): `boolean`
 
 是否存在class
 
@@ -633,13 +647,13 @@ hasClass(document.body, 'className1') // false
 
 #### Defined in
 
-[src/dom.ts:58](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L58)
+[src/dom.ts:58](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L58)
 
 ___
 
 ### removeClass
 
-▸ `Const` **removeClass**(`el`, ...`className`): `void`
+▸ **removeClass**(`el`, ...`className`): `void`
 
 删除class
 
@@ -664,13 +678,13 @@ removeClass(document.body, 'className1', 'className2', 'className3')
 
 #### Defined in
 
-[src/dom.ts:38](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L38)
+[src/dom.ts:38](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L38)
 
 ___
 
 ### replaceClass
 
-▸ `Const` **replaceClass**(`el`, `oldClassName`, `newClassName`): `boolean`
+▸ **replaceClass**(`el`, `oldClassName`, `newClassName`): `boolean`
 
 替换class
 
@@ -698,13 +712,13 @@ replaceClass(document.body, 'className1', 'name') // false
 
 #### Defined in
 
-[src/dom.ts:95](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L95)
+[src/dom.ts:95](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L95)
 
 ___
 
 ### toggleClass
 
-▸ `Const` **toggleClass**(`el`, `className`): `boolean`
+▸ **toggleClass**(`el`, `className`): `boolean`
 
 切换class
 
@@ -731,7 +745,7 @@ toggleClass(document.body, 'className') // false
 
 #### Defined in
 
-[src/dom.ts:76](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L76)
+[src/dom.ts:76](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L76)
 
 ___
 
@@ -739,7 +753,7 @@ ___
 
 ### downloadBlobFile
 
-▸ `Const` **downloadBlobFile**(`blob`, `fileName`): `void`
+▸ **downloadBlobFile**(`blob`, `fileName`): `void`
 
 下载blob文件
 
@@ -756,7 +770,7 @@ ___
 
 #### Defined in
 
-[src/dom.ts:220](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L220)
+[src/dom.ts:220](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L220)
 
 ___
 
@@ -764,7 +778,7 @@ ___
 
 ### getPageScrollLeft
 
-▸ `Const` **getPageScrollLeft**(): `number`
+▸ **getPageScrollLeft**(): `number`
 
 获取滚动条距离左边的宽度
 
@@ -776,13 +790,13 @@ ___
 
 #### Defined in
 
-[src/dom.ts:158](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L158)
+[src/dom.ts:158](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L158)
 
 ___
 
 ### getPageScrollTop
 
-▸ `Const` **getPageScrollTop**(): `number`
+▸ **getPageScrollTop**(): `number`
 
 获取滚动条距离顶部高度
 
@@ -794,13 +808,13 @@ ___
 
 #### Defined in
 
-[src/dom.ts:149](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L149)
+[src/dom.ts:149](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L149)
 
 ___
 
 ### getScrollPosition
 
-▸ `Const` **getScrollPosition**(`el?`): `Object`
+▸ **getScrollPosition**(`el?`): `Object`
 
 获取当前的滚动位置
 
@@ -816,7 +830,7 @@ getScrollPosition(document.body) // { x: 0, y: 0 }
 
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
-| `el` | `Window` & typeof [`globalThis`](modules/internal_.globalThis.md) | `window` | 监听的元素。默认window |
+| `el` | `Window` & typeof `globalThis` | `window` | 监听的元素。默认window |
 
 #### Returns
 
@@ -831,13 +845,13 @@ getScrollPosition(document.body) // { x: 0, y: 0 }
 
 #### Defined in
 
-[src/dom.ts:139](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L139)
+[src/dom.ts:139](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L139)
 
 ___
 
 ### scrollToTop
 
-▸ `Const` **scrollToTop**(): `void`
+▸ **scrollToTop**(): `void`
 
 将滚动条平滑滚动到顶部
 
@@ -847,13 +861,13 @@ ___
 
 #### Defined in
 
-[src/dom.ts:105](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L105)
+[src/dom.ts:105](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L105)
 
 ___
 
 ### smoothScroll
 
-▸ `Const` **smoothScroll**<`T`\>(`el`): `void`
+▸ **smoothScroll**<`T`\>(`el`): `void`
 
 将滚动条平滑滚动到指定位置
 
@@ -875,41 +889,7 @@ ___
 
 #### Defined in
 
-[src/dom.ts:118](https://github.com/mojiefong/utils/blob/64be8ae/src/dom.ts#L118)
-
-___
-
-## DateTime Functions
-
-### formatDateTime
-
-▸ `Const` **formatDateTime**(`date`, `format?`): `string`
-
-格式化日期和时间
-
-**`example`**
-``` typescript
-formatDateTime(1636360782649) // '2021-11-08 16:39:42'
-formatDateTime(1636360935 * 1000) // '2021-11-08 16:42:15'
-formatDateTime('2021-11-19T16:00:00+00:00', 'YYYY-MM-DD') // '2021-11-20'
-```
-
-#### Parameters
-
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `date` | `undefined` \| ``null`` \| `string` \| `number` \| `Date` \| `Dayjs` | `undefined` | 需要处理的日期和时间 |
-| `format` | `string` | `'YYYY-MM-DD HH:mm:ss'` | 格式化规则 |
-
-#### Returns
-
-`string`
-
-格式化后的日期和时间
-
-#### Defined in
-
-[src/date-time.ts:22](https://github.com/mojiefong/utils/blob/64be8ae/src/date-time.ts#L22)
+[src/dom.ts:118](https://github.com/mojiefong/utils/blob/c2683ef/src/dom.ts#L118)
 
 ___
 
@@ -917,7 +897,7 @@ ___
 
 ### getTypeof
 
-▸ `Const` **getTypeof**(`val`): `string`
+▸ **getTypeof**(`val`): `string`
 
 检查类型
 
@@ -942,13 +922,13 @@ getTypeof('') // 'String'
 
 #### Defined in
 
-[src/is.ts:18](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L18)
+[src/is.ts:18](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L18)
 
 ___
 
 ### isArray
 
-▸ `Const` **isArray**<`T`\>(`val`): val is T[]
+▸ **isArray**<`T`\>(`val`): val is T[]
 
 检查是否Array类型
 
@@ -972,13 +952,13 @@ val is T[]
 
 #### Defined in
 
-[src/is.ts:212](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L212)
+[src/is.ts:212](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L212)
 
 ___
 
 ### isAtBottom
 
-▸ `Const` **isAtBottom**(): `boolean`
+▸ **isAtBottom**(): `boolean`
 
 判断滚动条是否到底部
 
@@ -990,13 +970,13 @@ ___
 
 #### Defined in
 
-[src/is.ts:275](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L275)
+[src/is.ts:275](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L275)
 
 ___
 
 ### isBlob
 
-▸ `Const` **isBlob**(`val`): val is Blob
+▸ **isBlob**(`val`): val is Blob
 
 检查是否Blob对象
 
@@ -1014,13 +994,13 @@ val is Blob
 
 #### Defined in
 
-[src/is.ts:268](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L268)
+[src/is.ts:268](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L268)
 
 ___
 
 ### isBoolean
 
-▸ `Const` **isBoolean**(`val`): val is boolean
+▸ **isBoolean**(`val`): val is boolean
 
 检查是否boolean类型
 
@@ -1038,13 +1018,13 @@ val is boolean
 
 #### Defined in
 
-[src/is.ts:65](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L65)
+[src/is.ts:65](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L65)
 
 ___
 
 ### isDate
 
-▸ `Const` **isDate**(`val`): val is Date
+▸ **isDate**(`val`): val is Date
 
 检查是否Date类型
 
@@ -1062,13 +1042,13 @@ val is Date
 
 #### Defined in
 
-[src/is.ts:220](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L220)
+[src/is.ts:220](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L220)
 
 ___
 
 ### isElement
 
-▸ `Const` **isElement**(`val`): val is Element
+▸ **isElement**(`val`): val is Element
 
 检查是否DOM元素
 
@@ -1086,13 +1066,13 @@ val is Element
 
 #### Defined in
 
-[src/is.ts:135](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L135)
+[src/is.ts:135](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L135)
 
 ___
 
 ### isEmpty
 
-▸ `Const` **isEmpty**(`val`): `boolean`
+▸ **isEmpty**(`val`): `boolean`
 
 检查空值
 
@@ -1112,13 +1092,13 @@ ___
 
 #### Defined in
 
-[src/is.ts:196](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L196)
+[src/is.ts:196](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L196)
 
 ___
 
 ### isEven
 
-▸ `Const` **isEven**(`val`): `boolean`
+▸ **isEven**(`val`): `boolean`
 
 检查是否偶数
 
@@ -1136,13 +1116,13 @@ ___
 
 #### Defined in
 
-[src/is.ts:228](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L228)
+[src/is.ts:228](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L228)
 
 ___
 
 ### isFile
 
-▸ `Const` **isFile**(`val`): val is File
+▸ **isFile**(`val`): val is File
 
 检查是否File对象
 
@@ -1160,13 +1140,13 @@ val is File
 
 #### Defined in
 
-[src/is.ts:260](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L260)
+[src/is.ts:260](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L260)
 
 ___
 
 ### isFunction
 
-▸ `Const` **isFunction**(`val`): val is Function
+▸ **isFunction**(`val`): val is Function
 
 检查是否Function类型
 
@@ -1184,13 +1164,13 @@ val is Function
 
 #### Defined in
 
-[src/is.ts:105](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L105)
+[src/is.ts:105](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L105)
 
 ___
 
 ### isMap
 
-▸ `Const` **isMap**<`T`, `K`\>(`val`): val is Map<T, K\>
+▸ **isMap**<`T`, `K`\>(`val`): val is Map<T, K\>
 
 检查是否Map对象
 
@@ -1215,13 +1195,13 @@ val is Map<T, K\>
 
 #### Defined in
 
-[src/is.ts:155](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L155)
+[src/is.ts:155](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L155)
 
 ___
 
 ### isNaN
 
-▸ `Const` **isNaN**(`val`): val is Number & Object
+▸ **isNaN**(`val`): val is Number & Object
 
 检查是否NaN类型
 
@@ -1239,13 +1219,13 @@ val is Number & Object
 
 #### Defined in
 
-[src/is.ts:175](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L175)
+[src/is.ts:175](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L175)
 
 ___
 
 ### isNegative
 
-▸ `Const` **isNegative**(`val`): `boolean`
+▸ **isNegative**(`val`): `boolean`
 
 检查是否负数
 
@@ -1263,13 +1243,13 @@ ___
 
 #### Defined in
 
-[src/is.ts:252](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L252)
+[src/is.ts:252](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L252)
 
 ___
 
 ### isNull
 
-▸ `Const` **isNull**(`val`): val is null
+▸ **isNull**(`val`): val is null
 
 检查是否null类型
 
@@ -1287,13 +1267,13 @@ val is null
 
 #### Defined in
 
-[src/is.ts:75](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L75)
+[src/is.ts:75](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L75)
 
 ___
 
 ### isNullOrUndef
 
-▸ `Const` **isNullOrUndef**(`val`): val is undefined \| null
+▸ **isNullOrUndef**(`val`): val is undefined \| null
 
 检查是否null 或 undefined类型
 
@@ -1311,13 +1291,13 @@ val is undefined \| null
 
 #### Defined in
 
-[src/is.ts:185](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L185)
+[src/is.ts:185](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L185)
 
 ___
 
 ### isNumber
 
-▸ `Const` **isNumber**(`val`): val is number
+▸ **isNumber**(`val`): val is number
 
 检查是否number类型
 
@@ -1335,13 +1315,13 @@ val is number
 
 #### Defined in
 
-[src/is.ts:55](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L55)
+[src/is.ts:55](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L55)
 
 ___
 
 ### isObject
 
-▸ `Const` **isObject**(`val`): val is object
+▸ **isObject**(`val`): val is object
 
 检查是否Object类型
 
@@ -1359,13 +1339,13 @@ val is object
 
 #### Defined in
 
-[src/is.ts:145](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L145)
+[src/is.ts:145](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L145)
 
 ___
 
 ### isOdd
 
-▸ `Const` **isOdd**(`val`): `boolean`
+▸ **isOdd**(`val`): `boolean`
 
 检查是否基数
 
@@ -1383,13 +1363,13 @@ ___
 
 #### Defined in
 
-[src/is.ts:236](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L236)
+[src/is.ts:236](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L236)
 
 ___
 
 ### isPositive
 
-▸ `Const` **isPositive**(`val`): `boolean`
+▸ **isPositive**(`val`): `boolean`
 
 检查是否正数
 
@@ -1407,13 +1387,13 @@ ___
 
 #### Defined in
 
-[src/is.ts:244](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L244)
+[src/is.ts:244](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L244)
 
 ___
 
 ### isPromise
 
-▸ `Const` **isPromise**<`T`\>(`val`): val is Promise<T\>
+▸ **isPromise**<`T`\>(`val`): val is Promise<T\>
 
 检查是否Promise对象
 
@@ -1437,13 +1417,13 @@ val is Promise<T\>
 
 #### Defined in
 
-[src/is.ts:125](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L125)
+[src/is.ts:125](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L125)
 
 ___
 
 ### isRegExp
 
-▸ `Const` **isRegExp**(`val`): val is RegExp
+▸ **isRegExp**(`val`): val is RegExp
 
 检查是否RegExp类型
 
@@ -1461,13 +1441,13 @@ val is RegExp
 
 #### Defined in
 
-[src/is.ts:115](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L115)
+[src/is.ts:115](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L115)
 
 ___
 
 ### isSet
 
-▸ `Const` **isSet**<`T`\>(`val`): val is Set<T\>
+▸ **isSet**<`T`\>(`val`): val is Set<T\>
 
 检查是否Set对象
 
@@ -1491,13 +1471,13 @@ val is Set<T\>
 
 #### Defined in
 
-[src/is.ts:165](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L165)
+[src/is.ts:165](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L165)
 
 ___
 
 ### isString
 
-▸ `Const` **isString**(`val`): val is string
+▸ **isString**(`val`): val is string
 
 检查是否string类型
 
@@ -1515,13 +1495,13 @@ val is string
 
 #### Defined in
 
-[src/is.ts:45](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L45)
+[src/is.ts:45](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L45)
 
 ___
 
 ### isSymbol
 
-▸ `Const` **isSymbol**(`val`): val is symbol
+▸ **isSymbol**(`val`): val is symbol
 
 检查是否symbol类型
 
@@ -1539,13 +1519,13 @@ val is symbol
 
 #### Defined in
 
-[src/is.ts:95](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L95)
+[src/is.ts:95](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L95)
 
 ___
 
 ### isUndefined
 
-▸ `Const` **isUndefined**(`val`): val is undefined
+▸ **isUndefined**(`val`): val is undefined
 
 检查是否undefined类型
 
@@ -1563,13 +1543,13 @@ val is undefined
 
 #### Defined in
 
-[src/is.ts:85](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L85)
+[src/is.ts:85](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L85)
 
 ___
 
 ### isWindow
 
-▸ `Const` **isWindow**(`val`): val is Window
+▸ **isWindow**(`val`): val is Window
 
 检查是否Window对象
 
@@ -1587,7 +1567,7 @@ val is Window
 
 #### Defined in
 
-[src/is.ts:35](https://github.com/mojiefong/utils/blob/64be8ae/src/is.ts#L35)
+[src/is.ts:35](https://github.com/mojiefong/utils/blob/c2683ef/src/is.ts#L35)
 
 ___
 
@@ -1595,7 +1575,7 @@ ___
 
 ### bytesToSize
 
-▸ `Const` **bytesToSize**(`bytes`): `string`
+▸ **bytesToSize**(`bytes`): `string`
 
 字节转换
 
@@ -1621,13 +1601,13 @@ bytesToSize(1024 ** 3) // '1.00 GB'
 
 #### Defined in
 
-[src/math.ts:48](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L48)
+[src/math.ts:48](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L48)
 
 ___
 
 ### generatorUUID
 
-▸ `Const` **generatorUUID**(): `string`
+▸ **generatorUUID**(): `string`
 
 生成UUID
 
@@ -1639,13 +1619,13 @@ ___
 
 #### Defined in
 
-[src/math.ts:61](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L61)
+[src/math.ts:61](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L61)
 
 ___
 
 ### outOfNum
 
-▸ `Const` **outOfNum**(`val`, `maxNum`): `string` \| `number`
+▸ **outOfNum**(`val`, `maxNum`): `string` \| `number`
 
 数字超过规定大小加上 '+' 号。
 
@@ -1673,13 +1653,13 @@ outOfNum('100', 99) // '99+'
 
 #### Defined in
 
-[src/math.ts:83](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L83)
+[src/math.ts:83](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L83)
 
 ___
 
 ### randomHexColor
 
-▸ `Const` **randomHexColor**(): `string`
+▸ **randomHexColor**(): `string`
 
 随机十六进制颜色
 
@@ -1691,13 +1671,13 @@ ___
 
 #### Defined in
 
-[src/math.ts:11](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L11)
+[src/math.ts:11](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L11)
 
 ___
 
 ### round
 
-▸ `Const` **round**(`val`, `precision?`): `number`
+▸ **round**(`val`, `precision?`): `number`
 
 将数字四舍五入到指定的位数
 
@@ -1726,13 +1706,13 @@ round('18.888', 2) // 18.89
 
 #### Defined in
 
-[src/math.ts:121](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L121)
+[src/math.ts:121](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L121)
 
 ___
 
 ### thousandsFormat
 
-▸ `Const` **thousandsFormat**(`num`): `string` \| `number`
+▸ **thousandsFormat**(`num`): `string` \| `number`
 
 千分位格式化
 
@@ -1757,13 +1737,13 @@ thousandsFormat('$1234') // '$1,234'
 
 #### Defined in
 
-[src/math.ts:28](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L28)
+[src/math.ts:28](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L28)
 
 ___
 
 ### toNumber
 
-▸ `Const` **toNumber**(`val`): `number`
+▸ **toNumber**(`val`): `number`
 
 字符串转为数字
 
@@ -1787,7 +1767,7 @@ toNumber('a') // NaN
 
 #### Defined in
 
-[src/math.ts:103](https://github.com/mojiefong/utils/blob/64be8ae/src/math.ts#L103)
+[src/math.ts:103](https://github.com/mojiefong/utils/blob/c2683ef/src/math.ts#L103)
 
 ___
 
@@ -1795,7 +1775,7 @@ ___
 
 ### objectToFormData
 
-▸ `Const` **objectToFormData**(`obj`): `FormData`
+▸ **objectToFormData**(`obj`): `FormData`
 
 把 Object 对象转成 FormData 格式
 
@@ -1819,7 +1799,7 @@ console.log(formData.get(a)) // '1'
 
 #### Defined in
 
-[src/object.ts:19](https://github.com/mojiefong/utils/blob/64be8ae/src/object.ts#L19)
+[src/object.ts:19](https://github.com/mojiefong/utils/blob/c2683ef/src/object.ts#L19)
 
 ___
 
@@ -1827,7 +1807,7 @@ ___
 
 ### debounce
 
-▸ `Const` **debounce**<`T`\>(`func`, `delay?`): (...`args`: `T`) => `void`
+▸ **debounce**<`T`\>(`func`, `delay?`): (...`args`: `T`) => `void`
 
 防抖函数
 
@@ -1866,13 +1846,13 @@ ___
 
 #### Defined in
 
-[src/function.ts:167](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L167)
+[src/function.ts:167](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L167)
 
 ___
 
 ### deepClone
 
-▸ `Const` **deepClone**<`T`\>(`target`): `T`
+▸ **deepClone**<`T`\>(`target`): `T`
 
 深拷贝
 
@@ -1900,13 +1880,13 @@ ___
 
 #### Defined in
 
-[src/function.ts:190](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L190)
+[src/function.ts:190](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L190)
 
 ___
 
 ### deleteEmptyField
 
-▸ `Const` **deleteEmptyField**(`obj`): `object`
+▸ **deleteEmptyField**(`obj`): `object`
 
 删除对象中的 ''、undefined、null
 
@@ -1924,13 +1904,13 @@ ___
 
 #### Defined in
 
-[src/object.ts:32](https://github.com/mojiefong/utils/blob/64be8ae/src/object.ts#L32)
+[src/object.ts:32](https://github.com/mojiefong/utils/blob/c2683ef/src/object.ts#L32)
 
 ___
 
 ### sleep
 
-▸ `Const` **sleep**(`delay`): `Promise`<`undefined`\>
+▸ **sleep**(`delay`): `Promise`<`undefined`\>
 
 延迟异步函数执行
 
@@ -1955,13 +1935,13 @@ async function sleepWork() {
 
 #### Defined in
 
-[src/function.ts:221](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L221)
+[src/function.ts:221](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L221)
 
 ___
 
 ### throttle
 
-▸ `Const` **throttle**<`T`\>(`func`, `delay?`): (...`args`: `T`) => `void`
+▸ **throttle**<`T`\>(`func`, `delay?`): (...`args`: `T`) => `void`
 
 节流函数
 
@@ -2000,7 +1980,7 @@ ___
 
 #### Defined in
 
-[src/function.ts:142](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L142)
+[src/function.ts:142](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L142)
 
 ___
 
@@ -2008,7 +1988,7 @@ ___
 
 ### deserialize
 
-▸ `Const` **deserialize**(`val`): `unknown`
+▸ **deserialize**(`val`): `unknown`
 
 反序列化JSON字符串
 
@@ -2028,13 +2008,13 @@ ___
 
 #### Defined in
 
-[src/function.ts:127](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L127)
+[src/function.ts:127](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L127)
 
 ___
 
 ### parseQuery
 
-▸ `Const` **parseQuery**(`query`): `object`
+▸ **parseQuery**(`query`): `object`
 
 解析 url 的查询对象
 
@@ -2060,13 +2040,13 @@ parseQuery(location.search)
 
 #### Defined in
 
-[src/function.ts:60](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L60)
+[src/function.ts:60](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L60)
 
 ___
 
 ### serialize
 
-▸ `Const` **serialize**(`val`): `string`
+▸ **serialize**(`val`): `string`
 
 序列化成JSON字符串
 
@@ -2084,13 +2064,13 @@ ___
 
 #### Defined in
 
-[src/function.ts:118](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L118)
+[src/function.ts:118](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L118)
 
 ___
 
 ### stringifyQuery
 
-▸ `Const` **stringifyQuery**(`obj`, `isEncode?`): `string`
+▸ **stringifyQuery**(`obj`, `isEncode?`): `string`
 
 将 Object 对象转为查询字符串
 
@@ -2116,7 +2096,7 @@ stringifyQuery({ foo: '你好' }, true) // 'foo=%E4%BD%A0%E5%A5%BD'
 
 #### Defined in
 
-[src/function.ts:94](https://github.com/mojiefong/utils/blob/64be8ae/src/function.ts#L94)
+[src/function.ts:94](https://github.com/mojiefong/utils/blob/c2683ef/src/function.ts#L94)
 
 ___
 
@@ -2124,7 +2104,7 @@ ___
 
 ### escapeRegExp
 
-▸ `Const` **escapeRegExp**(`str`): `string`
+▸ **escapeRegExp**(`str`): `string`
 
 转义要在正则表达式中使用的特殊字符
 
@@ -2153,13 +2133,13 @@ escapeRegExp('[Hello World]'.replace(new RegExp(escapeRegExp('[')), '')) // 'Hel
 
 #### Defined in
 
-[src/string.ts:37](https://github.com/mojiefong/utils/blob/64be8ae/src/string.ts#L37)
+[src/string.ts:37](https://github.com/mojiefong/utils/blob/c2683ef/src/string.ts#L37)
 
 ___
 
 ### getFileExtension
 
-▸ `Const` **getFileExtension**(`fileName`): `undefined` \| `string`
+▸ **getFileExtension**(`fileName`): `string`
 
 获取文件后缀名
 
@@ -2176,13 +2156,75 @@ getFileExtension('file-name.pdf') // 'pdf'
 
 #### Returns
 
-`undefined` \| `string`
+`string`
 
 返回文件后缀名
 
 #### Defined in
 
-[src/string.ts:18](https://github.com/mojiefong/utils/blob/64be8ae/src/string.ts#L18)
+[src/string.ts:18](https://github.com/mojiefong/utils/blob/c2683ef/src/string.ts#L18)
+
+___
+
+### removeHtmlTag
+
+▸ **removeHtmlTag**(`str`): `string`
+
+ 去除HTML标签
+
+**`example`**
+``` typescript
+removeHtmlTag('<html>123</html>') // '123'
+removeHtmlTag('<html></html>') // ''
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `str` | `string` | 需要去除的html字符串 |
+
+#### Returns
+
+`string`
+
+返回去除标签后的字符串
+
+#### Defined in
+
+[src/string.ts:55](https://github.com/mojiefong/utils/blob/c2683ef/src/string.ts#L55)
+
+___
+
+### truncate
+
+▸ **truncate**(`str`, `endIndex`, `beginIndex?`, `suffix?`): `string`
+
+字符串截取
+
+**`example`**
+``` typescript
+truncate('JavaScript', 4) // 'Java...'
+```
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `str` | `string` | `undefined` | 需要截取的字符串 |
+| `endIndex` | `number` | `undefined` | 结束提取字符串的索引 |
+| `beginIndex` | `number` | `0` | 开始提取字符串的索引 |
+| `suffix` | `string` | `'...'` | 后缀 |
+
+#### Returns
+
+`string`
+
+返回截取后的字符串和后缀
+
+#### Defined in
+
+[src/string.ts:70](https://github.com/mojiefong/utils/blob/c2683ef/src/string.ts#L70)
 
 ___
 
@@ -2190,7 +2232,7 @@ ___
 
 ### localGet
 
-▸ `Const` **localGet**(`key`): `unknown`
+▸ **localGet**(`key`): `unknown`
 
 获取localStorage
 
@@ -2208,13 +2250,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:17](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L17)
+[src/storage.ts:17](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L17)
 
 ___
 
 ### localHas
 
-▸ `Const` **localHas**(`key`): `boolean`
+▸ **localHas**(`key`): `boolean`
 
 判断localStorage中是否存在指定的key
 
@@ -2232,13 +2274,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:47](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L47)
+[src/storage.ts:47](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L47)
 
 ___
 
 ### localRemove
 
-▸ `Const` **localRemove**(`key`): `void`
+▸ **localRemove**(`key`): `void`
 
 移除localStorage
 
@@ -2254,13 +2296,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:37](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L37)
+[src/storage.ts:37](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L37)
 
 ___
 
 ### localSet
 
-▸ `Const` **localSet**(`key`, `value`): `void`
+▸ **localSet**(`key`, `value`): `void`
 
 设置localStorage
 
@@ -2277,13 +2319,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:28](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L28)
+[src/storage.ts:28](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L28)
 
 ___
 
 ### sessionGet
 
-▸ `Const` **sessionGet**(`key`): `unknown`
+▸ **sessionGet**(`key`): `unknown`
 
 获取sessionStorage
 
@@ -2301,13 +2343,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:58](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L58)
+[src/storage.ts:58](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L58)
 
 ___
 
 ### sessionHas
 
-▸ `Const` **sessionHas**(`key`): `boolean`
+▸ **sessionHas**(`key`): `boolean`
 
 判断sessionRemove中是否存在指定的key
 
@@ -2325,13 +2367,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:87](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L87)
+[src/storage.ts:87](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L87)
 
 ___
 
 ### sessionRemove
 
-▸ `Const` **sessionRemove**(`key`): `void`
+▸ **sessionRemove**(`key`): `void`
 
 移除sessionStorage
 
@@ -2347,13 +2389,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:77](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L77)
+[src/storage.ts:77](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L77)
 
 ___
 
 ### sessionSet
 
-▸ `Const` **sessionSet**(`key`, `value`): `void`
+▸ **sessionSet**(`key`, `value`): `void`
 
 设置sessionStorage
 
@@ -2370,13 +2412,13 @@ ___
 
 #### Defined in
 
-[src/storage.ts:68](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L68)
+[src/storage.ts:68](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L68)
 
 ___
 
 ### storageClear
 
-▸ `Const` **storageClear**(`storageType?`): `void`
+▸ **storageClear**(`storageType?`): `void`
 
 清空 localStorage 和 sessionStorage
 
@@ -2384,7 +2426,7 @@ ___
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `storageType?` | [`StorageType`](modules/internal_.md#storagetype) | 用于指定清除 localStorage 还是 sessionStorage。默认是清除所有 |
+| `storageType?` | ``"local"`` \| ``"session"`` | 用于指定清除 localStorage 还是 sessionStorage。默认是清除所有 |
 
 #### Returns
 
@@ -2392,4 +2434,4 @@ ___
 
 #### Defined in
 
-[src/storage.ts:97](https://github.com/mojiefong/utils/blob/64be8ae/src/storage.ts#L97)
+[src/storage.ts:97](https://github.com/mojiefong/utils/blob/c2683ef/src/storage.ts#L97)
