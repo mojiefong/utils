@@ -18,11 +18,26 @@ type RequestFullScreen = HTMLElement & {
 /**
  * 索引签名
  */
-interface Indexable<T = any> {
+type Indexable<T = any> = {
   [key: string]: T
 }
 
 /**
- * 本地存储类型
+ * Promise 或者不是
  */
-type StorageType = 'local' | 'session'
+type Awaitable<T> = T | PromiseLike<T>
+
+/**
+ * null、undefined或者其它
+ */
+type Nullable<T> = T | null | undefined
+
+/**
+ * Array 或者还没有
+ */
+type Arrayable<T> = T | Array<T>
+
+/**
+ * Function
+ */
+type Fn<T = void> = () => T

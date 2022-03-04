@@ -18,10 +18,9 @@ import { isArray } from './is'
  * toArray('1,2,3') // ['1,2,3']
  * ```
  */
-export const toArray = <T>(target?: T | T[]): T[] => {
+export const toArray = <T>(target?: Nullable<Arrayable<T>>): T[] => {
   target = target || []
-  if (Array.isArray(target)) return target
-  return [target]
+  return Array.isArray(target) ? target : [target]
 }
 
 /**
@@ -73,12 +72,7 @@ export const groupBy = <T>(arr: T[], property: string): object => {
  * head([{a: 1},{b: 2}]) // {a: 1}
  * ```
  */
-export const head = <T>(arr: T[]): unknown => {
-  if (isArray(arr)) {
-    return arr[0]
-  }
-  return arr
-}
+export const head = <T>(arr: T[]): Nullable<T> => (isArray(arr) ? arr[0] : arr)
 
 /**
  * 获取数组的最后一个元素
@@ -91,9 +85,6 @@ export const head = <T>(arr: T[]): unknown => {
  * last([{a: 1}, {b: 2}]) // {b: 2}
  * ```
  */
-export const last = <T>(arr: T[]): unknown => {
-  if (isArray(arr)) {
-    return arr[arr.length - 1]
-  }
-  return arr
+export const last = <T>(arr: T[]): Nullable<T> => {
+  return isArray(arr) ? arr.at(-1) : arr
 }

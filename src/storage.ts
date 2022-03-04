@@ -94,7 +94,7 @@ export const sessionHas = (key: string): boolean => sessionGet(key) !== null
  * @param storageType 用于指定清除 localStorage 还是 sessionStorage。默认是清除所有
  * @category WebStorage
  */
-export const storageClear = (storageType?: StorageType): void => {
+export const storageClear = (storageType?: 'local' | 'session'): void => {
   if (!storageType) {
     localStorage.clear()
     sessionStorage.clear()
