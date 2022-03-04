@@ -8,10 +8,11 @@
   "author": "Mojie",
   "license": "MIT",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
     "dev": "npm run build -- --watch",
-    "build": "rimraf dist && tsup src/index.ts --format esm,cjs --dts",
+    "build": "rimraf dist && tsup src/index.ts src/date.ts --format esm,cjs --dts",
     "release": "npx bumpp --commit --push --tag --no-verify",
     "docs": "typedoc",
     "docs:html": "npm run docs -- --out docs-html --plugin typedoc-plugin-missing-exports",
@@ -35,9 +36,6 @@
     "dist",
     "types"
   ],
-  "peerDependencies": {
-    "dayjs": "^1.10.8"
-  },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
