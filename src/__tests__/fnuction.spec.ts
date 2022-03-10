@@ -10,6 +10,8 @@ import {
   stringifyQuery,
   debounce,
   deepClone,
+  serialize,
+  deserialize,
 } from '../function'
 
 describe('Function Utils', () => {
@@ -56,5 +58,13 @@ describe('Function Utils', () => {
     arr[0].obj.a = 3
     expect(deepArr).toEqual([{ foo: 'bar', obj: { a: 1, b: 2 } }])
     expect(arr[0].obj === deepArr[0].obj).toEqual(false)
+  })
+  test('serialize', () => {
+    expect(serialize({ foo: 'bar' })).toEqual('{"foo":"bar"}')
+    expect(serialize([{ foo: 'bar' }])).toEqual('[{"foo":"bar"}]')
+  })
+  test('deserialize', () => {
+    expect(deserialize('{"foo":"bar"}')).toEqual({ foo: 'bar' })
+    expect(deserialize('[{"foo":"bar"}]')).toEqual([{ foo: 'bar' }])
   })
 })

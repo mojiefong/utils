@@ -114,6 +114,11 @@ export const stringifyQuery = (obj: object, isEncode = false): string => {
  * @param val 需要序列化的对象
  * @category Serialize
  * @returns 返回一个JSON字符串
+ * @example
+ * ``` typescript
+ * serialize({ foo: 'bar' }) // '{"foo":"bar"}'
+ * serialize([{ foo: 'bar' }]) // '[{"foo":"bar"}]'
+ * ```
  */
 export const serialize = (val: unknown): string => JSON.stringify(val)
 
@@ -123,8 +128,13 @@ export const serialize = (val: unknown): string => JSON.stringify(val)
  * @param val 需要被解析的字符串
  * @category Serialize
  * @returns 返回指定的JSON对象。如果字符串不符合JSON规则，则返回原值
+ * @example
+ * ``` typescript
+ * deserialize('{"foo":"bar"}') // { foo: 'bar' }
+ * deserialize('[{"foo":"bar"}]') // [{ foo: 'bar' }]
+ * ```
  */
-export const deserialize = (val: string): unknown => {
+export const deserialize = <T>(val: string): T | string => {
   try {
     return JSON.parse(val)
   } catch {
