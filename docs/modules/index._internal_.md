@@ -1,4 +1,4 @@
-[一些常用的工具函数 By Mojie - v0.1.1](../README.md) / [Modules](../modules.md) / [index](index.md) / <internal\>
+[一些常用的工具函数 By Mojie - v0.1.2](../README.md) / [Modules](../modules.md) / [index](index.md) / <internal\>
 
 # Namespace: <internal\>
 
@@ -27,7 +27,7 @@ Array 或者还没有
 
 #### Defined in
 
-[types/types.d.ts:38](https://github.com/mojiefong/utils/blob/c29d7ba/types/types.d.ts#L38)
+[types/types.d.ts:38](https://github.com/mojiefong/utils/blob/f0b18b5/types/types.d.ts#L38)
 
 ___
 
@@ -45,4 +45,4 @@ null、undefined或者其它
 
 #### Defined in
 
-[types/types.d.ts:33](https://github.com/mojiefong/utils/blob/c29d7ba/types/types.d.ts#L33)
+[types/types.d.ts:33](https://github.com/mojiefong/utils/blob/f0b18b5/types/types.d.ts#L33)
