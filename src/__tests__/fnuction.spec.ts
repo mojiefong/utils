@@ -30,6 +30,9 @@ describe('Function Utils', () => {
     expect(stringifyQuery({ a: 1, b: 2 })).toEqual('a=1&b=2')
     expect(stringifyQuery({ name: '杰' })).toEqual('name=杰')
     expect(stringifyQuery({ name: '杰' }, true)).toEqual('name=%E6%9D%B0')
+    expect(
+      stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';')
+    ).toEqual('width:100px;height:100px')
   })
 
   jest.useFakeTimers()

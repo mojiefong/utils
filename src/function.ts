@@ -82,6 +82,8 @@ export const parseQuery = (query: string): object => {
  * 将 Object 对象转为查询字符串
  * @param obj 需要转换的对象
  * @param isEncode 是否需要转码。默认为false
+ * @param modifier 键值对中间的修饰符。默认为=
+ * @param join 拼接符。默认为&
  * @category Serialize
  * @returns 返回查询字符串
  * @example
@@ -89,9 +91,15 @@ export const parseQuery = (query: string): object => {
  * stringifyQuery({ a: 1, b: 2 }) // 'a=1&b=2'
  * stringifyQuery({ foo: '你好' }) // 'foo=你好'
  * stringifyQuery({ foo: '你好' }, true) // 'foo=%E4%BD%A0%E5%A5%BD'
+ * stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';') // 'width:100px;height:100px'
  * ```
  */
-export const stringifyQuery = (obj: object, isEncode = false): string => {
+export const stringifyQuery = (
+  obj: object,
+  isEncode = false,
+  modifier = '=',
+  join = '&'
+): string => {
   if (!obj) return ''
   if (isEmpty(obj)) return ''
 
@@ -103,10 +111,10 @@ export const stringifyQuery = (obj: object, isEncode = false): string => {
       if (isEncode) {
         value = encode(value)
       }
-      return `${key}=${value}`
+      return key + modifier + value
     })
     .filter((item) => item)
-    .join('&')
+    .join(join)
 }
 
 /**
