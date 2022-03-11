@@ -4,18 +4,6 @@
  */
 
 /**
- * 全屏API兼容
- */
-type RequestFullScreen = HTMLElement & {
-  // Firefox
-  mozRequestFullScreen(): Promise<void>
-  // IE/Edge
-  msRequestFullscreen(): Promise<void>
-  // Chrome, Safari and Opera
-  webkitRequestFullscreen(): Promise<void>
-}
-
-/**
  * 索引签名
  */
 type Indexable<T = any> = {
@@ -41,3 +29,25 @@ type Arrayable<T> = T | Array<T>
  * Function
  */
 type Fn<T = void> = () => T
+
+/**
+ * 全屏API兼容
+ */
+type RequestFullScreen = HTMLElement & {
+  /** Firefox */
+  mozRequestFullScreen(): Promise<void>
+  /** IE/Edge */
+  msRequestFullscreen(): Promise<void>
+  /** Chrome, Safari and Opera */
+  webkitRequestFullscreen(): Promise<void>
+}
+
+/**
+ * 关键字高亮
+ */
+type KeywordHighlight = {
+  /** 正则修饰符g、i、m、s */
+  modifiers?: string
+  /** 自定义样式 */
+  style?: object
+}
