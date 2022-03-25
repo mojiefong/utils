@@ -28,6 +28,10 @@ describe('Function Utils', () => {
   })
   test('stringifyQuery', () => {
     expect(stringifyQuery({ a: 1, b: 2 })).toEqual('a=1&b=2')
+    expect(stringifyQuery({ a: 1, b: false })).toEqual('a=1&b=false')
+    expect(
+      stringifyQuery({ a: null, b: undefined, c: 0, d: '', e: false })
+    ).toEqual('a=null&b=undefined&c=0&d=&e=false')
     expect(stringifyQuery({ name: '杰' })).toEqual('name=杰')
     expect(stringifyQuery({ name: '杰' }, true)).toEqual('name=%E6%9D%B0')
     expect(

@@ -3,7 +3,7 @@
  * @Date: 2021-11-15 13:57:58
  */
 
-import { isEmpty, isArray, isObject } from './is'
+import { isArray, isObject } from './is'
 
 /**
  * 字符解码
@@ -101,13 +101,10 @@ export const stringifyQuery = (
   join = '&'
 ): string => {
   if (!obj) return ''
-  if (isEmpty(obj)) return ''
-
   const keys = Object.keys(obj)
   return keys
     .map((key) => {
       let value = (obj as Indexable)[key]
-      if (!value) return ''
       if (isEncode) {
         value = encode(value)
       }
