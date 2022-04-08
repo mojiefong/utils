@@ -256,7 +256,7 @@ export const keywordHighlight = (
     modifiers?: string
     /** 自定义样式 */
     style?: object
-  }
+  } = {}
 ): string => {
   if (!content) return ''
   if (!keyword) return content
