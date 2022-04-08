@@ -9,5 +9,5 @@
     ".eslintrc.js",
     "*.md"
   ],
-  "cSpell.words": ["Arrayable", "Mojie", "pnpm"]
+  "cSpell.words": ["Arrayable", "esbuild", "Mojie", "pnpm"]
 }

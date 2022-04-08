@@ -252,7 +252,7 @@ export const keywordHighlight = (
   content: string,
   keyword: string,
   options: {
-    /** 正则修饰符g、i、m、s */
+    /** 正则修饰符g、i、m、s。默认为：gi */
     modifiers?: string
     /** 自定义样式 */
     style?: object

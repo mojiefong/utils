@@ -2,16 +2,29 @@
   "name": "@mojiee/utils",
   "version": "0.2.2",
   "description": "Utility function",
-  "main": "dist/index.js",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./index.d.ts"
+    },
+    "./date": {
+      "import": "./dist/date.mjs",
+      "require": "./dist/date.cjs",
+      "types": "./date.d.ts"
+    }
+  },
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
   "author": "Mojie",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
     "dev": "npm run build -- --watch",
-    "build": "rimraf dist && tsup src/index.ts src/date.ts --format esm,cjs --dts",
+    "build": "rimraf dist && rollup -c",
     "release": "npx bumpp --commit --push --tag --no-verify",
     "docs": "typedoc",
     "docs:html": "npm run docs -- --out docs-html --plugin typedoc-plugin-missing-exports",
@@ -33,15 +46,17 @@
   ],
   "files": [
     "dist",
-    "types"
+    "*.d.ts"
   ],
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@rollup/plugin-json": "^4.1.0",
     "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "dayjs": "^1.11.0",
+    "esbuild": "^0.14.34",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -49,8 +64,10 @@
     "jest": "^27.5.1",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
+    "rollup": "^2.70.1",
+    "rollup-plugin-dts": "^4.2.0",
+    "rollup-plugin-esbuild": "^4.9.1",
     "ts-jest": "^27.1.4",
-    "tsup": "^5.12.4",
     "typedoc": "^0.22.14",
     "typedoc-plugin-markdown": "^3.11.14",
     "typedoc-plugin-missing-exports": "^0.22.6",
