@@ -3,6 +3,7 @@
  * @Date: 2021-11-15 13:57:58
  */
 
+import type { Indexable } from './types'
 import { isArray, isObject } from './is'
 
 /**

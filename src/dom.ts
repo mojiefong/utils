@@ -3,6 +3,7 @@
  * @Date: 2021-11-05 10:58:31
  */
 
+import type { RequestFullScreen } from './types'
 import { escapeRegExp } from './string'
 import { stringifyQuery } from './function'
 
@@ -250,7 +251,12 @@ export const downloadBlobFile = (blob: Blob, fileName: string): void => {
 export const keywordHighlight = (
   content: string,
   keyword: string,
-  options: KeywordHighlight = {}
+  options: {
+    /** 正则修饰符g、i、m、s */
+    modifiers?: string
+    /** 自定义样式 */
+    style?: object
+  }
 ): string => {
   if (!content) return ''
   if (!keyword) return content
