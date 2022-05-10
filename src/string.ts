@@ -73,3 +73,38 @@ export const truncate = (
   beginIndex = 0,
   suffix = '...'
 ) => str.slice(beginIndex, endIndex) + suffix
+
+/**
+ * 根据索引替换字符串
+ * @param str 原始字符串
+ * @param beginIndex 索引开始位置
+ * @param endIndex 索引结束位置
+ * @param replacement 替换的新字符串
+ * @category String
+ * @returns 返回根据索引替换后的字符串
+ * @example ``` typescript
+ * replaceStr('Hello World', 6, 11, 'TypeScript') // Hello TypeScript
+ * replaceStr('Hello World', 6, 7, 'w') // Hello world
+ * ```
+ */
+export const replaceStr = (
+  str: string,
+  beginIndex: number,
+  endIndex: number,
+  replacement: string
+) => str.replace(str.slice(beginIndex, endIndex), replacement)
+
+/**
+ * 根据索引插入字符串
+ * @param str 原始字符串
+ * @param beginIndex 索引开始位置
+ * @param newStr 插入新的字符串
+ * @category String
+ * @returns 返回根据索引插入的字符串
+ * @example ``` typescript
+ * insertStr('Hello World', 6, 'TypeScript ') // Hello TypeScript World
+ * ```
+ */
+export const insertStr = (str: string, beginIndex: number, newStr: string) => {
+  return str.slice(0, beginIndex) + newStr + str.slice(beginIndex, str.length)
+}

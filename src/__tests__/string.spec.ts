@@ -8,6 +8,8 @@ import {
   escapeRegExp,
   removeHtmlTag,
   truncate,
+  replaceStr,
+  insertStr,
 } from '../string'
 
 describe('String Utils', () => {
@@ -30,5 +32,16 @@ describe('String Utils', () => {
   })
   test('truncate', () => {
     expect(truncate('JavaScript', 4)).toEqual('Java...')
+  })
+  test('replaceStr', () => {
+    expect(replaceStr('Hello World', 6, 11, 'TypeScript')).toEqual(
+      'Hello TypeScript'
+    )
+    expect(replaceStr('Hello World', 6, 7, 'w')).toEqual('Hello world')
+  })
+  test('insertStr', () => {
+    expect(insertStr('Hello World', 6, 'TypeScript ')).toEqual(
+      'Hello TypeScript World'
+    )
   })
 })
