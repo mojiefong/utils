@@ -108,3 +108,19 @@ export const replaceStr = (
 export const insertStr = (str: string, beginIndex: number, newStr: string) => {
   return str.slice(0, beginIndex) + newStr + str.slice(beginIndex, str.length)
 }
+
+/**
+ * 生成指定长度的随机字符串
+ * @param length 指定的长度
+ * @category String
+ * @returns 返回指定长度的随机字符串
+ * @example ``` typescript
+ * generateString(10) // 3wqt3eiyxs
+ * generateString(16) // 3wqt3eiyxs2rde1f
+ * ```
+ */
+export const generateString = (length: number): string =>
+  Array(length)
+    .fill('')
+    .map(() => Math.random().toString(36).charAt(2))
+    .join('')
