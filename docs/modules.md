@@ -1,6 +1,6 @@
-[一些常用的工具函数 By Mojie - v0.3.2](README.md) / Modules
+[一些常用的工具函数 By Mojie - v0.3.3](README.md) / Modules
 
-# 一些常用的工具函数 By Mojie - v0.3.2
+# 一些常用的工具函数 By Mojie - v0.3.3
 
 ## Table of contents
 
