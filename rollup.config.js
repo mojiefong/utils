@@ -6,6 +6,7 @@
 import json from '@rollup/plugin-json'
 import esbuild from 'rollup-plugin-esbuild'
 import dts from 'rollup-plugin-dts'
+import resolve from '@rollup/plugin-node-resolve'
 
 const entries = ['src/index.ts', 'src/date.ts']
 
@@ -23,7 +24,7 @@ export default [
       },
     ],
     external: ['dayjs'],
-    plugins: [json(), esbuild()],
+    plugins: [json(), esbuild(), resolve()],
   })),
 
   ...entries.map((input) => ({
