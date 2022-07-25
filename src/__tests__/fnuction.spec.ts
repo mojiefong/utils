@@ -8,7 +8,6 @@ import {
   encode,
   parseQuery,
   stringifyQuery,
-  debounce,
   deepClone,
   serialize,
   deserialize,
@@ -40,15 +39,15 @@ describe('Function Utils', () => {
   })
 
   jest.useFakeTimers()
-  test('debounce', () => {
-    const func = jest.fn()
-    const debouncedFunc = debounce(func, 500)
-    debouncedFunc()
-    jest.advanceTimersByTime(300)
-    debouncedFunc()
-    jest.runAllTimers()
-    expect(func).toBeCalledTimes(1)
-  })
+  // test('debounce', () => {
+  //   const func = jest.fn()
+  //   const debouncedFunc = debounce(func, 500)
+  //   debouncedFunc()
+  //   jest.advanceTimersByTime(300)
+  //   debouncedFunc()
+  //   jest.runAllTimers()
+  //   expect(func).toBeCalledTimes(1)
+  // })
 
   test('deepClone', () => {
     expect(deepClone(null)).toEqual(null)
