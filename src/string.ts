@@ -21,7 +21,7 @@ export const getFileExtension = (fileName: string): string => {
 
 /**
  * 转义要在正则表达式中使用的特殊字符
- * @description "^", "$", "", ".", "*", "+", "?", "(", ")", "[", "]", "{" 、“}”和“|”
+ * @description "^", "$", "", ".", "*", "+", "?", "(", ")", "[", "]", "{" , "}", "|"
  * @param str 需要转义的字符串
  * @category String
  * @returns 返回转义后的字符串。如果str参数不是string类型则返回空字符串
