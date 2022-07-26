@@ -20,13 +20,13 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
-      # - name: Setup pnpm
-      #   uses: pnpm/action-setup@v2
-      #   with:
-      #     version: latest
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
 
       - name: Install
-        run: npm i
+        run: pnpm i
 
       - name: Public
         run: npm publish --access public
