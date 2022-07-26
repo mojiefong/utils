@@ -4,80 +4,78 @@
  */
 
 import {
-  localGet,
-  localHas,
-  localRemove,
-  localSet,
-  sessionGet,
-  sessionHas,
-  sessionRemove,
-  sessionSet,
-  storageClear,
+  getStorage,
+  setStorage,
+  removeStorage,
+  hasStorage,
+  clearStorage,
 } from '../storage'
 
 describe('Storage Utils', () => {
   // local
-  test('localSet', () => {
-    expect(localSet('foo', { foo: 1 }))
-    expect(localSet('remove', { foo: 1 }))
+  test('local setStorage', () => {
+    expect(setStorage('foo', { foo: 1 }))
+    expect(setStorage('remove', { foo: 1 }))
   })
-  test('localGet', () => {
-    expect(localGet('foo')).toEqual({ foo: 1 })
-    expect(localGet('foo1')).toEqual(null)
+  test('local getStorage', () => {
+    expect(getStorage('foo')).toEqual({ foo: 1 })
+    expect(getStorage('foo1')).toEqual(null)
   })
-  test('localRemove', () => {
-    expect(localRemove('remove'))
-    expect(localGet('remove')).toEqual(null)
-    expect(localHas('remove')).toEqual(false)
+  test('local removeStorage', () => {
+    expect(removeStorage('remove'))
+    expect(getStorage('remove')).toEqual(null)
+    expect(hasStorage('remove')).toEqual(false)
   })
-  test('localHas', () => {
-    expect(localHas('foo')).toEqual(true)
-    expect(localHas('foo1')).toEqual(false)
+  test('local hasStorage', () => {
+    expect(hasStorage('foo')).toEqual(true)
+    expect(hasStorage('foo1')).toEqual(false)
   })
 
   // session
-  test('sessionSet', () => {
-    expect(sessionSet('foo', { foo: 1 }))
-    expect(sessionSet('remove', { foo: 1 }))
+  test('session setStorage', () => {
+    expect(setStorage('foo', { foo: 1 }, sessionStorage))
+    expect(setStorage('remove', { foo: 1 }, sessionStorage))
   })
-  test('sessionGet', () => {
-    expect(sessionGet('foo')).toEqual({ foo: 1 })
-    expect(sessionGet('foo1')).toEqual(null)
+  test('session getStorage', () => {
+    expect(getStorage('foo', sessionStorage)).toEqual({ foo: 1 })
+    expect(getStorage('foo1', sessionStorage)).toEqual(null)
   })
-  test('sessionRemove', () => {
-    expect(sessionRemove('remove'))
-    expect(sessionGet('remove')).toEqual(null)
-    expect(sessionHas('remove')).toEqual(false)
+  test('session removeStorage', () => {
+    expect(removeStorage('remove', sessionStorage))
+    expect(getStorage('remove', sessionStorage)).toEqual(null)
+    expect(hasStorage('remove', sessionStorage)).toEqual(false)
   })
-  test('sessionHas', () => {
-    expect(sessionHas('foo')).toEqual(true)
-    expect(sessionHas('foo1')).toEqual(false)
+  test('session hasStorage', () => {
+    expect(hasStorage('foo', sessionStorage)).toEqual(true)
+    expect(hasStorage('foo1', sessionStorage)).toEqual(false)
   })
 
-  // storage
-  test('storageClear All', () => {
-    expect(localSet('localClear1', 'localClear1'))
-    expect(localSet('localClear2', 'localClear2'))
-    expect(sessionSet('sessionClear1', 'sessionClear1'))
-    expect(sessionSet('sessionClear2', 'sessionClear2'))
-    expect(storageClear())
-    expect(localHas('localClear1')).toEqual(false)
-    expect(localHas('localClear2')).toEqual(false)
-    expect(localHas('sessionClear1')).toEqual(false)
-    expect(localHas('sessionClear2')).toEqual(false)
-  })
   test('storageClear local', () => {
-    expect(localSet('localClear1', 'localClear1'))
-    expect(localSet('localClear2', 'localClear2'))
-    expect(storageClear('local'))
-    expect(localHas('localClear1')).toEqual(false)
-    expect(localHas('localClear2')).toEqual(false)
+    expect(setStorage('localClear1', 'localClear1'))
+    expect(setStorage('localClear2', 'localClear2'))
+    expect(clearStorage())
+    expect(hasStorage('localClear1')).toEqual(false)
+    expect(hasStorage('localClear2')).toEqual(false)
   })
+
   test('storageClear session', () => {
-    expect(sessionSet('sessionClear1', 'sessionClear1'))
-    expect(sessionSet('sessionClear2', 'sessionClear2'))
-    expect(storageClear())
-    expect(localHas('sessionClear1')).toEqual(false)
-    expect(localHas('sessionClear2')).toEqual(false)
+    expect(setStorage('sessionClear1', 'sessionClear1', sessionStorage))
+    expect(setStorage('sessionClear2', 'sessionClear2', sessionStorage))
+    expect(clearStorage(sessionStorage))
+    expect(hasStorage('sessionClear1', sessionStorage)).toEqual(false)
+    expect(hasStorage('sessionClear2', sessionStorage)).toEqual(false)
+  })
+
+  test('storageClear All', () => {
+    expect(setStorage('localClear1', 'localClear1'))
+    expect(setStorage('localClear2', 'localClear2'))
+    expect(setStorage('sessionClear1', 'sessionClear1', sessionStorage))
+    expect(setStorage('sessionClear2', 'sessionClear2', sessionStorage))
+    expect(clearStorage(localStorage))
+    expect(clearStorage(sessionStorage))
+    expect(hasStorage('localClear1')).toEqual(false)
+    expect(hasStorage('localClear2')).toEqual(false)
+    expect(hasStorage('sessionClear1', sessionStorage)).toEqual(false)
+    expect(hasStorage('sessionClear2', sessionStorage)).toEqual(false)
   })
 })
