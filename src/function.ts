@@ -116,39 +116,6 @@ export const stringifyQuery = (
 }
 
 /**
- * 序列化成JSON字符串
- * @param val 需要序列化的对象
- * @category Serialize
- * @returns 返回一个JSON字符串
- * @example
- * ``` typescript
- * serialize({ foo: 'bar' }) // '{"foo":"bar"}'
- * serialize([{ foo: 'bar' }]) // '[{"foo":"bar"}]'
- * ```
- */
-export const serialize = (val: unknown): string => JSON.stringify(val)
-
-/**
- * 反序列化JSON字符串
- * @description 解析JSON字符串
- * @param val 需要被解析的字符串
- * @category Serialize
- * @returns 返回指定的JSON对象。如果字符串不符合JSON规则，则返回原值
- * @example
- * ``` typescript
- * deserialize('{"foo":"bar"}') // { foo: 'bar' }
- * deserialize('[{"foo":"bar"}]') // [{ foo: 'bar' }]
- * ```
- */
-export const deserialize = <T>(val: string): T | string => {
-  try {
-    return JSON.parse(val)
-  } catch {
-    return val
-  }
-}
-
-/**
  * 节流函数
  * @description 在指定时间间隔内只会触发一次
  * @param func 需要节流的函数
