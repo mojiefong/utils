@@ -1,4 +1,4 @@
-[一些常用的工具函数 By Mojie - v0.3.3](../README.md) / [Modules](../modules.md) / [index](index.md) / <internal\>
+[一些常用的工具函数 By Mojie - v0.4.0](../README.md) / [Modules](../modules.md) / [index](index.md) / <internal\>
 
 # Namespace: <internal\>
 
@@ -6,12 +6,12 @@
 
 ## Table of contents
 
-### Type aliases
+### Type Aliases
 
 - [Arrayable](index._internal_.md#arrayable)
 - [Nullable](index._internal_.md#nullable)
 
-## Type aliases
+## Type Aliases
 
 ### Arrayable
 
@@ -27,7 +27,7 @@ Array 或者还没有
 
 #### Defined in
 
-[types.ts:19](https://github.com/mojiefong/utils/blob/680c4e4/src/types.ts#L19)
+[types.ts:19](https://github.com/mojiefong/utils/blob/ee63c9a/src/types.ts#L19)
 
 ___
 
@@ -45,4 +45,4 @@ null、undefined或者其它
 
 #### Defined in
 
-[types.ts:14](https://github.com/mojiefong/utils/blob/680c4e4/src/types.ts#L14)
+[types.ts:14](https://github.com/mojiefong/utils/blob/ee63c9a/src/types.ts#L14)
