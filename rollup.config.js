@@ -33,6 +33,8 @@ export default [
       file: input.replace('src/', '').replace('.ts', '.d.ts'),
       format: 'es',
     },
-    plugins: [dts()],
+    plugins: [
+      input.endsWith('index.ts') ? dts({ respectExternal: true }) : dts(),
+    ],
   })),
 ]
