@@ -3,13 +3,7 @@
  * @Date: 2021-11-15 15:49:26
  */
 
-import {
-  decode,
-  encode,
-  parseQuery,
-  stringifyQuery,
-  deepClone,
-} from '../function'
+import { decode, encode, parseQuery, stringifyQuery } from '../function'
 
 describe('Function Utils', () => {
   test('decode', () => {
@@ -47,20 +41,20 @@ describe('Function Utils', () => {
   //   expect(func).toBeCalledTimes(1)
   // })
 
-  test('deepClone', () => {
-    expect(deepClone(null)).toEqual(null)
-    expect(deepClone(undefined)).toEqual(undefined)
-  })
-  test('deepClone Object', () => {
-    const obj = { foo: 'bar', obj: { a: 1, b: 2 } }
-    const deepOjb = deepClone(obj)
-    expect(obj.obj === deepOjb.obj).toEqual(false)
-  })
-  test('deepClone Array', () => {
-    const arr = [{ foo: 'bar', obj: { a: 1, b: 2 } }]
-    const deepArr = deepClone(arr)
-    arr[0].obj.a = 3
-    expect(deepArr).toEqual([{ foo: 'bar', obj: { a: 1, b: 2 } }])
-    expect(arr[0].obj === deepArr[0].obj).toEqual(false)
-  })
+  // test('deepClone', () => {
+  //   expect(deepClone(null)).toEqual(null)
+  //   expect(deepClone(undefined)).toEqual(undefined)
+  // })
+  // test('deepClone Object', () => {
+  //   const obj = { foo: 'bar', obj: { a: 1, b: 2 } }
+  //   const deepOjb = deepClone(obj)
+  //   expect(obj.obj === deepOjb.obj).toEqual(false)
+  // })
+  // test('deepClone Array', () => {
+  //   const arr = [{ foo: 'bar', obj: { a: 1, b: 2 } }]
+  //   const deepArr = deepClone(arr)
+  //   arr[0].obj.a = 3
+  //   expect(deepArr).toEqual([{ foo: 'bar', obj: { a: 1, b: 2 } }])
+  //   expect(arr[0].obj === deepArr[0].obj).toEqual(false)
+  // })
 })
