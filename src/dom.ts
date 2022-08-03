@@ -165,11 +165,25 @@ export const getPageScrollLeft = (): number => {
 
 /**
  * 复制内容到剪切板
+ * @description navigator.clipboard只能在https中才能使用。为了做兼容，使用已经废弃的document.execCommand()方法确保功能可用
  * @param text 需要写入剪切板的文字
  * @category DOM
  */
-export const copyToClipboard = (text: string): void => {
-  navigator.clipboard.writeText(text)
+export const copyToClipboard = (text: string) => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text)
+  } else {
+    const textarea = document.createElement('textarea')
+    // 隐藏输入框
+    textarea.style.position = 'fixed'
+    textarea.style.opacity = '0'
+
+    textarea.value = text
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textarea)
+  }
 }
 
 /**
