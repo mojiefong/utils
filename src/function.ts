@@ -4,7 +4,6 @@
  */
 
 import type { Indexable } from './types'
-import { isArray, isObject } from './is'
 
 /**
  * 字符解码
@@ -123,20 +122,27 @@ export const stringifyQuery = (
  * @returns 返回深拷贝的对象或数组
  */
 export const deepClone = <T>(target: T): T => {
-  if (!target) return target
-  if (isArray(target)) {
-    const clone = [] as unknown[]
-    target.forEach((v) => {
-      clone.push(v)
-    })
-    return clone.map((n) => deepClone(n)) as any
+  if (target === null) {
+    return target
   }
-  if (isObject(target)) {
-    const clone: Indexable = { ...target }
-    Object.keys(clone).forEach((k) => {
-      clone[k] = deepClone(clone[k])
+  if (target instanceof Date) {
+    return new Date(target.getTime()) as any
+  }
+  if (target instanceof Array) {
+    const cp = [] as any[]
+    ;(target as any[]).forEach((v) => {
+      cp.push(v)
     })
-    return clone as T
+    return cp.map((n: any) => deepClone<any>(n)) as any
+  }
+  if (typeof target === 'object' && target !== {}) {
+    const cp = { ...(target as { [key: string]: any }) } as {
+      [key: string]: any
+    }
+    Object.keys(cp).forEach((k) => {
+      cp[k] = deepClone<any>(cp[k])
+    })
+    return cp as T
   }
   return target
 }
