@@ -116,54 +116,6 @@ export const stringifyQuery = (
 }
 
 /**
- * 节流函数
- * @description 在指定时间间隔内只会触发一次
- * @param func 需要节流的函数
- * @param delay 指定时间间隔
- * @returns 返回新的节流函数
- */
-// export const throttle = <T extends unknown[]>(
-//   /**
-//    * @param args 上下文的参数
-//    */
-//   func: (...args: T) => unknown,
-//   delay = 0
-// ): ((...args: T) => void) => {
-//   let timer: unknown = null
-//   return function (this: unknown, ...args: T) {
-//     if (!timer) {
-//       timer = setTimeout(() => {
-//         func.apply(this, args)
-//         timer = null
-//       }, delay)
-//     }
-//   }
-// }
-
-/**
- * 防抖函数
- * @description 事件触发n秒后执行回调，如果在这个n秒又被触发，则重新计时
- * @param func 需要防抖的函数
- * @param delay 指定时间间隔
- * @returns 返回新的防抖函数
- */
-// export const debounce = <T extends unknown[]>(
-//   /**
-//    * @param args 上下文的参数
-//    */
-//   func: (...args: T) => unknown,
-//   delay = 0
-// ): ((...args: T) => void) => {
-//   let timer: ReturnType<typeof setTimeout>
-//   return function (this: unknown, ...args: T) {
-//     clearTimeout(timer)
-//     timer = setTimeout(() => {
-//       func.apply(this, args)
-//     }, delay)
-//   }
-// }
-
-/**
  * 深拷贝
  * @description 支持对象和数组深拷贝
  * @description 转载https://gist.github.com/erikvullings/ada7af09925082cbb89f40ed962d475e
