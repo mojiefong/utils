@@ -1,4 +1,4 @@
-[一些常用的工具函数 By Mojie - v0.4.2](../README.md) / [Modules](../modules.md) / date
+[一些常用的工具函数 By Mojie - v0.4.3](../README.md) / [Modules](../modules.md) / date
 
 # Module: date
 
@@ -41,7 +41,7 @@ formatDate('2021-11-19T16:00:00+00:00') // '2021-11-20'
 
 #### Defined in
 
-[date.ts:43](https://github.com/mojiefong/utils/blob/9ef72d3/src/date.ts#L43)
+[date.ts:43](https://github.com/mojiefong/utils/blob/d3e262f/src/date.ts#L43)
 
 ___
 
@@ -74,7 +74,7 @@ formatDateTime('2021-11-19T16:00:00+00:00', 'YYYY-MM-DD') // '2021-11-20'
 
 #### Defined in
 
-[date.ts:26](https://github.com/mojiefong/utils/blob/9ef72d3/src/date.ts#L26)
+[date.ts:26](https://github.com/mojiefong/utils/blob/d3e262f/src/date.ts#L26)
 
 ___
 
@@ -107,4 +107,4 @@ formatTime('2021-11-19T16:00:00+00:00') // '00:00:00'
 
 #### Defined in
 
-[date.ts:60](https://github.com/mojiefong/utils/blob/9ef72d3/src/date.ts#L60)
+[date.ts:60](https://github.com/mojiefong/utils/blob/d3e262f/src/date.ts#L60)

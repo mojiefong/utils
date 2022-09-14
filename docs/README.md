@@ -1,4 +1,4 @@
-一些常用的工具函数 By Mojie - v0.4.2 / [Modules](modules.md)
+一些常用的工具函数 By Mojie - v0.4.3 / [Modules](modules.md)
 
 # @mojiee/utils
 
