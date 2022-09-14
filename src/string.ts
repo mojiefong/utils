@@ -8,15 +8,18 @@ import { isString } from './is'
 /**
  * 获取文件后缀名
  * @param fileName 文件名称
+ * @param split 是否需要后缀名前面的分割点
  * @category String
  * @returns 返回文件后缀名
  * @example
  * ``` typescript
  * getFileExtension('file-name.pdf') // 'pdf'
+ * getFileExtension('hello.js', true) // .js
  * ```
  */
-export const getFileExtension = (fileName: string): string => {
-  return fileName.split('.').pop()?.toLowerCase() as string
+export const getFileExtension = (fileName: string, split = false): string => {
+  const ext = fileName.split('.').pop()?.toLowerCase() as string
+  return split ? `.${ext}` : ext
 }
 
 /**

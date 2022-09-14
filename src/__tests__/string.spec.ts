@@ -16,6 +16,7 @@ describe('String Utils', () => {
   test('getFileExtension', () => {
     expect(getFileExtension('utils.ts')).toEqual('ts')
     expect(getFileExtension('img.PNG')).toEqual('png')
+    expect(getFileExtension('hello.js', true)).toEqual('.js')
   })
   test('escapeRegExp', () => {
     expect(escapeRegExp('.')).toEqual('\\.')
