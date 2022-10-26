@@ -14,6 +14,21 @@ export const randomHexColor = (): string => {
 }
 
 /**
+ * 指定颜色随机抽取
+ * @param colors 指定的颜色列表
+ * @category Math
+ * @returns 返回颜色值
+ * @example
+ * ``` typescript
+ * randomColor(['blue', 'red', '#fff']) // 返回其中一个
+ * ```
+ */
+export const randomColor = (colors: string[]) => {
+  const randomIndex = Math.floor(Math.random() * colors.length)
+  return colors[randomIndex]
+}
+
+/**
  * 千分位格式化
  * @param num 需要格式化的数字或者字符串
  * @category Math
