@@ -30,8 +30,7 @@
     "docs:html": "npm run docs -- --out docs-html --plugin typedoc-plugin-missing-exports",
     "lint:eslint": "eslint --ext .ts . --fix",
     "lint:prettier": "prettier --write \"**/*.{ts,json,md}\"",
-    "test": "jest",
-    "test:watch": "npm run test -- --watch"
+    "test": "vitest"
   },
   "bugs": {
     "url": "https://github.com/jayfongs/utils/issues"
@@ -53,7 +52,6 @@
     "@commitlint/config-conventional": "^17.3.0",
     "@rollup/plugin-json": "^5.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "@types/jest": "^28.1.6",
     "@types/throttle-debounce": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
@@ -63,18 +61,17 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
-    "jest": "^28.1.3",
-    "jest-environment-jsdom": "^28.1.3",
+    "jsdom": "^20.0.3",
     "prettier": "^2.8.1",
     "rimraf": "^3.0.2",
     "rollup": "^3.7.3",
     "rollup-plugin-dts": "^5.0.0",
     "rollup-plugin-esbuild": "^5.0.0",
     "throttle-debounce": "^5.0.0",
-    "ts-jest": "^28.0.7",
     "typedoc": "^0.23.22",
     "typedoc-plugin-markdown": "^3.14.0",
     "typedoc-plugin-missing-exports": "^1.0.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vitest": "^0.25.7"
   }
 }

@@ -3,7 +3,8 @@
  * @Date: 2021-11-04 10:14:14
  */
 
-import { toArray, groupBy, head, last } from '../array'
+import { describe, test, expect } from 'vitest'
+import { toArray, groupBy, head, last } from '../src/array'
 
 describe('Array Utils', () => {
   test('toArray', () => {

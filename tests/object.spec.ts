@@ -3,7 +3,10 @@
  * @Date: 2021-11-17 17:29:20
  */
 
-import { objectToFormData, deleteEmptyField } from '../object'
+// @vitest-environment jsdom
+
+import { describe, test, expect } from 'vitest'
+import { objectToFormData, deleteEmptyField } from '../src/object'
 
 describe('Object Utils', () => {
   test('objectToFormData', () => {

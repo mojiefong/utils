@@ -3,7 +3,8 @@
  * @Date: 2021-11-08 16:38:18
  */
 
-import { formatDateTime, formatDate, formatTime } from '../date'
+import { describe, test, expect } from 'vitest'
+import { formatDateTime, formatDate, formatTime } from '../src/date'
 
 describe('Date Time Utils', () => {
   test('formatDateTime', () => {

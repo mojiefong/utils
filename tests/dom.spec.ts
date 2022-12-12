@@ -3,7 +3,8 @@
  * @Date: 2022-03-11 15:13:24
  */
 
-import { keywordHighlight } from '../dom'
+import { describe, test, expect } from 'vitest'
+import { keywordHighlight } from '../src/dom'
 
 describe('Dom Utils', () => {
   test('keywordHighlight', () => {

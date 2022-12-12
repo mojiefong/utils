@@ -3,13 +3,16 @@
  * @Date: 2021-11-12 20:07:42
  */
 
+// @vitest-environment jsdom
+
+import { describe, test, expect } from 'vitest'
 import {
   getStorage,
   setStorage,
   removeStorage,
   hasStorage,
   clearStorage,
-} from '../storage'
+} from '../src/storage'
 
 describe('Storage Utils', () => {
   // local

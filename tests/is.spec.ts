@@ -3,6 +3,7 @@
  * @Date: 2021-11-04 14:39:20
  */
 
+import { describe, test, expect } from 'vitest'
 import {
   getTypeof,
   isWindow,
@@ -29,7 +30,7 @@ import {
   isEmpty,
   isFile,
   isBlob,
-} from '../is'
+} from '../src/is'
 
 describe('Is Utils', () => {
   test('getTypeof', () => {
@@ -98,6 +99,8 @@ describe('Is Utils', () => {
       )
     ).toEqual(true)
   })
+
+  // @vitest-environment jsdom
   test('isElement', () => {
     expect(isElement(document)).toEqual(false)
     expect(isElement(document.all)).toEqual(false)

@@ -3,6 +3,7 @@
  * @Date: 2021-11-19 14:52:45
  */
 
+import { describe, test, expect } from 'vitest'
 import {
   getFileExtension,
   escapeRegExp,
@@ -10,7 +11,7 @@ import {
   truncate,
   replaceStr,
   insertStr,
-} from '../string'
+} from '../src/string'
 
 describe('String Utils', () => {
   test('getFileExtension', () => {

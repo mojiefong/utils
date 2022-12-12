@@ -3,13 +3,14 @@
  * @Date: 2021-11-08 16:50:44
  */
 
+import { describe, test, expect } from 'vitest'
 import {
   thousandsFormat,
   bytesToSize,
   outOfNum,
   toNumber,
   round,
-} from '../math'
+} from '../src/math'
 
 describe('Math Utils', () => {
   test('thousandsFormat', () => {
