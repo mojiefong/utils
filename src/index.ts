@@ -4,8 +4,8 @@
  */
 
 import { version as pkgVersion } from '../package.json'
-export const version = pkgVersion
 
+export const version = pkgVersion
 export * from './array'
 export * from './dom'
 export * from './function'
