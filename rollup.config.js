@@ -23,7 +23,7 @@ export default [
         format: 'cjs',
       },
     ],
-    external: ['dayjs'],
+    external: ['dayjs', 'dayjs/plugin/quarterOfYear'],
     plugins: [json(), esbuild(), resolve()],
   })),
 
