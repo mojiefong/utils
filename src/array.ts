@@ -4,7 +4,7 @@
  */
 
 import type { Arrayable, Nullable } from './types'
-import { isArray } from './is'
+import { isString } from './is'
 
 /**
  * 将任意类型转成数组
@@ -19,7 +19,7 @@ import { isArray } from './is'
  * toArray('1,2,3') // ['1,2,3']
  * ```
  */
-export const toArray = <T>(target?: Nullable<Arrayable<T>>): T[] => {
+export function toArray<T>(target?: Nullable<Arrayable<T>>): T[] {
   target = target || []
   return Array.isArray(target) ? target : [target]
 }
@@ -56,9 +56,10 @@ export const toArray = <T>(target?: Nullable<Arrayable<T>>): T[] => {
  * }
  * ```
  */
-export const groupBy = <T>(arr: T[], property: string): object => {
-  return arr.reduce((acc: any, item: any) => {
-    return (acc[item[property]] = [...(acc[item[property]] || []), item]), acc
+export function groupBy<T>(arr: T[], fn: string | (<T>(val: T, index?: number, arr?: T[]) => T)): T {
+  return arr.map(isString(fn) ? (val: any) => val[fn] : fn).reduce((acc, val, i) => {
+    acc[val] = (acc[val] || []).concat(arr[i])
+    return acc
   }, {})
 }
 
@@ -73,7 +74,7 @@ export const groupBy = <T>(arr: T[], property: string): object => {
  * head([{a: 1},{b: 2}]) // {a: 1}
  * ```
  */
-export const head = <T>(arr: T[]): Nullable<T> => (isArray(arr) ? arr[0] : arr)
+export const head = <T>(arr: T[]): Nullable<T> => Array.isArray(arr) ? arr[0] : arr
 
 /**
  * 获取数组的最后一个元素
@@ -86,6 +87,4 @@ export const head = <T>(arr: T[]): Nullable<T> => (isArray(arr) ? arr[0] : arr)
  * last([{a: 1}, {b: 2}]) // {b: 2}
  * ```
  */
-export const last = <T>(arr: T[]): Nullable<T> => {
-  return isArray(arr) ? arr.at(-1) : arr
-}
+export const last = <T>(arr: T[]): Nullable<T> => Array.isArray(arr) ? arr.at(-1) : arr

@@ -6,8 +6,9 @@
     "vscode-extension",
     ".git/objects",
     ".vscode",
-    ".eslintrc.js",
+    ".eslintrc.cjs",
     "*.md"
   ],
-  "cSpell.words": ["Arrayable", "esbuild", "Mojie", "pnpm"]
+  "cSpell.words": ["Arrayable", "esbuild", "Mojie", "pnpm"],
+  "prettier.enable": false
 }

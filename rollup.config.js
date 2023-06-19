@@ -11,7 +11,7 @@ import resolve from '@rollup/plugin-node-resolve'
 const entries = ['src/index.ts', 'src/date.ts']
 
 export default [
-  ...entries.map((input) => ({
+  ...entries.map(input => ({
     input,
     output: [
       {
@@ -27,7 +27,7 @@ export default [
     plugins: [json(), esbuild(), resolve()],
   })),
 
-  ...entries.map((input) => ({
+  ...entries.map(input => ({
     input,
     output: {
       file: input.replace('src/', '').replace('.ts', '.d.ts'),

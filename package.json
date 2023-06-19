@@ -1,26 +1,41 @@
 {
   "name": "@mojiee/utils",
-  "version": "0.6.0",
   "type": "module",
+  "version": "0.6.0",
   "description": "Utility function",
+  "author": "Mojie",
+  "license": "MIT",
+  "homepage": "https://github.com/jayfongs/utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayfongs/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jayfongs/utils/issues"
+  },
+  "keywords": [
+    "utils"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "types": "./index.d.ts",
       "require": "./dist/index.cjs",
-      "types": "./index.d.ts"
+      "import": "./dist/index.mjs"
     },
     "./date": {
-      "import": "./dist/date.mjs",
+      "types": "./date.d.ts",
       "require": "./dist/date.cjs",
-      "types": "./date.d.ts"
+      "import": "./dist/date.mjs"
     }
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "index.d.ts",
-  "author": "Mojie",
-  "license": "MIT",
+  "files": [
+    "dist",
+    "*.d.ts"
+  ],
   "scripts": {
     "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
@@ -29,42 +44,22 @@
     "release": "npx bumpp --commit --push --tag --no-verify",
     "docs": "typedoc",
     "docs:html": "npm run docs -- --out docs-html --plugin typedoc-plugin-missing-exports",
-    "lint:eslint": "eslint --ext .ts . --fix",
-    "lint:prettier": "prettier --write \"**/*.{ts,json,md}\"",
+    "lint:fix": "eslint . --fix",
     "test": "vitest"
   },
-  "bugs": {
-    "url": "https://github.com/jayfongs/utils/issues"
-  },
-  "homepage": "https://github.com/jayfongs/utils#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jayfongs/utils.git"
-  },
-  "keywords": [
-    "utils"
-  ],
-  "files": [
-    "dist",
-    "*.d.ts"
-  ],
   "devDependencies": {
+    "@antfu/eslint-config": "^0.39.5",
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/node": "^18.11.18",
     "@types/throttle-debounce": "^5.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
     "dayjs": "^1.11.7",
     "esbuild": "^0.16.17",
     "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "jsdom": "^21.0.0",
-    "prettier": "^2.8.2",
     "rimraf": "^4.0.4",
     "rollup": "^3.10.0",
     "rollup-plugin-dts": "^5.1.1",

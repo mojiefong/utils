@@ -8,8 +8,8 @@
  * @category Math
  * @returns 返回十六进制颜色值
  */
-export const randomHexColor = (): string => {
-  const random = (Math.random() * 0xfffff * 1000000).toString()
+export function randomHexColor() {
+  const random = (Math.random() * 0xFFFFF * 1000000).toString()
   return `#${random.slice(0, 6)}`
 }
 
@@ -23,7 +23,7 @@ export const randomHexColor = (): string => {
  * randomColor(['blue', 'red', '#fff']) // 返回其中一个
  * ```
  */
-export const randomColor = (colors: string[]) => {
+export function randomColor(colors: string[]) {
   const randomIndex = Math.floor(Math.random() * colors.length)
   return colors[randomIndex]
 }
@@ -40,11 +40,8 @@ export const randomColor = (colors: string[]) => {
  * thousandsFormat('$1234') // '$1,234'
  * ```
  */
-export const thousandsFormat = (num: string | number): string | number => {
-  return (
-    num &&
-    num.toString().replace(/\d+/, (s) => s.replace(/(\d)(?=(\d{3})+$)/g, '$1,'))
-  )
+export function thousandsFormat(num: string | number) {
+  return num && num.toString().replace(/\d+/, s => s.replace(/(\d)(?=(\d{3})+$)/g, '$1,'))
 }
 
 /**
@@ -60,7 +57,7 @@ export const thousandsFormat = (num: string | number): string | number => {
  * bytesToSize(1024 ** 3) // '1.00 GB'
  * ```
  */
-export const bytesToSize = (bytes: number): string => {
+export function bytesToSize(bytes: number) {
   if (bytes === 0) return '0 B'
   const base = 1024
   const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
@@ -73,10 +70,10 @@ export const bytesToSize = (bytes: number): string => {
  * @category Math
  * @returns 返回生成的UUID
  */
-export const generatorUUID = (): string => {
-  return 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    const r = (Math.random() * 16) | 0,
-      v = c === 'x' ? r : (r & 0x3) | 0x8
+export function generatorUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0
+    const v = c === 'x' ? r : (r & 0x3) | 0x8
     return v.toString(16)
   })
 }
@@ -95,11 +92,8 @@ export const generatorUUID = (): string => {
  * outOfNum('100', 99) // '99+'
  * ```
  */
-export const outOfNum = (
-  val: number | string,
-  maxNum: number
-): string | number => {
-  val = val || 0
+export function outOfNum(val: number | string, maxNum: number) {
+  val = +val
   if (val > maxNum) return `${maxNum}+`
   return val
 }
@@ -133,14 +127,10 @@ export const toNumber = (val: string | number): number => +val
  * round('18.888', 2) // 18.89
  * ```
  */
-export const round = (val: string | number, precision = 0): number => {
+export function round(val: string | number, precision = 0) {
   const number = toNumber(val as string)
-  return (
-    Math.round(`${number}e${precision}` as unknown as number) /
-    Math.pow(10, precision)
-  )
+  return Math.round(`${number}e${precision}` as unknown as number) / 10 ** precision
+
   // same as:
-  // return Number(
-  //   `${Math.round(`${number}e${precision}` as unknown as number)}e-${precision}`
-  // )
+  // return Number(`${Math.round(`${number}e${precision}` as unknown as number)}e-${precision}`)
 }

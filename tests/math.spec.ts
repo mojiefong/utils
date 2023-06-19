@@ -3,14 +3,8 @@
  * @Date: 2021-11-08 16:50:44
  */
 
-import { describe, test, expect } from 'vitest'
-import {
-  thousandsFormat,
-  bytesToSize,
-  outOfNum,
-  toNumber,
-  round,
-} from '../src/math'
+import { describe, expect, test } from 'vitest'
+import { bytesToSize, outOfNum, round, thousandsFormat, toNumber } from '../src/math'
 
 describe('Math Utils', () => {
   test('thousandsFormat', () => {

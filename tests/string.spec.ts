@@ -3,14 +3,14 @@
  * @Date: 2021-11-19 14:52:45
  */
 
-import { describe, test, expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import {
-  getFileExtension,
   escapeRegExp,
-  removeHtmlTag,
-  truncate,
-  replaceStr,
+  getFileExtension,
   insertStr,
+  removeHtmlTag,
+  replaceStr,
+  truncate,
 } from '../src/string'
 
 describe('String Utils', () => {
@@ -25,7 +25,7 @@ describe('String Utils', () => {
     expect(escapeRegExp('123')).toEqual('123')
     expect(escapeRegExp('(*)')).toEqual('\\(\\*\\)')
     expect('[Hello World]'.replace(new RegExp(escapeRegExp('[')), '')).toEqual(
-      'Hello World]'
+      'Hello World]',
     )
   })
   test('removeHtmlTag', () => {
@@ -37,13 +37,13 @@ describe('String Utils', () => {
   })
   test('replaceStr', () => {
     expect(replaceStr('Hello World', 6, 11, 'TypeScript')).toEqual(
-      'Hello TypeScript'
+      'Hello TypeScript',
     )
     expect(replaceStr('Hello World', 6, 7, 'w')).toEqual('Hello world')
   })
   test('insertStr', () => {
     expect(insertStr('Hello World', 6, 'TypeScript ')).toEqual(
-      'Hello TypeScript World'
+      'Hello TypeScript World',
     )
   })
 })

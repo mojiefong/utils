@@ -3,15 +3,15 @@
  * @Date: 2021-11-08 16:38:18
  */
 
-import { describe, test, expect, vi } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
 import {
-  formatDate,
   DATE_FORMAT,
-  getRecentDays,
-  getRecentWeeks,
-  getRecentQuarters,
-  getRecentMonths,
+  formatDate,
   getDiff,
+  getRecentDays,
+  getRecentMonths,
+  getRecentQuarters,
+  getRecentWeeks,
 } from '../src/date'
 
 describe('Date Time Utils', () => {
@@ -23,7 +23,7 @@ describe('Date Time Utils', () => {
     expect(formatDate('2021-11-08 16:39:42')).toEqual('2021-11-08 16:39:42')
     expect(formatDate(1636360935)).toEqual('2021-11-08 16:42:15')
     expect(formatDate('2021-11-19T16:00:00+00:00', DATE_FORMAT)).toEqual(
-      '2021-11-20'
+      '2021-11-20',
     )
   })
 

@@ -3,8 +3,8 @@
  * @Date: 2021-11-04 10:14:14
  */
 
-import { describe, test, expect } from 'vitest'
-import { toArray, groupBy, head, last } from '../src/array'
+import { describe, expect, test } from 'vitest'
+import { groupBy, head, last, toArray } from '../src/array'
 
 describe('Array Utils', () => {
   test('toArray', () => {
@@ -17,8 +17,8 @@ describe('Array Utils', () => {
   })
   test('groupBy', () => {
     expect(groupBy(['one', 'two', 'three'], 'length')).toEqual({
-      '3': ['one', 'two'],
-      '5': ['three'],
+      3: ['one', 'two'],
+      5: ['three'],
     })
     expect(
       groupBy(
@@ -29,8 +29,8 @@ describe('Array Utils', () => {
           { branch: 'ford', model: 'explorer', year: '2020' },
           { branch: 'bmw', model: 'x7', year: '2020' },
         ],
-        'branch'
-      )
+        'branch',
+      ),
     ).toEqual({
       audi: [
         { branch: 'audi', model: 'q8', year: '2019' },

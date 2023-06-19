@@ -15,10 +15,11 @@ import type { Indexable } from './types'
  * decode('%E4%BD%A0%E5%A5%BD') // '你好'
  * ```
  */
-export const decode = (str: string): string => {
+export function decode(str: string) {
   try {
     return decodeURIComponent(str)
-  } catch {
+  }
+  catch {
     return str
   }
 }
@@ -33,15 +34,11 @@ export const decode = (str: string): string => {
  * encode('你好') // '%E4%BD%A0%E5%A5%BD'
  * ```
  */
-export const encode = (str: string): string => {
+export function encode(str: string) {
   const encodeReserveRE = /[!'()*]/g
-  const encodeReserveReplacer = (c: string) =>
-    '%' + c.charCodeAt(0).toString(16)
   const commaRE = /%2C/g
-
-  return encodeURIComponent(str)
-    .replace(encodeReserveRE, encodeReserveReplacer)
-    .replace(commaRE, ',')
+  const encodeReserveReplacer = (c: string) => `%${c.charCodeAt(0).toString(16)}`
+  return encodeURIComponent(str).replace(encodeReserveRE, encodeReserveReplacer).replace(commaRE, ',')
 }
 
 /**
@@ -57,24 +54,18 @@ export const encode = (str: string): string => {
  * parseQuery(location.search)
  * ```
  */
-export const parseQuery = (query: string): object => {
+export function parseQuery<T = Indexable>(query: string): T | Indexable {
   const res: Indexable = {}
   if (!query) return res
-  query = query.trim().replace(/^(\?|#|&)/, '')
   query.split('&').forEach((param) => {
     const parts = param.replace(/\+/g, ' ').split('=')
     const key = decode(parts.shift() as string)
     const val = parts.length > 0 ? decode(parts.join('=')) : null
 
-    if (res[key] === undefined) {
-      res[key] = val
-    } else if (Array.isArray(res[key])) {
-      res[key].push(val)
-    } else {
-      res[key] = [res[key], val]
-    }
+    if (res[key] === undefined) res[key] = val
+    else if (Array.isArray(res[key])) res[key].push(val)
+    else res[key] = [res[key], val]
   })
-
   return res
 }
 
@@ -94,24 +85,14 @@ export const parseQuery = (query: string): object => {
  * stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';') // 'width:100px;height:100px'
  * ```
  */
-export const stringifyQuery = (
-  obj: object,
-  isEncode = false,
-  modifier = '=',
-  join = '&'
-): string => {
+export function stringifyQuery(obj: object, isEncode = false, modifier = '=', join = '&') {
   if (!obj) return ''
   const keys = Object.keys(obj)
-  return keys
-    .map((key) => {
-      let value = (obj as Indexable)[key]
-      if (isEncode) {
-        value = encode(value)
-      }
-      return key + modifier + value
-    })
-    .filter((item) => item)
-    .join(join)
+  return keys.map((key) => {
+    let value = (obj as Indexable)[key]
+    if (isEncode) value = encode(value)
+    return key + modifier + value
+  }).filter(item => item).join(join)
 }
 
 /**
@@ -126,6 +107,4 @@ export const stringifyQuery = (
  * }
  * ```
  */
-export const sleep = (delay: number): Promise<undefined> => {
-  return new Promise((resolve) => setTimeout(resolve, delay))
-}
+export const sleep = (delay: number): Promise<undefined> => new Promise(resolve => setTimeout(resolve, delay))

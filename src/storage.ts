@@ -3,8 +3,6 @@
  * @Date: 2021-11-08 14:03:58
  */
 
-import type { Nullable } from './types'
-
 /**
  * 获取储存
  * @param key 键名
@@ -12,10 +10,7 @@ import type { Nullable } from './types'
  * @category WebStorage
  * @returns 返回键名对应的值，如果不存在则返回null
  */
-export function getStorage<T = any>(
-  key: string,
-  storage: Storage = localStorage
-): Nullable<T> {
+export function getStorage<T>(key: string, storage: Storage = localStorage) {
   const data = storage.getItem(key)
   return data ? (JSON.parse(data) as T) : null
 }
@@ -27,11 +22,7 @@ export function getStorage<T = any>(
  * @param storage 指定本地存储还是会话存储。默认本地储存
  * @category WebStorage
  */
-export function setStorage<T = any>(
-  key: string,
-  val: T,
-  storage: Storage = localStorage
-) {
+export function setStorage<T>(key: string, val: T, storage: Storage = localStorage) {
   storage.setItem(key, JSON.stringify(val))
 }
 

@@ -47,11 +47,7 @@ export function formatDate(date: ConfigType, format = DATE_TIME_FORMAT) {
  * getRecentDays(3, '2021-11-08 16:39:42') // ['2021-11-11 00:00:00', '2021-11-11 23:59:59', '2021-11-11 16:39:42']
  * ```
  */
-export function getRecentDays(
-  value: number,
-  date: ConfigType = dayjs(),
-  format = DATE_TIME_FORMAT
-) {
+export function getRecentDays(value: number, date: ConfigType = dayjs(), format = DATE_TIME_FORMAT) {
   return [
     dayjs(date).add(value, 'day').startOf('day').format(format),
     dayjs(date).add(value, 'day').endOf('day').format(format),
@@ -99,11 +95,8 @@ export function getRecentWeeks(value = 0, format = DATE_TIME_FORMAT) {
  * getRecentMonths(1) // ['2023-02-01 00:00:00', '2023-02-28 23:59:59']
  * ```
  */
-export function getRecentMonths(
-  value = 0,
-  date: ConfigType = dayjs(),
-  format = DATE_TIME_FORMAT
-) {
+
+export function getRecentMonths(value = 0, date: ConfigType = dayjs(), format = DATE_TIME_FORMAT) {
   return [
     dayjs(date).add(value, 'month').startOf('month').format(format),
     dayjs(date).add(value, 'month').endOf('month').format(format),
@@ -151,10 +144,6 @@ export function getRecentQuarters(value = 0, format = DATE_TIME_FORMAT) {
  * getDiff('2022-10-01', '2022-10-02', 'hour') // 24
  * ```
  */
-export function getDiff(
-  beginDate: ConfigType,
-  endDate: ConfigType,
-  unit: QUnitType | OpUnitType = 'day'
-) {
+export function getDiff(beginDate: ConfigType, endDate: ConfigType, unit: QUnitType | OpUnitType = 'day') {
   return dayjs(endDate).diff(dayjs(beginDate), unit)
 }

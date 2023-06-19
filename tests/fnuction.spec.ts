@@ -3,7 +3,7 @@
  * @Date: 2021-11-15 15:49:26
  */
 
-import { describe, test, expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { decode, encode, parseQuery, stringifyQuery } from '../src/function'
 
 describe('Function Utils', () => {
@@ -22,12 +22,12 @@ describe('Function Utils', () => {
     expect(stringifyQuery({ a: 1, b: 2 })).toEqual('a=1&b=2')
     expect(stringifyQuery({ a: 1, b: false })).toEqual('a=1&b=false')
     expect(
-      stringifyQuery({ a: null, b: undefined, c: 0, d: '', e: false })
+      stringifyQuery({ a: null, b: undefined, c: 0, d: '', e: false }),
     ).toEqual('a=null&b=undefined&c=0&d=&e=false')
     expect(stringifyQuery({ name: '杰' })).toEqual('name=杰')
     expect(stringifyQuery({ name: '杰' }, true)).toEqual('name=%E6%9D%B0')
     expect(
-      stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';')
+      stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';'),
     ).toEqual('width:100px;height:100px')
   })
 })

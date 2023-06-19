@@ -20,7 +20,7 @@ import { stringifyQuery } from './function'
  * addClass(document.body, 'className1', 'className2', 'className3')
  * ```
  */
-export const addClass = (el: HTMLElement, ...className: string[]): void => {
+export function addClass(el: HTMLElement, ...className: string[]) {
   className.forEach((name) => {
     el.classList.add(name)
   })
@@ -39,7 +39,7 @@ export const addClass = (el: HTMLElement, ...className: string[]): void => {
  * removeClass(document.body, 'className1', 'className2', 'className3')
  * ```
  */
-export const removeClass = (el: HTMLElement, ...className: string[]): void => {
+export function removeClass(el: HTMLElement, ...className: string[]) {
   className.forEach((name) => {
     el.classList.remove(name)
   })
@@ -59,9 +59,7 @@ export const removeClass = (el: HTMLElement, ...className: string[]): void => {
  * hasClass(document.body, 'className1') // false
  * ```
  */
-export const hasClass = (el: HTMLElement, className: string): boolean => {
-  return el.classList.contains(className)
-}
+export const hasClass = (el: HTMLElement, className: string) => el.classList.contains(className)
 
 /**
  * 切换class
@@ -77,9 +75,7 @@ export const hasClass = (el: HTMLElement, className: string): boolean => {
  * toggleClass(document.body, 'className') // false
  * ```
  */
-export const toggleClass = (el: HTMLElement, className: string): boolean => {
-  return el.classList.toggle(className)
-}
+export const toggleClass = (el: HTMLElement, className: string) => el.classList.toggle(className)
 
 /**
  * 替换class
@@ -96,17 +92,13 @@ export const toggleClass = (el: HTMLElement, className: string): boolean => {
  * replaceClass(document.body, 'className1', 'name') // false
  * ```
  */
-export const replaceClass = (
-  el: HTMLElement,
-  oldClassName: string,
-  newClassName: string
-): boolean => el.classList.replace(oldClassName, newClassName)
+export const replaceClass = (el: HTMLElement, oldClassName: string, newClassName: string) => el.classList.replace(oldClassName, newClassName)
 
 /**
  * 将滚动条平滑滚动到顶部
  * @category DOM Scroll
  */
-export const scrollToTop = (): void => {
+export function scrollToTop() {
   const height = document.documentElement.scrollTop || document.body.scrollTop
   if (height > 0) {
     window.requestAnimationFrame(scrollToTop)
@@ -119,9 +111,7 @@ export const scrollToTop = (): void => {
  * @param el 滚动到指定的元素
  * @category DOM Scroll
  */
-export const smoothScroll = <T extends keyof HTMLElementTagNameMap>(
-  el: T
-): void => {
+export function smoothScroll<T extends keyof HTMLElementTagNameMap>(el: T) {
   document.querySelector(el)?.scrollIntoView({
     behavior: 'smooth',
   })
@@ -140,28 +130,26 @@ export const smoothScroll = <T extends keyof HTMLElementTagNameMap>(
  * getScrollPosition(document.body) // { x: 0, y: 0 }
  * ```
  */
-export const getScrollPosition = (el = window) => ({
-  x: el.pageXOffset || (el as unknown as HTMLElement).scrollLeft,
-  y: el.pageYOffset || (el as unknown as HTMLElement).scrollTop,
-})
+export function getScrollPosition(el = window) {
+  return {
+    x: el.pageXOffset || (el as unknown as HTMLElement).scrollLeft,
+    y: el.pageYOffset || (el as unknown as HTMLElement).scrollTop,
+  }
+}
 
 /**
  * 获取滚动条距离顶部高度
  * @category DOM Scroll
  * @returns 返回距离顶部高度
  */
-export const getPageScrollTop = (): number => {
-  return document.documentElement.scrollTop || document.body.scrollTop
-}
+export const getPageScrollTop = () => document.documentElement.scrollTop || document.body.scrollTop
 
 /**
  * 获取滚动条距离左边的宽度
  * @category DOM Scroll
  * @returns 返回距离左边的宽度
  */
-export const getPageScrollLeft = (): number => {
-  return document.documentElement.scrollLeft || document.body.scrollLeft
-}
+export const getPageScrollLeft = () => document.documentElement.scrollLeft || document.body.scrollLeft
 
 /**
  * 复制内容到剪切板
@@ -169,10 +157,11 @@ export const getPageScrollLeft = (): number => {
  * @param text 需要写入剪切板的文字
  * @category DOM
  */
-export const copyToClipboard = (text: string) => {
+export function copyToClipboard(text: string) {
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text)
-  } else {
+  }
+  else {
     const textarea = document.createElement('textarea')
     // 隐藏输入框
     textarea.style.position = 'fixed'
@@ -191,42 +180,30 @@ export const copyToClipboard = (text: string) => {
  * @category DOM
  * @returns 返回选中的文本
  */
-export const getSelectedText = (): string | undefined => {
-  return window.getSelection()?.toString()
-}
+export const getSelectedText = () => window.getSelection()?.toString()
 
 /**
  * 打开浏览器全屏
  * @category DOM
  */
-export const openFullScreen = () => {
+export function openFullScreen() {
   const element = document.body as RequestFullScreen
-  if (element.requestFullscreen) {
-    element.requestFullscreen()
-  } else if (element.mozRequestFullScreen) {
-    element.mozRequestFullScreen()
-  } else if (element.msRequestFullscreen) {
-    element.msRequestFullscreen()
-  } else if (element.webkitRequestFullscreen) {
-    element.webkitRequestFullscreen()
-  }
+  if (element.requestFullscreen) element.requestFullscreen()
+  else if (element.mozRequestFullScreen) element.mozRequestFullScreen()
+  else if (element.msRequestFullscreen) element.msRequestFullscreen()
+  else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen()
 }
 
 /**
  * 退出浏览器全屏
  * @category DOM
  */
-export const exitFullScreen = () => {
+export function exitFullScreen() {
   const element = document.body as RequestFullScreen
-  if (element.requestFullscreen) {
-    element.requestFullscreen()
-  } else if (element.mozRequestFullScreen) {
-    element.mozRequestFullScreen()
-  } else if (element.msRequestFullscreen) {
-    element.msRequestFullscreen()
-  } else if (element.webkitRequestFullscreen) {
-    element.webkitRequestFullscreen()
-  }
+  if (element.requestFullscreen) element.requestFullscreen()
+  else if (element.mozRequestFullScreen) element.mozRequestFullScreen()
+  else if (element.msRequestFullscreen) element.msRequestFullscreen()
+  else if (element.webkitRequestFullscreen) element.webkitRequestFullscreen()
 }
 
 /**
@@ -235,7 +212,7 @@ export const exitFullScreen = () => {
  * @param fileName 文件名称
  * @category DOM Download
  */
-export const downloadBlobFile = (blob: Blob, fileName: string): void => {
+export function downloadBlobFile(blob: Blob, fileName: string) {
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
@@ -262,19 +239,17 @@ export const downloadBlobFile = (blob: Blob, fileName: string): void => {
  * // '<font style="color:red">Hello</font> World'
  * ```
  */
-export const keywordHighlight = (
+export function keywordHighlight(
   content: string,
   keyword: string,
   options: {
-    /** 正则修饰符g、i、m、s。默认为：gi */
+  /** 正则修饰符g、i、m、s。默认为：gi */
     modifiers?: string
     /** 自定义样式 */
-    style?: object
-  } = {}
-): string => {
+    style?: Partial<CSSStyleDeclaration>
+  } = {}) {
   if (!content) return ''
   if (!keyword) return content
-
   return content.replace(
     new RegExp(escapeRegExp(keyword), options.modifiers ?? 'gi'),
     (txt) => {
@@ -283,7 +258,7 @@ export const keywordHighlight = (
         return `<font style="${style}">${txt}</font>`
       }
       return `<font style="background: red">${txt}</font>`
-    }
+    },
   )
 }
 
@@ -311,7 +286,7 @@ export const keywordHighlight = (
  * })
  * ```
  */
-export const loadCss = (url: string, el?: HTMLElement): Promise<string> => {
+export function loadCss(url: string, el?: HTMLElement): Promise<string> {
   el = el || (document.querySelector('head') as any)
   return new Promise((resolve, reject) => {
     const link = document.createElement('link')
@@ -322,7 +297,7 @@ export const loadCss = (url: string, el?: HTMLElement): Promise<string> => {
       resolve('resolve')
     }
     link.onerror = () => {
-      reject('reject')
+      reject(new Error('reject'))
     }
     el?.appendChild(link)
   })
@@ -352,7 +327,7 @@ export const loadCss = (url: string, el?: HTMLElement): Promise<string> => {
  * })
  * ```
  */
-export const loadScript = (url: string, el?: HTMLElement): Promise<string> => {
+export function loadScript(url: string, el?: HTMLElement): Promise<string> {
   return new Promise((resolve, reject) => {
     el = el || (document.querySelector('head') as any)
     const script = document.createElement('script')
@@ -362,7 +337,7 @@ export const loadScript = (url: string, el?: HTMLElement): Promise<string> => {
       resolve('resolve')
     }
     script.onerror = () => {
-      reject('reject')
+      reject(new Error('reject'))
     }
     el?.appendChild(script)
   })

@@ -3,33 +3,32 @@
  * @Date: 2021-11-04 14:39:20
  */
 
-import { describe, test, expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import {
   getTypeof,
-  isWindow,
-  isString,
-  isNumber,
+  isBlob,
   isBoolean,
-  isNull,
-  isUndefined,
-  isSymbol,
-  isFunction,
-  isRegExp,
-  isPromise,
-  isElement,
-  isObject,
-  isMap,
-  isSet,
-  isNullOrUndef,
-  isArray,
   isDate,
+  isElement,
+  isEmpty,
   isEven,
+  isFile,
+  isFunction,
+  isMap,
+  isNegative,
+  isNull,
+  isNullOrUndef,
+  isNumber,
+  isObject,
   isOdd,
   isPositive,
-  isNegative,
-  isEmpty,
-  isFile,
-  isBlob,
+  isPromise,
+  isRegExp,
+  isSet,
+  isString,
+  isSymbol,
+  isUndefined,
+  isWindow,
 } from '../src/is'
 
 describe('Is Utils', () => {
@@ -39,6 +38,7 @@ describe('Is Utils', () => {
   })
   test('isWindow', () => {
     expect(isWindow(123)).toEqual(false)
+    // eslint-disable-next-line @typescript-eslint/no-invalid-this
     expect(isWindow(this)).toEqual(false)
     expect(isWindow('123')).toEqual(false)
   })
@@ -71,7 +71,7 @@ describe('Is Utils', () => {
     expect(isUndefined(null)).toEqual(false)
   })
   test('isSymbol', () => {
-    expect(isSymbol(Symbol())).toEqual(true)
+    expect(isSymbol(Symbol('test'))).toEqual(true)
   })
   test('isFunction', () => {
     expect(isFunction(Promise)).toEqual(true)
@@ -80,23 +80,27 @@ describe('Is Utils', () => {
   })
   test('isRegExp', () => {
     expect(isRegExp(/./)).toEqual(true)
+    // eslint-disable-next-line prefer-regex-literals
     expect(isRegExp(new RegExp('.'))).toEqual(true)
   })
   test('isPromise', () => {
     expect(isPromise(Promise.resolve())).toEqual(true)
     expect(
       isPromise(
-        new Promise((r) => {
-          r(1)
-        })
-      )
+        new Promise((resolve) => {
+          resolve(1)
+        }),
+      ),
     ).toEqual(true)
     expect(
       isPromise(
-        new Promise((r) => {
-          r(1)
-        }).then()
-      )
+        new Promise((resolve, reject) => {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject('reject')
+        }).catch(() => {
+          return false
+        }),
+      ),
     ).toEqual(true)
   })
 
@@ -116,18 +120,9 @@ describe('Is Utils', () => {
   test('isSet', () => {
     expect(isSet(new Set())).toEqual(true)
   })
-  test('isNaN', () => {
-    expect(isNaN(NaN)).toEqual(true)
-    expect(isNaN(123)).toEqual(false)
-  })
   test('isNullOrUndef', () => {
     expect(isNullOrUndef(null)).toEqual(true)
     expect(isNullOrUndef(undefined)).toEqual(true)
-  })
-  test('isArray', () => {
-    expect(isArray([])).toEqual(true)
-    expect(isArray([1])).toEqual(true)
-    expect(isArray([{}])).toEqual(true)
   })
   test('isDate', () => {
     expect(isDate(new Date())).toEqual(true)

@@ -17,8 +17,8 @@ import { isString } from './is'
  * getFileExtension('hello.js', true) // .js
  * ```
  */
-export const getFileExtension = (fileName: string, split = false): string => {
-  const ext = fileName.split('.').pop()?.toLowerCase() as string
+export function getFileExtension(fileName: string, split = false) {
+  const ext = fileName.split('.').pop()?.toLowerCase()
   return split ? `.${ext}` : ext
 }
 
@@ -37,11 +37,8 @@ export const getFileExtension = (fileName: string, split = false): string => {
  * escapeRegExp('[Hello World]'.replace(new RegExp(escapeRegExp('[')), '')) // 'Hello World]'
  * ```
  */
-export const escapeRegExp = (str: string): string => {
-  if (isString(str)) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-  }
-  return ''
+export function escapeRegExp(str: string) {
+  return (isString(str)) ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : ''
 }
 
 /**
@@ -70,12 +67,9 @@ export const removeHtmlTag = (str: string) => str.replace(/<[^>]+>/g, '')
  * truncate('JavaScript', 4) // 'Java...'
  * ```
  */
-export const truncate = (
-  str: string,
-  endIndex: number,
-  beginIndex = 0,
-  suffix = '...'
-) => str.slice(beginIndex, endIndex) + suffix
+export function truncate(str: string, endIndex: number, beginIndex = 0, suffix = '...') {
+  return str.slice(beginIndex, endIndex) + suffix
+}
 
 /**
  * 根据索引替换字符串
@@ -90,12 +84,9 @@ export const truncate = (
  * replaceStr('Hello World', 6, 7, 'w') // Hello world
  * ```
  */
-export const replaceStr = (
-  str: string,
-  beginIndex: number,
-  endIndex: number,
-  replacement: string
-) => str.replace(str.slice(beginIndex, endIndex), replacement)
+export function replaceStr(str: string, beginIndex: number, endIndex: number, replacement: string) {
+  return str.replace(str.slice(beginIndex, endIndex), replacement)
+}
 
 /**
  * 根据索引插入字符串
@@ -108,7 +99,7 @@ export const replaceStr = (
  * insertStr('Hello World', 6, 'TypeScript ') // Hello TypeScript World
  * ```
  */
-export const insertStr = (str: string, beginIndex: number, newStr: string) => {
+export function insertStr(str: string, beginIndex: number, newStr: string) {
   return str.slice(0, beginIndex) + newStr + str.slice(beginIndex, str.length)
 }
 
@@ -122,8 +113,6 @@ export const insertStr = (str: string, beginIndex: number, newStr: string) => {
  * generateString(16) // 3wqt3eiyxs2rde1f
  * ```
  */
-export const generateString = (length: number): string =>
-  Array(length)
-    .fill('')
-    .map(() => Math.random().toString(36).charAt(2))
-    .join('')
+export function generateString(length: number) {
+  return Array(length).fill('').map(() => Math.random().toString(36).charAt(2)).join('')
+}
