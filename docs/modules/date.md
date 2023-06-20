@@ -1,4 +1,4 @@
-[一些常用的工具函数 By Mojie - v0.6.0](../README.md) / [Modules](../modules.md) / date
+[一些常用的工具函数 By Mojie - v0.6.1](../README.md) / [Modules](../modules.md) / date
 
 # Module: date
 
@@ -27,7 +27,7 @@
 
 #### Defined in
 
-[date.ts:10](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L10)
+[date.ts:10](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L10)
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 #### Defined in
 
-[date.ts:12](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L12)
+[date.ts:12](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L12)
 
 ___
 
@@ -47,7 +47,7 @@ ___
 
 #### Defined in
 
-[date.ts:11](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L11)
+[date.ts:11](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L11)
 
 ## Date Functions
 
@@ -80,7 +80,7 @@ formatDateTime('2021-11-19T16:00:00+00:00', 'YYYY-MM-DD') // '2021-11-20'
 
 #### Defined in
 
-[date.ts:27](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L27)
+[date.ts:27](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L27)
 
 ___
 
@@ -107,7 +107,7 @@ getDiff('2022-10-01', '2022-10-02', 'hour') // 24
 | :------ | :------ | :------ | :------ |
 | `beginDate` | `undefined` \| ``null`` \| `string` \| `number` \| `Date` \| `Dayjs` | `undefined` | 开始时间 |
 | `endDate` | `undefined` \| ``null`` \| `string` \| `number` \| `Date` \| `Dayjs` | `undefined` | 结束时间 |
-| `unit` | ``"Q"`` \| ``"s"`` \| ``"day"`` \| ``"hour"`` \| ``"minute"`` \| ``"month"`` \| ``"second"`` \| ``"year"`` \| ``"years"`` \| ``"quarter"`` \| ``"quarters"`` \| ``"months"`` \| ``"week"`` \| ``"weeks"`` \| ``"days"`` \| ``"hours"`` \| ``"minutes"`` \| ``"seconds"`` \| ``"d"`` \| ``"D"`` \| ``"M"`` \| ``"y"`` \| ``"h"`` \| ``"m"`` \| ``"ms"`` \| ``"millisecond"`` \| ``"date"`` \| ``"milliseconds"`` \| ``"dates"`` \| ``"w"`` | `'day'` | 单位 |
+| `unit` | ``"Q"`` \| ``"s"`` \| ``"ms"`` \| ``"day"`` \| ``"hour"`` \| ``"minute"`` \| ``"month"`` \| ``"second"`` \| ``"year"`` \| ``"years"`` \| ``"quarter"`` \| ``"quarters"`` \| ``"months"`` \| ``"week"`` \| ``"weeks"`` \| ``"days"`` \| ``"hours"`` \| ``"minutes"`` \| ``"seconds"`` \| ``"d"`` \| ``"D"`` \| ``"M"`` \| ``"y"`` \| ``"h"`` \| ``"m"`` \| ``"millisecond"`` \| ``"date"`` \| ``"milliseconds"`` \| ``"dates"`` \| ``"w"`` | `'day'` | 单位 |
 
 #### Returns
 
@@ -117,7 +117,7 @@ getDiff('2022-10-01', '2022-10-02', 'hour') // 24
 
 #### Defined in
 
-[date.ts:154](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L154)
+[date.ts:147](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L147)
 
 ___
 
@@ -154,7 +154,7 @@ getRecentDays(3, '2021-11-08 16:39:42') // ['2021-11-11 00:00:00', '2021-11-11 2
 
 #### Defined in
 
-[date.ts:50](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L50)
+[date.ts:50](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L50)
 
 ___
 
@@ -191,7 +191,7 @@ getRecentMonths(1) // ['2023-02-01 00:00:00', '2023-02-28 23:59:59']
 
 #### Defined in
 
-[date.ts:102](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L102)
+[date.ts:99](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L99)
 
 ___
 
@@ -227,7 +227,7 @@ getRecentQuarters(1) // ['2023-04-01 00:00:00', '2023-06-30 23:59:59']
 
 #### Defined in
 
-[date.ts:129](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L129)
+[date.ts:122](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L122)
 
 ___
 
@@ -263,4 +263,4 @@ getRecentWeeks(1) // ['2023-01-23 00:00:00', '2023-01-29 23:59:59']
 
 #### Defined in
 
-[date.ts:78](https://github.com/mojiefong/utils/blob/025fa76/src/date.ts#L78)
+[date.ts:74](https://github.com/mojiefong/utils/blob/6674174/src/date.ts#L74)
