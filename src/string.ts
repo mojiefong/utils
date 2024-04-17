@@ -79,7 +79,8 @@ export function truncate(str: string, endIndex: number, beginIndex = 0, suffix =
  * @param replacement 替换的新字符串
  * @category String
  * @returns 返回根据索引替换后的字符串
- * @example ``` typescript
+ * @example
+ * ``` typescript
  * replaceStr('Hello World', 6, 11, 'TypeScript') // Hello TypeScript
  * replaceStr('Hello World', 6, 7, 'w') // Hello world
  * ```
@@ -95,7 +96,8 @@ export function replaceStr(str: string, beginIndex: number, endIndex: number, re
  * @param newStr 插入新的字符串
  * @category String
  * @returns 返回根据索引插入的字符串
- * @example ``` typescript
+ * @example
+ * ``` typescript
  * insertStr('Hello World', 6, 'TypeScript ') // Hello TypeScript World
  * ```
  */
@@ -108,7 +110,8 @@ export function insertStr(str: string, beginIndex: number, newStr: string) {
  * @param length 指定的长度
  * @category String
  * @returns 返回指定长度的随机字符串
- * @example ``` typescript
+ * @example
+ * ``` typescript
  * generateString(10) // 3wqt3eiyxs
  * generateString(16) // 3wqt3eiyxs2rde1f
  * ```
