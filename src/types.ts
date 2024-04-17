@@ -26,7 +26,7 @@ export type Fn<T = void> = () => T
 /**
  * 索引签名
  */
-export type Indexable<T = any> = {
+export interface Indexable<T = any> {
   [key: string]: T
 }
 
@@ -35,9 +35,9 @@ export type Indexable<T = any> = {
  */
 export type RequestFullScreen = HTMLElement & {
   /** Firefox */
-  mozRequestFullScreen(): Promise<void>
+  mozRequestFullScreen: () => Promise<void>
   /** IE */
-  msRequestFullscreen(): Promise<void>
+  msRequestFullscreen: () => Promise<void>
   /** Chrome, Safari and Opera */
-  webkitRequestFullscreen(): Promise<void>
+  webkitRequestFullscreen: () => Promise<void>
 }

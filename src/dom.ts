@@ -132,8 +132,8 @@ export function smoothScroll<T extends keyof HTMLElementTagNameMap>(el: T) {
  */
 export function getScrollPosition(el = window) {
   return {
-    x: el.pageXOffset || (el as unknown as HTMLElement).scrollLeft,
-    y: el.pageYOffset || (el as unknown as HTMLElement).scrollTop,
+    x: el.scrollX || (el as unknown as HTMLElement).scrollLeft,
+    y: el.scrollY || (el as unknown as HTMLElement).scrollTop,
   }
 }
 
@@ -226,6 +226,8 @@ export function downloadBlobFile(blob: Blob, fileName: string) {
  * @param content 文本内容
  * @param keyword 需要高亮的关键字
  * @param options 配置选项
+ * @param options.modifiers 正则修饰符g、i、m、s。默认为：gi
+ * @param options.style 自定义样式
  * @category DOM
  * @returns 返回新的文本内容
  * @example
@@ -242,12 +244,8 @@ export function downloadBlobFile(blob: Blob, fileName: string) {
 export function keywordHighlight(
   content: string,
   keyword: string,
-  options: {
-  /** 正则修饰符g、i、m、s。默认为：gi */
-    modifiers?: string
-    /** 自定义样式 */
-    style?: Partial<CSSStyleDeclaration>
-  } = {}) {
+  options: { modifiers?: string, style?: Partial<CSSStyleDeclaration> } = {},
+) {
   if (!content) return ''
   if (!keyword) return content
   return content.replace(

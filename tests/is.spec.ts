@@ -3,7 +3,7 @@
  * @Date: 2021-11-04 14:39:20
  */
 
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
   getTypeof,
   isBlob,
@@ -31,59 +31,58 @@ import {
   isWindow,
 } from '../src/is'
 
-describe('Is Utils', () => {
-  test('getTypeof', () => {
+describe('is Utils', () => {
+  it('getTypeof', () => {
     expect(getTypeof({})).toEqual('Object')
     expect(getTypeof([])).toEqual('Array')
   })
-  test('isWindow', () => {
+  it('isWindow', () => {
     expect(isWindow(123)).toEqual(false)
-    // eslint-disable-next-line @typescript-eslint/no-invalid-this
     expect(isWindow(this)).toEqual(false)
     expect(isWindow('123')).toEqual(false)
   })
-  test('isString', () => {
+  it('isString', () => {
     expect(isString(123)).toEqual(false)
     expect(isString('123')).toEqual(true)
     expect(isString(null)).toEqual(false)
     expect(isString({ a: 1 })).toEqual(false)
   })
-  test('isNumber', () => {
+  it('isNumber', () => {
     expect(isNumber('123')).toEqual(false)
     expect(isNumber(123)).toEqual(true)
     expect(isNumber(123.123)).toEqual(true)
-    expect(isNumber(NaN)).toEqual(true)
-    expect(isNumber(Infinity)).toEqual(true)
+    expect(isNumber(Number.NaN)).toEqual(true)
+    expect(isNumber(Number.POSITIVE_INFINITY)).toEqual(true)
   })
-  test('isBoolean', () => {
+  it('isBoolean', () => {
     expect(isBoolean(false)).toEqual(true)
     expect(isBoolean(true)).toEqual(true)
     expect(isBoolean(1)).toEqual(false)
   })
-  test('isNull', () => {
+  it('isNull', () => {
     expect(isNull(null)).toEqual(true)
     expect(isNull('null')).toEqual(false)
     expect(isNull(undefined)).toEqual(false)
   })
-  test('isUndefined', () => {
+  it('isUndefined', () => {
     expect(isUndefined(undefined)).toEqual(true)
     expect(isUndefined('undefined')).toEqual(false)
     expect(isUndefined(null)).toEqual(false)
   })
-  test('isSymbol', () => {
+  it('isSymbol', () => {
     expect(isSymbol(Symbol('test'))).toEqual(true)
   })
-  test('isFunction', () => {
+  it('isFunction', () => {
     expect(isFunction(Promise)).toEqual(true)
     expect(isFunction(Object.toString)).toEqual(true)
     expect(isFunction(null)).toEqual(false)
   })
-  test('isRegExp', () => {
+  it('isRegExp', () => {
     expect(isRegExp(/./)).toEqual(true)
     // eslint-disable-next-line prefer-regex-literals
     expect(isRegExp(new RegExp('.'))).toEqual(true)
   })
-  test('isPromise', () => {
+  it('isPromise', () => {
     expect(isPromise(Promise.resolve())).toEqual(true)
     expect(
       isPromise(
@@ -105,51 +104,51 @@ describe('Is Utils', () => {
   })
 
   // @vitest-environment jsdom
-  test('isElement', () => {
+  it('isElement', () => {
     expect(isElement(document)).toEqual(false)
     expect(isElement(document.all)).toEqual(false)
     expect(isElement(document.body)).toEqual(true)
   })
-  test('isObject', () => {
+  it('isObject', () => {
     expect(isObject({})).toEqual(true)
     expect(isObject({ a: 1 })).toEqual(true)
   })
-  test('isMap', () => {
+  it('isMap', () => {
     expect(isMap(new Map())).toEqual(true)
   })
-  test('isSet', () => {
+  it('isSet', () => {
     expect(isSet(new Set())).toEqual(true)
   })
-  test('isNullOrUndef', () => {
+  it('isNullOrUndef', () => {
     expect(isNullOrUndef(null)).toEqual(true)
     expect(isNullOrUndef(undefined)).toEqual(true)
   })
-  test('isDate', () => {
+  it('isDate', () => {
     expect(isDate(new Date())).toEqual(true)
   })
-  test('isEven', () => {
+  it('isEven', () => {
     expect(isEven(2)).toEqual(true)
     expect(isEven(1)).toEqual(false)
     expect(isEven(0)).toEqual(true)
     expect(isEven(-1)).toEqual(false)
     expect(isEven(-2)).toEqual(true)
   })
-  test('isOdd', () => {
+  it('isOdd', () => {
     expect(isOdd(1)).toEqual(true)
     expect(isOdd(2)).toEqual(false)
     expect(isOdd(0)).toEqual(false)
   })
-  test('isPositive', () => {
+  it('isPositive', () => {
     expect(isPositive(-1)).toEqual(false)
     expect(isPositive(1)).toEqual(true)
     expect(isPositive(0)).toEqual(false)
   })
-  test('isNegative', () => {
+  it('isNegative', () => {
     expect(isNegative(-1)).toEqual(true)
     expect(isNegative(1)).toEqual(false)
     expect(isNegative(0)).toEqual(false)
   })
-  test('isEmpty', () => {
+  it('isEmpty', () => {
     expect(isEmpty([])).toEqual(true)
     expect(isEmpty([1])).toEqual(false)
     expect(isEmpty({})).toEqual(true)
@@ -160,11 +159,11 @@ describe('Is Utils', () => {
     expect(isEmpty(0)).toEqual(false)
     expect(isEmpty(false)).toEqual(false)
   })
-  test('isFile', () => {
+  it('isFile', () => {
     expect(isFile(new File([new Blob()], 'test'))).toEqual(true)
     expect(isFile(new File(['foo'], 'test'))).toEqual(true)
   })
-  test('isBlob', () => {
+  it('isBlob', () => {
     expect(isBlob(new Blob())).toEqual(true)
   })
 })

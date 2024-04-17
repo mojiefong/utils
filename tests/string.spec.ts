@@ -3,7 +3,7 @@
  * @Date: 2021-11-19 14:52:45
  */
 
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import {
   escapeRegExp,
   getFileExtension,
@@ -13,13 +13,13 @@ import {
   truncate,
 } from '../src/string'
 
-describe('String Utils', () => {
-  test('getFileExtension', () => {
+describe('string Utils', () => {
+  it('getFileExtension', () => {
     expect(getFileExtension('utils.ts')).toEqual('ts')
     expect(getFileExtension('img.PNG')).toEqual('png')
     expect(getFileExtension('hello.js', true)).toEqual('.js')
   })
-  test('escapeRegExp', () => {
+  it('escapeRegExp', () => {
     expect(escapeRegExp('.')).toEqual('\\.')
     expect(escapeRegExp('[')).toEqual('\\[')
     expect(escapeRegExp('123')).toEqual('123')
@@ -28,20 +28,20 @@ describe('String Utils', () => {
       'Hello World]',
     )
   })
-  test('removeHtmlTag', () => {
+  it('removeHtmlTag', () => {
     expect(removeHtmlTag('<html>123</html>')).toEqual('123')
     expect(removeHtmlTag('<html></html>')).toEqual('')
   })
-  test('truncate', () => {
+  it('truncate', () => {
     expect(truncate('JavaScript', 4)).toEqual('Java...')
   })
-  test('replaceStr', () => {
+  it('replaceStr', () => {
     expect(replaceStr('Hello World', 6, 11, 'TypeScript')).toEqual(
       'Hello TypeScript',
     )
     expect(replaceStr('Hello World', 6, 7, 'w')).toEqual('Hello world')
   })
-  test('insertStr', () => {
+  it('insertStr', () => {
     expect(insertStr('Hello World', 6, 'TypeScript ')).toEqual(
       'Hello TypeScript World',
     )

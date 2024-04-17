@@ -3,7 +3,7 @@
  * @Date: 2021-11-08 16:38:18
  */
 
-import { describe, expect, test, vi } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import {
   DATE_FORMAT,
   formatDate,
@@ -14,11 +14,11 @@ import {
   getRecentWeeks,
 } from '../src/date'
 
-describe('Date Time Utils', () => {
+describe('date Time Utils', () => {
   const date = new Date(2023, 0, 16)
   vi.setSystemTime(date)
 
-  test('formatDate', () => {
+  it('formatDate', () => {
     expect(formatDate(1636360782649)).toEqual('2021-11-08 16:39:42')
     expect(formatDate('2021-11-08 16:39:42')).toEqual('2021-11-08 16:39:42')
     expect(formatDate(1636360935)).toEqual('2021-11-08 16:42:15')
@@ -27,7 +27,7 @@ describe('Date Time Utils', () => {
     )
   })
 
-  test('getRecentDays', () => {
+  it('getRecentDays', () => {
     expect(getRecentDays(1, '2021-11-08 16:39:42')).toEqual([
       '2021-11-09 00:00:00',
       '2021-11-09 23:59:59',
@@ -45,7 +45,7 @@ describe('Date Time Utils', () => {
     ])
   })
 
-  test('getRecentWeeks', () => {
+  it('getRecentWeeks', () => {
     expect(getRecentWeeks()).toEqual([
       '2023-01-16 00:00:00',
       '2023-01-22 23:59:59',
@@ -60,7 +60,7 @@ describe('Date Time Utils', () => {
     ])
   })
 
-  test('getRecentQuarters', () => {
+  it('getRecentQuarters', () => {
     expect(getRecentQuarters()).toEqual([
       '2023-01-01 00:00:00',
       '2023-03-31 23:59:59',
@@ -75,7 +75,7 @@ describe('Date Time Utils', () => {
     ])
   })
 
-  test('getRecentMonths', () => {
+  it('getRecentMonths', () => {
     expect(getRecentMonths()).toEqual([
       '2023-01-01 00:00:00',
       '2023-01-31 23:59:59',
@@ -90,7 +90,7 @@ describe('Date Time Utils', () => {
     ])
   })
 
-  test('getDiff', () => {
+  it('getDiff', () => {
     expect(getDiff('2022-10-01', '2022-12-31')).toEqual(91)
     expect(getDiff('2022-10-01', '2022-12-31', 'month')).toEqual(2)
     expect(getDiff('2022-10-01', '2022-10-02', 'hour')).toEqual(24)

@@ -5,11 +5,11 @@
 
 // @vitest-environment jsdom
 
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { objectToFormData } from '../src/object'
 
-describe('Object Utils', () => {
-  test('objectToFormData', () => {
+describe('object Utils', () => {
+  it('objectToFormData', () => {
     const formData = objectToFormData({ a: 1, b: 2 })!
     expect(formData.get('a')).toEqual('1')
   })

@@ -4,7 +4,6 @@
  */
 
 import type { Arrayable, Nullable } from './types'
-import { isString } from './is'
 
 /**
  * 将任意类型转成数组

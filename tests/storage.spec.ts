@@ -5,49 +5,49 @@
 
 // @vitest-environment jsdom
 
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { clearStorage, getStorage, hasStorage, removeStorage, setStorage } from '../src/storage'
 
-describe('Storage Utils', () => {
+describe('storage Utils', () => {
   // local
-  test('local setStorage', () => {
+  it('local setStorage', () => {
     expect(setStorage('foo', { foo: 1 }))
     expect(setStorage('remove', { foo: 1 }))
   })
-  test('local getStorage', () => {
+  it('local getStorage', () => {
     expect(getStorage('foo')).toEqual({ foo: 1 })
     expect(getStorage('foo1')).toEqual(null)
   })
-  test('local removeStorage', () => {
+  it('local removeStorage', () => {
     expect(removeStorage('remove'))
     expect(getStorage('remove')).toEqual(null)
     expect(hasStorage('remove')).toEqual(false)
   })
-  test('local hasStorage', () => {
+  it('local hasStorage', () => {
     expect(hasStorage('foo')).toEqual(true)
     expect(hasStorage('foo1')).toEqual(false)
   })
 
   // session
-  test('session setStorage', () => {
+  it('session setStorage', () => {
     expect(setStorage('foo', { foo: 1 }, sessionStorage))
     expect(setStorage('remove', { foo: 1 }, sessionStorage))
   })
-  test('session getStorage', () => {
+  it('session getStorage', () => {
     expect(getStorage('foo', sessionStorage)).toEqual({ foo: 1 })
     expect(getStorage('foo1', sessionStorage)).toEqual(null)
   })
-  test('session removeStorage', () => {
+  it('session removeStorage', () => {
     expect(removeStorage('remove', sessionStorage))
     expect(getStorage('remove', sessionStorage)).toEqual(null)
     expect(hasStorage('remove', sessionStorage)).toEqual(false)
   })
-  test('session hasStorage', () => {
+  it('session hasStorage', () => {
     expect(hasStorage('foo', sessionStorage)).toEqual(true)
     expect(hasStorage('foo1', sessionStorage)).toEqual(false)
   })
 
-  test('storageClear local', () => {
+  it('storageClear local', () => {
     expect(setStorage('localClear1', 'localClear1'))
     expect(setStorage('localClear2', 'localClear2'))
     expect(clearStorage())
@@ -55,7 +55,7 @@ describe('Storage Utils', () => {
     expect(hasStorage('localClear2')).toEqual(false)
   })
 
-  test('storageClear session', () => {
+  it('storageClear session', () => {
     expect(setStorage('sessionClear1', 'sessionClear1', sessionStorage))
     expect(setStorage('sessionClear2', 'sessionClear2', sessionStorage))
     expect(clearStorage(sessionStorage))
@@ -63,7 +63,7 @@ describe('Storage Utils', () => {
     expect(hasStorage('sessionClear2', sessionStorage)).toEqual(false)
   })
 
-  test('storageClear All', () => {
+  it('storageClear All', () => {
     expect(setStorage('localClear1', 'localClear1'))
     expect(setStorage('localClear2', 'localClear2'))
     expect(setStorage('sessionClear1', 'sessionClear1', sessionStorage))

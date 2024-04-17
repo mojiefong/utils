@@ -3,22 +3,22 @@
  * @Date: 2021-11-15 15:49:26
  */
 
-import { describe, expect, test } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { decode, encode, parseQuery, stringifyQuery } from '../src/function'
 
-describe('Function Utils', () => {
-  test('decode', () => {
+describe('function Utils', () => {
+  it('decode', () => {
     expect(decode('%E4%BD%A0%E5%A5%BD')).toEqual('你好')
   })
-  test('encode', () => {
+  it('encode', () => {
     expect(encode('你好')).toEqual('%E4%BD%A0%E5%A5%BD')
     expect(encode('!')).toEqual('%21')
   })
-  test('parseQuery', () => {
+  it('parseQuery', () => {
     expect(parseQuery('a=1&b=2')).toEqual({ a: '1', b: '2' })
     expect(parseQuery('name=%E6%9D%B0')).toEqual({ name: '杰' })
   })
-  test('stringifyQuery', () => {
+  it('stringifyQuery', () => {
     expect(stringifyQuery({ a: 1, b: 2 })).toEqual('a=1&b=2')
     expect(stringifyQuery({ a: 1, b: false })).toEqual('a=1&b=false')
     expect(
