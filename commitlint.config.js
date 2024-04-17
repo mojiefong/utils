@@ -3,7 +3,7 @@
  * @Date: 2021-11-03 13:48:45
  */
 
-module.exports = {
+export default {
   extends: ['@commitlint/config-conventional'],
   rules: {},
 }
