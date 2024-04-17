@@ -20,21 +20,21 @@
   "exports": {
     ".": {
       "types": "./index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     },
     "./date": {
       "types": "./date.d.ts",
-      "require": "./dist/date.cjs",
-      "import": "./dist/date.mjs"
+      "import": "./dist/date.mjs",
+      "require": "./dist/date.cjs"
     }
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "index.d.ts",
   "files": [
-    "dist",
-    "*.d.ts"
+    "*.d.ts",
+    "dist"
   ],
   "scripts": {
     "prepublishOnly": "rimraf dist && npm run build",
@@ -48,29 +48,29 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.5",
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.5",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "@types/node": "^20.3.1",
-    "@types/throttle-debounce": "^5.0.0",
-    "dayjs": "^1.11.8",
-    "esbuild": "^0.18.4",
-    "eslint": "^8.43.0",
-    "husky": "^8.0.3",
-    "jsdom": "^22.1.0",
-    "lint-staged": "^13.2.2",
-    "rimraf": "^5.0.1",
-    "rollup": "^3.25.1",
-    "rollup-plugin-dts": "^5.3.0",
-    "rollup-plugin-esbuild": "^5.0.0",
+    "@antfu/eslint-config": "^2.14.0",
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/node": "^20.12.7",
+    "@types/throttle-debounce": "^5.0.2",
+    "dayjs": "^1.11.10",
+    "esbuild": "^0.20.2",
+    "eslint": "^9.0.0",
+    "husky": "^9.0.11",
+    "jsdom": "^24.0.0",
+    "lint-staged": "^15.2.2",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.14.3",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.1.1",
     "throttle-debounce": "^5.0.0",
-    "typedoc": "^0.24.8",
-    "typedoc-plugin-markdown": "^3.15.3",
-    "typedoc-plugin-missing-exports": "^2.0.0",
-    "typescript": "^5.1.3",
-    "vitest": "^0.32.2"
+    "typedoc": "^0.25.13",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typedoc-plugin-missing-exports": "^2.2.0",
+    "typescript": "^5.4.5",
+    "vitest": "^1.5.0"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
