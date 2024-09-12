@@ -86,7 +86,7 @@ export const isSymbol = (val: unknown): val is symbol => getTypeof(val) === 'Sym
  * @category Is
  * @returns 如果是function类型则返回true，否则返回false
  */
-export const isFunction = (val: unknown): val is Function => getTypeof(val) === 'Function'
+export const isFunction = (val: unknown): val is (...args: any[]) => any => getTypeof(val) === 'Function'
 
 /**
  * 检查是否RegExp类型

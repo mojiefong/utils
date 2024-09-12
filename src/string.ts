@@ -117,5 +117,5 @@ export function insertStr(str: string, beginIndex: number, newStr: string) {
  * ```
  */
 export function generateString(length: number) {
-  return Array(length).fill('').map(() => Math.random().toString(36).charAt(2)).join('')
+  return Array.from({ length }, () => Math.random().toString(36).charAt(2)).join('')
 }

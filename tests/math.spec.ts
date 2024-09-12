@@ -4,7 +4,14 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { bytesToSize, outOfNum, round, thousandsFormat, toNumber } from '../src/math'
+
+import {
+  bytesToSize,
+  outOfNum,
+  round,
+  thousandsFormat,
+  toNumber,
+} from '../src/math'
 
 describe('math Utils', () => {
   it('thousandsFormat', () => {

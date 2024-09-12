@@ -4,6 +4,7 @@
  */
 
 import { describe, expect, it } from 'vitest'
+
 import { keywordHighlight } from '../src/dom'
 
 describe('dom Utils', () => {

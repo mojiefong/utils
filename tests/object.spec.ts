@@ -6,6 +6,7 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it } from 'vitest'
+
 import { objectToFormData } from '../src/object'
 
 describe('object Utils', () => {

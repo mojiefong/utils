@@ -4,7 +4,13 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { decode, encode, parseQuery, stringifyQuery } from '../src/function'
+
+import {
+  decode,
+  encode,
+  parseQuery,
+  stringifyQuery,
+} from '../src/function'
 
 describe('function Utils', () => {
   it('decode', () => {

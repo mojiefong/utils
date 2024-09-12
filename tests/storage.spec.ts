@@ -6,7 +6,14 @@
 // @vitest-environment jsdom
 
 import { describe, expect, it } from 'vitest'
-import { clearStorage, getStorage, hasStorage, removeStorage, setStorage } from '../src/storage'
+
+import {
+  clearStorage,
+  getStorage,
+  hasStorage,
+  removeStorage,
+  setStorage,
+} from '../src/storage'
 
 describe('storage Utils', () => {
   // local

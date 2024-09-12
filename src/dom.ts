@@ -4,8 +4,9 @@
  */
 
 import type { RequestFullScreen } from './types'
-import { escapeRegExp } from './string'
+
 import { stringifyQuery } from './function'
+import { escapeRegExp } from './string'
 
 /**
  * 添加class

@@ -4,6 +4,7 @@
  */
 
 import { describe, expect, it } from 'vitest'
+
 import { head, last, toArray } from '../src/array'
 
 describe('array Utils', () => {

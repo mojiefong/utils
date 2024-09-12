@@ -4,6 +4,7 @@
  */
 
 import type { ConfigType, OpUnitType, QUnitType } from 'dayjs'
+
 import dayjs from 'dayjs'
 import quarterOfYear from 'dayjs/plugin/quarterOfYear'
 
