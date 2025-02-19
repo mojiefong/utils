@@ -2,6 +2,7 @@
   "name": "@mojiee/utils",
   "type": "module",
   "version": "0.7.0",
+  "packageManager": "pnpm@10.4.1",
   "description": "Utility function",
   "author": "Mojie",
   "license": "MIT",
@@ -28,7 +29,7 @@
   ],
   "scripts": {
     "prepublishOnly": "rimraf dist && npm run build",
-    "prepare": "husky install",
+    "prepare": "husky",
     "dev": "unbuild --stub",
     "build": "unbuild",
     "release": "npx bumpp --commit --push --tag --no-verify",
