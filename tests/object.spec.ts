@@ -3,8 +3,6 @@
  * @Date: 2021-11-17 17:29:20
  */
 
-// @vitest-environment jsdom
-
 import { describe, expect, it } from 'vitest'
 
 import { objectToFormData } from '../src/object'
