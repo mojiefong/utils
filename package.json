@@ -18,60 +18,43 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
-    },
-    "./date": {
-      "types": "./date.d.ts",
-      "import": "./dist/date.mjs",
-      "require": "./dist/date.cjs"
-    }
+    ".": "./dist/index.mjs"
   },
-  "main": "dist/index.cjs",
+  "main": "dist/index.mjs",
   "module": "dist/index.mjs",
-  "types": "index.d.ts",
+  "types": "dist/index.d.mts",
   "files": [
-    "*.d.ts",
     "dist"
   ],
   "scripts": {
     "prepublishOnly": "rimraf dist && npm run build",
     "prepare": "husky install",
-    "dev": "npm run build -- --watch",
-    "build": "rimraf dist && rollup -c",
+    "dev": "unbuild --stub",
+    "build": "unbuild",
     "release": "npx bumpp --commit --push --tag --no-verify",
-    "docs": "typedoc --plugin typedoc-plugin-markdown",
-    "docs:html": "typedoc --out docs-html --plugin typedoc-plugin-missing-exports",
+    "docs": "rimraf dist && typedoc --plugin typedoc-plugin-markdown",
+    "docs:html": "rimraf dist && typedoc --out docs-html --plugin typedoc-plugin-missing-exports",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.5.1",
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@types/node": "^22.5.4",
+    "@antfu/eslint-config": "^4.3.0",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@types/node": "^22.13.4",
     "@types/throttle-debounce": "^5.0.2",
-    "dayjs": "^1.11.13",
-    "esbuild": "^0.23.1",
-    "eslint": "^9.10.0",
-    "husky": "^9.1.6",
-    "jsdom": "^25.0.0",
-    "lint-staged": "^15.2.10",
+    "eslint": "^9.20.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
     "rimraf": "^6.0.1",
-    "rollup": "^4.21.3",
-    "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-esbuild": "^6.1.1",
     "throttle-debounce": "^5.0.2",
-    "typedoc": "^0.26.7",
-    "typedoc-plugin-markdown": "^4.2.7",
-    "typedoc-plugin-missing-exports": "^3.0.0",
-    "typescript": "^5.6.2",
-    "vitest": "^2.0.5"
+    "typedoc": "^0.27.7",
+    "typedoc-plugin-markdown": "^4.4.2",
+    "typedoc-plugin-missing-exports": "^3.1.0",
+    "typescript": "^5.7.3",
+    "unbuild": "^3.3.1",
+    "vitest": "^3.0.6"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint --fix"
