@@ -34,6 +34,7 @@
     "release": "npx bumpp --commit --push --tag --no-verify",
     "docs": "rimraf dist && typedoc --plugin typedoc-plugin-markdown",
     "docs:html": "rimraf dist && typedoc --out docs-html --plugin typedoc-plugin-missing-exports",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest"
