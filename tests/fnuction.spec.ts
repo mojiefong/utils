@@ -16,24 +16,35 @@ describe('function Utils', () => {
   it('decode', () => {
     expect(decode('%E4%BD%A0%E5%A5%BD')).toEqual('你好')
   })
+
   it('encode', () => {
     expect(encode('你好')).toEqual('%E4%BD%A0%E5%A5%BD')
     expect(encode('!')).toEqual('%21')
   })
+
   it('parseQuery', () => {
     expect(parseQuery('a=1&b=2')).toEqual({ a: '1', b: '2' })
-    expect(parseQuery('name=%E6%9D%B0')).toEqual({ name: '杰' })
+    expect(parseQuery('name=%E4%BD%A0%E5%A5%BD')).toEqual({ name: '你好' })
   })
+
   it('stringifyQuery', () => {
     expect(stringifyQuery({ a: 1, b: 2 })).toEqual('a=1&b=2')
     expect(stringifyQuery({ a: 1, b: false })).toEqual('a=1&b=false')
+    expect(stringifyQuery({ name: '你好' })).toEqual('name=你好')
+
+    expect(stringifyQuery({ name: '你好' }, {
+      isEncode: true,
+    })).toEqual('name=%E4%BD%A0%E5%A5%BD')
+
     expect(
       stringifyQuery({ a: null, b: undefined, c: 0, d: '', e: false }),
     ).toEqual('a=null&b=undefined&c=0&d=&e=false')
-    expect(stringifyQuery({ name: '杰' })).toEqual('name=杰')
-    expect(stringifyQuery({ name: '杰' }, true)).toEqual('name=%E6%9D%B0')
+
     expect(
-      stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';'),
+      stringifyQuery({ width: '100px', height: '100px' }, {
+        sep: ':',
+        join: ';',
+      }),
     ).toEqual('width:100px;height:100px')
   })
 })

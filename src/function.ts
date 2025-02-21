@@ -18,8 +18,7 @@ import type { Indexable } from './types'
 export function decode(str: string) {
   try {
     return decodeURIComponent(str)
-  }
-  catch {
+  } catch {
     return str
   }
 }
@@ -72,26 +71,31 @@ export function parseQuery<T = Indexable>(query: string): T | Indexable {
 /**
  * 将 Object 对象转为查询字符串
  * @param obj 需要转换的对象
- * @param isEncode 是否需要转码。默认为false
- * @param modifier 键值对中间的修饰符。默认为=
- * @param join 拼接符。默认为&
+ * @param options 选项
+ * @param options.isEncode 是否需要转码。默认为false
+ * @param options.sep 键值对之间的分隔符，默认为 '='。
+ * @param options.join 多个键值对之间的连接符，默认为 '&'。
  * @category Serialize
  * @returns 返回查询字符串
  * @example
  * ``` typescript
  * stringifyQuery({ a: 1, b: 2 }) // 'a=1&b=2'
  * stringifyQuery({ foo: '你好' }) // 'foo=你好'
- * stringifyQuery({ foo: '你好' }, true) // 'foo=%E4%BD%A0%E5%A5%BD'
- * stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';') // 'width:100px;height:100px'
+ * stringifyQuery({ foo: '你好' }, { isEncode: true }) // 'foo=%E4%BD%A0%E5%A5%BD'
+ * stringifyQuery({ width: '100px', height: '100px' }, { sep: ':', join: ';' }) // 'width:100px;height:100px'
  * ```
  */
-export function stringifyQuery(obj: object, isEncode = false, modifier = '=', join = '&') {
+export function stringifyQuery(
+  obj: object,
+  { isEncode = false, sep = '=', join = '&' }: { isEncode?: boolean, sep?: string, join?: string } = {},
+) {
   if (!obj) return ''
   const keys = Object.keys(obj)
+
   return keys.map((key) => {
     let value = (obj as Indexable)[key]
     if (isEncode) value = encode(value)
-    return key + modifier + value
+    return key + sep + value
   }).filter(item => item).join(join)
 }
 
@@ -107,4 +111,4 @@ export function stringifyQuery(obj: object, isEncode = false, modifier = '=', jo
  * }
  * ```
  */
-export const sleep = (delay: number): Promise<undefined> => new Promise(resolve => setTimeout(resolve, delay))
+export const sleep = (delay: number) => new Promise(resolve => setTimeout(resolve, delay))
