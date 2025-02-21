@@ -10,6 +10,7 @@ import {
   maxNumFormat,
   randomColor,
   randomHexColor,
+  randomStr,
   round,
   toNumber,
   toThousands,
@@ -64,5 +65,10 @@ describe('math Utils', () => {
   it('randomColor', () => {
     const colors = ['#FF0000', '#00FF00', '#0000FF']
     expect(randomColor(colors)).toBeOneOf(colors)
+  })
+
+  it('randomStr', () => {
+    expect(randomStr(10)).toHaveLength(10)
+    expect(randomStr(16)).toHaveLength(16)
   })
 })

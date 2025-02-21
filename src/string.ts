@@ -37,9 +37,7 @@ export function getFileExt(fileName: string, split = false) {
  * escapeRegExp('[Hello World]'.replace(new RegExp(escapeRegExp('[')), '')) // 'Hello World]'
  * ```
  */
-export function escapeRegExp(str: string) {
-  return (isString(str)) ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : ''
-}
+export const escapeRegExp = (str: string) => (isString(str)) ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : ''
 
 /**
  * 移除字符串中的HTML标签
@@ -103,19 +101,4 @@ export function replaceStr(str: string, beginIndex: number, endIndex: number, re
  */
 export function insertStr(str: string, beginIndex: number, newStr: string) {
   return str.slice(0, beginIndex) + newStr + str.slice(beginIndex, str.length)
-}
-
-/**
- * 生成指定长度的随机字符串
- * @param length 指定的长度
- * @category String
- * @returns 返回指定长度的随机字符串
- * @example
- * ``` typescript
- * generateString(10) // 3wqt3eiyxs
- * generateString(16) // 3wqt3eiyxs2rde1f
- * ```
- */
-export function generateString(length: number) {
-  return Array.from({ length }, () => Math.random().toString(36).charAt(2)).join('')
 }

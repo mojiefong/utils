@@ -29,6 +29,21 @@ export function randomColor(colors: string[]) {
 }
 
 /**
+ * 生成指定长度的随机字符串
+ * @param length 指定的长度
+ * @category String
+ * @returns 返回指定长度的随机字符串
+ * @example
+ * ``` typescript
+ * randomStr(10)
+ * randomStr(16)
+ * ```
+ */
+export function randomStr(length: number) {
+  return Array.from({ length }, () => Math.random().toString(36).charAt(2)).join('')
+}
+
+/**
  * 千分位格式化
  * @param num 需要格式化的数字或者字符串
  * @category Math
