@@ -16,7 +16,7 @@ import { isObject } from './is'
  * console.log(formData.get(a)) // '1'
  * ```
  */
-export function objectToFormData<T>(obj: T) {
+export function objToFormData<T>(obj: T) {
   const formData = new FormData()
   if (!isObject(obj)) return null
   Object.keys(obj).forEach((key) => {

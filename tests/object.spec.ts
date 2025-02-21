@@ -5,11 +5,11 @@
 
 import { describe, expect, it } from 'vitest'
 
-import { objectToFormData } from '../src/object'
+import { objToFormData } from '../src/object'
 
 describe('object Utils', () => {
-  it('objectToFormData', () => {
-    const formData = objectToFormData({ a: 1, b: 2 })!
+  it('objToFormData', () => {
+    const formData = objToFormData({ a: 1, b: 2 })!
     expect(formData.get('a')).toEqual('1')
   })
 })
