@@ -142,7 +142,7 @@ export const isSet = <T>(val: unknown): val is Set<T> => getTypeof(val) === 'Set
  * @category Is
  * @returns 如果是null或undefined类型则返回true，否则返回false
  */
-export const isNullOrUndef = (val: unknown): val is null | undefined => isUndefined(val) || isNull(val)
+export const isNil = (val: unknown): val is null | undefined => isUndefined(val) || isNull(val)
 
 /**
  * 检查空值

@@ -9,6 +9,7 @@ import {
   decode,
   encode,
   parseQuery,
+  sleep,
   stringifyQuery,
 } from '../src/function'
 
@@ -46,5 +47,12 @@ describe('function Utils', () => {
         join: ';',
       }),
     ).toEqual('width:100px;height:100px')
+  })
+
+  it('sleep', async () => {
+    const start = Date.now()
+    await sleep(1000)
+    const end = Date.now()
+    expect(end - start).toBeGreaterThanOrEqual(1000)
   })
 })

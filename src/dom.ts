@@ -106,21 +106,22 @@ export function scrollToTop() {
  * @example
  * ``` typescript
  * // 滚动到指定id的元素
- * smoothScroll('#top')
+ * scrollIntoView('#top')
  *
  * // 滚动到指定class的元素
- * smoothScroll('.scroll-to')
+ * scrollIntoView('.scroll-to')
  *
  * // 滚动到指定标签
- * smoothScroll('header')
+ * scrollIntoView('header')
  * ```
  */
-export function smoothScroll<T extends keyof HTMLElementTagNameMap>(selector: T) {
+export function scrollIntoView(selector: string) {
   const el = document.querySelector(selector)
   if (!el) return false
   el.scrollIntoView({
     behavior: 'smooth',
   })
+  return true
 }
 
 /**
