@@ -35,12 +35,12 @@ export function randomColor(colors: string[]) {
  * @returns 返回格式化后的字符串
  * @example
  * ``` typescript
- * thousandsFormat(0) // 0
- * thousandsFormat(1234.123456789) // '1,234.123456789'
- * thousandsFormat('$1234') // '$1,234'
+ * toThousands(0) // 0
+ * toThousands(1234.123456789) // '1,234.123456789'
+ * toThousands('$1234') // '$1,234'
  * ```
  */
-export function thousandsFormat(num: string | number) {
+export function toThousands(num: string | number) {
   return num && num.toString().replace(/\d+/, s => s.replace(/(\d)(?=(\d{3})+$)/g, '$1,'))
 }
 
@@ -70,7 +70,7 @@ export function bytesToSize(bytes: number) {
  * @category Math
  * @returns 返回生成的UUID
  */
-export function generatorUUID() {
+export function uuid() {
   return 'xxxxxxxx-xxxx-4xxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0
     const v = c === 'x' ? r : (r & 0x3) | 0x8
@@ -87,12 +87,12 @@ export function generatorUUID() {
  * @returns 如果当前的数值大于最大的数值则返回'n+'，否则返回n
  * @example
  * ``` typescript
- * outOfNum(99, 99) // 99
- * outOfNum(99, 99) // 99
- * outOfNum('100', 99) // '99+'
+ * maxNumFormat(99, 99) // 99
+ * maxNumFormat(99, 99) // 99
+ * maxNumFormat('100', 99) // '99+'
  * ```
  */
-export function outOfNum(val: number | string, maxNum: number) {
+export function maxNumFormat(val: number | string, maxNum: number) {
   val = +val
   if (val > maxNum) return `${maxNum}+`
   return val
