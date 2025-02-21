@@ -2,13 +2,13 @@
 
 ***
 
-[一些常用的工具函数 By Mojie](../globals.md) / objectToFormData
+[一些常用的工具函数 By Mojie](../globals.md) / objToFormData
 
-# Function: objectToFormData()
+# Function: objToFormData()
 
-> **objectToFormData**\<`T`\>(`obj`): `null` \| `FormData`
+> **objToFormData**\<`T`\>(`obj`): `null` \| `FormData`
 
-Defined in: [object.ts:19](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/object.ts#L19)
+Defined in: [object.ts:19](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/object.ts#L19)
 
 把 Object 对象转成 FormData 格式
 

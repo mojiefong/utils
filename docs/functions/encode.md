@@ -8,7 +8,7 @@
 
 > **encode**(`str`): `string`
 
-Defined in: [function.ts:37](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/function.ts#L37)
+Defined in: [function.ts:36](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/function.ts#L36)
 
 字符转码
 

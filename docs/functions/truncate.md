@@ -8,7 +8,7 @@
 
 > **truncate**(`str`, `endIndex`, `beginIndex`, `suffix`): `string`
 
-Defined in: [string.ts:70](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/string.ts#L70)
+Defined in: [string.ts:68](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/string.ts#L68)
 
 字符串截取
 

@@ -6,9 +6,9 @@
 
 # Function: loadCss()
 
-> **loadCss**(`url`, `el`?): `Promise`\<`string`\>
+> **loadCss**(`url`, `el`): `Promise`\<`void`\>
 
-Defined in: [dom.ts:288](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L288)
+Defined in: [dom.ts:279](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L279)
 
 动态添加css
 
@@ -20,15 +20,15 @@ Defined in: [dom.ts:288](https://github.com/mojiefong/utils/blob/835f9f080ca618c
 
 css文件路径
 
-### el?
+### el
 
-`HTMLElement`
+`HTMLHeadElement` = `document.head`
 
 指定添加到哪个元素。默认head元素
 
 ## Returns
 
-`Promise`\<`string`\>
+`Promise`\<`void`\>
 
 返回一个Promise对象
 

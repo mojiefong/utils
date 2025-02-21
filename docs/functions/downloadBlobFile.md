@@ -8,7 +8,7 @@
 
 > **downloadBlobFile**(`blob`, `fileName`): `void`
 
-Defined in: [dom.ts:216](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L216)
+Defined in: [dom.ts:221](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L221)
 
 下载blob文件
 

@@ -8,4 +8,4 @@
 
 > `const` **version**: `string` = `pkgVersion`
 
-Defined in: [index.ts:8](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/index.ts#L8)
+Defined in: [index.ts:8](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/index.ts#L8)

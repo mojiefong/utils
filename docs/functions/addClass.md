@@ -8,7 +8,7 @@
 
 > **addClass**(`el`, ...`className`): `void`
 
-Defined in: [dom.ts:24](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L24)
+Defined in: [dom.ts:23](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L23)
 
 添加class
 

@@ -10,17 +10,12 @@
 - [last](functions/last.md)
 - [toArray](functions/toArray.md)
 
-## Code
-
-- [decode](functions/decode.md)
-- [encode](functions/encode.md)
-
 ## DOM
 
-- [copyToClipboard](functions/copyToClipboard.md)
+- [copyClip](functions/copyClip.md)
 - [exitFullScreen](functions/exitFullScreen.md)
 - [getSelectedText](functions/getSelectedText.md)
-- [keywordHighlight](functions/keywordHighlight.md)
+- [keyHighlight](functions/keyHighlight.md)
 - [loadCss](functions/loadCss.md)
 - [loadScript](functions/loadScript.md)
 - [openFullScreen](functions/openFullScreen.md)
@@ -41,9 +36,14 @@
 
 - [getPageScrollLeft](functions/getPageScrollLeft.md)
 - [getPageScrollTop](functions/getPageScrollTop.md)
-- [getScrollPosition](functions/getScrollPosition.md)
+- [getScrollPos](functions/getScrollPos.md)
+- [scrollIntoView](functions/scrollIntoView.md)
 - [scrollToTop](functions/scrollToTop.md)
-- [smoothScroll](functions/smoothScroll.md)
+
+## Encode
+
+- [decode](functions/decode.md)
+- [encode](functions/encode.md)
 
 ## Is
 
@@ -60,8 +60,8 @@
 - [isFunction](functions/isFunction.md)
 - [isMap](functions/isMap.md)
 - [isNegative](functions/isNegative.md)
+- [isNil](functions/isNil.md)
 - [isNull](functions/isNull.md)
-- [isNullOrUndef](functions/isNullOrUndef.md)
 - [isNumber](functions/isNumber.md)
 - [isObject](functions/isObject.md)
 - [isOdd](functions/isOdd.md)
@@ -77,24 +77,23 @@
 ## Math
 
 - [bytesToSize](functions/bytesToSize.md)
-- [generatorUUID](functions/generatorUUID.md)
-- [outOfNum](functions/outOfNum.md)
+- [maxNumFormat](functions/maxNumFormat.md)
 - [randomColor](functions/randomColor.md)
 - [randomHexColor](functions/randomHexColor.md)
 - [round](functions/round.md)
-- [thousandsFormat](functions/thousandsFormat.md)
 - [toNumber](functions/toNumber.md)
+- [toThousands](functions/toThousands.md)
+- [uuid](functions/uuid.md)
 
 ## Object
 
-- [objectToFormData](functions/objectToFormData.md)
+- [objToFormData](functions/objToFormData.md)
 
 ## Other
 
 - [version](variables/version.md)
-- [sleep](functions/sleep.md)
 
-## Serialize
+## Query
 
 - [parseQuery](functions/parseQuery.md)
 - [stringifyQuery](functions/stringifyQuery.md)
@@ -102,9 +101,13 @@
 ## String
 
 - [escapeRegExp](functions/escapeRegExp.md)
-- [generateString](functions/generateString.md)
-- [getFileExtension](functions/getFileExtension.md)
+- [getFileExt](functions/getFileExt.md)
 - [insertStr](functions/insertStr.md)
-- [removeHtmlTag](functions/removeHtmlTag.md)
+- [randomStr](functions/randomStr.md)
 - [replaceStr](functions/replaceStr.md)
+- [stripHtml](functions/stripHtml.md)
 - [truncate](functions/truncate.md)
+
+## Utils
+
+- [sleep](functions/sleep.md)

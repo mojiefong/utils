@@ -8,7 +8,7 @@
 
 > **parseQuery**\<`T`\>(`query`): `Indexable`\<`any`\> \| `T`
 
-Defined in: [function.ts:57](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/function.ts#L57)
+Defined in: [function.ts:56](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/function.ts#L56)
 
 解析 url 的查询对象
 

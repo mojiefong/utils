@@ -6,9 +6,9 @@
 
 # Function: stringifyQuery()
 
-> **stringifyQuery**(`obj`, `isEncode`, `modifier`, `join`): `string`
+> **stringifyQuery**(`obj`, `options`): `string`
 
-Defined in: [function.ts:88](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/function.ts#L88)
+Defined in: [function.ts:88](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/function.ts#L88)
 
 将 Object 对象转为查询字符串
 
@@ -20,23 +20,27 @@ Defined in: [function.ts:88](https://github.com/mojiefong/utils/blob/835f9f080ca
 
 需要转换的对象
 
-### isEncode
+### options
+
+选项
+
+#### isEncode?
 
 `boolean` = `false`
 
 是否需要转码。默认为false
 
-### modifier
-
-`string` = `'='`
-
-键值对中间的修饰符。默认为=
-
-### join
+#### join?
 
 `string` = `'&'`
 
-拼接符。默认为&
+多个键值对之间的连接符，默认为 '&'。
+
+#### sep?
+
+`string` = `'='`
+
+键值对之间的分隔符，默认为 '='。
 
 ## Returns
 
@@ -49,6 +53,6 @@ Defined in: [function.ts:88](https://github.com/mojiefong/utils/blob/835f9f080ca
 ``` typescript
 stringifyQuery({ a: 1, b: 2 }) // 'a=1&b=2'
 stringifyQuery({ foo: '你好' }) // 'foo=你好'
-stringifyQuery({ foo: '你好' }, true) // 'foo=%E4%BD%A0%E5%A5%BD'
-stringifyQuery({ width: '100px', height: '100px' }, false, ':', ';') // 'width:100px;height:100px'
+stringifyQuery({ foo: '你好' }, { isEncode: true }) // 'foo=%E4%BD%A0%E5%A5%BD'
+stringifyQuery({ width: '100px', height: '100px' }, { sep: ':', join: ';' }) // 'width:100px;height:100px'
 ```

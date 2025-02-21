@@ -6,9 +6,9 @@
 
 # Function: sleep()
 
-> **sleep**(`delay`): `Promise`\<`undefined`\>
+> **sleep**(`delay`): `Promise`\<`unknown`\>
 
-Defined in: [function.ts:110](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/function.ts#L110)
+Defined in: [function.ts:115](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/function.ts#L115)
 
 延迟异步函数执行
 
@@ -22,7 +22,7 @@ Defined in: [function.ts:110](https://github.com/mojiefong/utils/blob/835f9f080c
 
 ## Returns
 
-`Promise`\<`undefined`\>
+`Promise`\<`unknown`\>
 
 返回一个Promise
 ``` typescript

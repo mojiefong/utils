@@ -8,7 +8,7 @@
 
 > **scrollToTop**(): `void`
 
-Defined in: [dom.ts:102](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L102)
+Defined in: [dom.ts:93](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L93)
 
 将滚动条平滑滚动到顶部
 

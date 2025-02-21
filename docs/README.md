@@ -11,7 +11,7 @@
 
 ## 文档
 
-[文档地址](https://github.com/mojiefong/utils/blob/master/docs/modules.md)
+[文档地址](https://github.com/mojiefong/utils/blob/master/docs/globals.md)
 
 ## 用法
 
@@ -27,12 +27,4 @@ pnpm add @mojiee/utils
 import { toArray } from '@mojiee/utils'
 
 toArray(123)
-```
-
-使用日期相关的方法
-
-```javascript
-import { formatDate } from '@mojiee/utils/date'
-
-formatDate(1636360782649)
 ```

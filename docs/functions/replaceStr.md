@@ -8,7 +8,7 @@
 
 > **replaceStr**(`str`, `beginIndex`, `endIndex`, `replacement`): `string`
 
-Defined in: [string.ts:88](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/string.ts#L88)
+Defined in: [string.ts:86](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/string.ts#L86)
 
 根据索引替换字符串
 

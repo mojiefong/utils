@@ -8,7 +8,7 @@
 
 > **insertStr**(`str`, `beginIndex`, `newStr`): `string`
 
-Defined in: [string.ts:104](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/string.ts#L104)
+Defined in: [string.ts:102](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/string.ts#L102)
 
 根据索引插入字符串
 

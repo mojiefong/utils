@@ -2,13 +2,13 @@
 
 ***
 
-[一些常用的工具函数 By Mojie](../globals.md) / outOfNum
+[一些常用的工具函数 By Mojie](../globals.md) / maxNumFormat
 
-# Function: outOfNum()
+# Function: maxNumFormat()
 
-> **outOfNum**(`val`, `maxNum`): `string` \| `number`
+> **maxNumFormat**(`val`, `maxNum`): `string` \| `number`
 
-Defined in: [math.ts:95](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/math.ts#L95)
+Defined in: [math.ts:110](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/math.ts#L110)
 
 数字超过规定大小加上 '+' 号。
 
@@ -39,7 +39,7 @@ Defined in: [math.ts:95](https://github.com/mojiefong/utils/blob/835f9f080ca618c
 ## Example
 
 ``` typescript
-outOfNum(99, 99) // 99
-outOfNum(99, 99) // 99
-outOfNum('100', 99) // '99+'
+maxNumFormat(99, 99) // 99
+maxNumFormat(99, 99) // 99
+maxNumFormat('100', 99) // '99+'
 ```

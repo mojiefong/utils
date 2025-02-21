@@ -6,9 +6,9 @@
 
 # Function: loadScript()
 
-> **loadScript**(`url`, `el`?): `Promise`\<`string`\>
+> **loadScript**(`url`, `el`): `Promise`\<`string`\>
 
-Defined in: [dom.ts:329](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L329)
+Defined in: [dom.ts:314](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L314)
 
 动态添加js
 
@@ -20,9 +20,9 @@ Defined in: [dom.ts:329](https://github.com/mojiefong/utils/blob/835f9f080ca618c
 
 js文件路径
 
-### el?
+### el
 
-`HTMLElement`
+`HTMLHeadElement` = `document.head`
 
 指定添加到哪个元素。默认head元素
 

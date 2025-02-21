@@ -8,7 +8,7 @@ import type { Indexable } from './types'
 /**
  * 字符解码
  * @param str 需要解码的字符
- * @category Code
+ * @category Encode
  * @returns 返回解码后的字符。如果解码失败则返回原字符
  * @example
  * ``` typescript
@@ -26,7 +26,7 @@ export function decode(str: string) {
 /**
  * 字符转码
  * @param str 需要转码的字符
- * @category Code
+ * @category Encode
  * @returns 返回转码后的字符
  * @example
  * ``` typescript
@@ -44,7 +44,7 @@ export function encode(str: string) {
  * 解析 url 的查询对象
  * @param query 需要解析的字符
  * @returns 返回解析后的对象
- * @category Serialize
+ * @category Query
  * @example
  * ``` typescript
  * parseQuery('a=1&b=2') // { a: '1', b: '2' }
@@ -75,7 +75,7 @@ export function parseQuery<T = Indexable>(query: string): T | Indexable {
  * @param options.isEncode 是否需要转码。默认为false
  * @param options.sep 键值对之间的分隔符，默认为 '='。
  * @param options.join 多个键值对之间的连接符，默认为 '&'。
- * @category Serialize
+ * @category Query
  * @returns 返回查询字符串
  * @example
  * ``` typescript
@@ -102,6 +102,7 @@ export function stringifyQuery(
 /**
  * 延迟异步函数执行
  * @param delay 延迟的时间。单位毫秒
+ * @category Utils
  * @returns 返回一个Promise
  * ``` typescript
  * async function sleepWork() {

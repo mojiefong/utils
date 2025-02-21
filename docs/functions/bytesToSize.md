@@ -8,7 +8,7 @@
 
 > **bytesToSize**(`bytes`): `string`
 
-Defined in: [math.ts:60](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/math.ts#L60)
+Defined in: [math.ts:75](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/math.ts#L75)
 
 字节转换
 

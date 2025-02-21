@@ -8,7 +8,7 @@
 
 > **isFunction**(`val`): `val is (args: any[]) => any`
 
-Defined in: [is.ts:89](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/is.ts#L89)
+Defined in: [is.ts:89](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/is.ts#L89)
 
 检查是否Function类型
 

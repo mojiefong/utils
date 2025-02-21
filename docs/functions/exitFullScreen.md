@@ -8,7 +8,7 @@
 
 > **exitFullScreen**(): `void`
 
-Defined in: [dom.ts:202](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L202)
+Defined in: [dom.ts:207](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L207)
 
 退出浏览器全屏
 

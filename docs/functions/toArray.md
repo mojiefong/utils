@@ -8,7 +8,7 @@
 
 > **toArray**\<`T`\>(`target`?): `T`[]
 
-Defined in: [array.ts:21](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/array.ts#L21)
+Defined in: [array.ts:21](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/array.ts#L21)
 
 将任意类型转成数组
 

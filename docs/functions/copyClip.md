@@ -2,19 +2,19 @@
 
 ***
 
-[一些常用的工具函数 By Mojie](../globals.md) / copyToClipboard
+[一些常用的工具函数 By Mojie](../globals.md) / copyClip
 
-# Function: copyToClipboard()
+# Function: copyClip()
 
-> **copyToClipboard**(`text`): `void`
+> **copyClip**(`key`): `void`
 
-Defined in: [dom.ts:161](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/dom.ts#L161)
+Defined in: [dom.ts:167](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/dom.ts#L167)
 
 复制内容到剪切板
 
 ## Parameters
 
-### text
+### key
 
 `string`
 

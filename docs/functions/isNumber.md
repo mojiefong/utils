@@ -8,7 +8,7 @@
 
 > **isNumber**(`val`): `val is number`
 
-Defined in: [is.ts:49](https://github.com/mojiefong/utils/blob/835f9f080ca618c45c936acaa9a99d1df0257c97/src/is.ts#L49)
+Defined in: [is.ts:49](https://github.com/mojiefong/utils/blob/8d43a08c9cee3486bdce98ae9522c4a66e3c2c71/src/is.ts#L49)
 
 检查是否number类型
 
