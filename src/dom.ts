@@ -5,7 +5,6 @@
 
 import type { RequestFullScreen } from './types'
 
-import { stringifyQuery } from './function'
 import { escapeRegExp } from './string'
 
 /**
@@ -21,11 +20,7 @@ import { escapeRegExp } from './string'
  * addClass(document.body, 'className1', 'className2', 'className3')
  * ```
  */
-export function addClass(el: HTMLElement, ...className: string[]) {
-  className.forEach((name) => {
-    el.classList.add(name)
-  })
-}
+export const addClass = (el: HTMLElement, ...className: string[]) => el.classList.add(...className)
 
 /**
  * 删除class
@@ -40,11 +35,7 @@ export function addClass(el: HTMLElement, ...className: string[]) {
  * removeClass(document.body, 'className1', 'className2', 'className3')
  * ```
  */
-export function removeClass(el: HTMLElement, ...className: string[]) {
-  className.forEach((name) => {
-    el.classList.remove(name)
-  })
-}
+export const removeClass = (el: HTMLElement, ...className: string[]) => el.classList.remove(...className)
 
 /**
  * 是否存在class
@@ -109,11 +100,25 @@ export function scrollToTop() {
 
 /**
  * 将滚动条平滑滚动到指定位置
- * @param el 滚动到指定的元素
+ * @param selector CSS选择器
  * @category DOM Scroll
+ * @returns 如果找到元素并执行滚动，否则返回false
+ * @example
+ * ``` typescript
+ * // 滚动到指定id的元素
+ * smoothScroll('#top')
+ *
+ * // 滚动到指定class的元素
+ * smoothScroll('.scroll-to')
+ *
+ * // 滚动到指定标签
+ * smoothScroll('header')
+ * ```
  */
-export function smoothScroll<T extends keyof HTMLElementTagNameMap>(el: T) {
-  document.querySelector(el)?.scrollIntoView({
+export function smoothScroll<T extends keyof HTMLElementTagNameMap>(selector: T) {
+  const el = document.querySelector(selector)
+  if (!el) return false
+  el.scrollIntoView({
     behavior: 'smooth',
   })
 }
@@ -126,15 +131,15 @@ export function smoothScroll<T extends keyof HTMLElementTagNameMap>(el: T) {
  * @example
  * ``` typescript
  * // 获取window的滚动位置
- * getScrollPosition() // { x: 0, y: 0 }
+ * getScrollPos() // { x: 0, y: 0 }
  * // 获取body的滚动位置
- * getScrollPosition(document.body) // { x: 0, y: 0 }
+ * getScrollPos(document.body) // { x: 0, y: 0 }
  * ```
  */
-export function getScrollPosition(el = window) {
+export function getScrollPos(el: Window | HTMLElement = window) {
   return {
-    x: el.scrollX || (el as unknown as HTMLElement).scrollLeft,
-    y: el.scrollY || (el as unknown as HTMLElement).scrollTop,
+    x: el instanceof Window ? el.scrollX : el.scrollLeft,
+    y: el instanceof Window ? el.scrollY : el.scrollTop,
   }
 }
 
@@ -155,20 +160,19 @@ export const getPageScrollLeft = () => document.documentElement.scrollLeft || do
 /**
  * 复制内容到剪切板
  * @description navigator.clipboard只能在https中才能使用。为了做兼容，使用已经废弃的document.execCommand()方法确保功能可用
- * @param text 需要写入剪切板的文字
+ * @param key 需要写入剪切板的文字
  * @category DOM
  */
-export function copyToClipboard(text: string) {
+export function copyClip(key: string) {
   if (navigator.clipboard) {
-    navigator.clipboard.writeText(text)
-  }
-  else {
+    navigator.clipboard.writeText(key)
+  } else {
     const textarea = document.createElement('textarea')
     // 隐藏输入框
     textarea.style.position = 'fixed'
     textarea.style.opacity = '0'
 
-    textarea.value = text
+    textarea.value = key
     document.body.appendChild(textarea)
     textarea.select()
     document.execCommand('copy')
@@ -224,41 +228,27 @@ export function downloadBlobFile(blob: Blob, fileName: string) {
 
 /**
  * 关键字高亮
- * @param content 文本内容
- * @param keyword 需要高亮的关键字
- * @param options 配置选项
- * @param options.modifiers 正则修饰符g、i、m、s。默认为：gi
- * @param options.style 自定义样式
+ * @param className 高亮显示关键词的 CSS 类名 默认为 highlight
+ * @param flags 正则修饰符g、i、m、s 默认为：gi
  * @category DOM
- * @returns 返回新的文本内容
+ * @returns 返回一个高亮显示关键词的函数
  * @example
- * ``` typescript
- * keywordHighlight('Hello World', 'Hello')
- * // '<font style="background: red">Hello</font> World'
- * keywordHighlight('Hello WorLd', 'l')
+ * ```typescript
+ * const highlight = keyHighlight()
+ * highlight('Hello World', 'Hello')
+ * // '<font class="highlight">Hello</font> World'
+ * highlight('Hello WorLd', 'l')
  * // 会匹配所有的 l，并且不区分大小写
- * // 'He<font style="background: red">l</font><font style="background: red">l</font>o Wor<font style="background: red">L</font>d'
- * keywordHighlight('Hello World', 'Hello', { style: { color: 'red' } })
- * // '<font style="color:red">Hello</font> World'
+ * // 'He<font class="highlight">l</font><font class="highlight">l</font>o Wor<font class="highlight">L</font>d'
  * ```
  */
-export function keywordHighlight(
-  content: string,
-  keyword: string,
-  options: { modifiers?: string, style?: Partial<CSSStyleDeclaration> } = {},
-) {
-  if (!content) return ''
-  if (!keyword) return content
-  return content.replace(
-    new RegExp(escapeRegExp(keyword), options.modifiers ?? 'gi'),
-    (txt) => {
-      if (options.style) {
-        const style = stringifyQuery(options.style, false, ':', ';')
-        return `<font style="${style}">${txt}</font>`
-      }
-      return `<font style="background: red">${txt}</font>`
-    },
-  )
+export function keyHighlight(className = 'highlight', flags = 'gi') {
+  return function (text: string, key: string) {
+    if (!text) return ''
+    if (!key) return text
+    const regex = new RegExp(escapeRegExp(key), flags)
+    return text.replace(regex, txt => `<font class="${className}">${txt}</font>`)
+  }
 }
 
 /**
@@ -285,20 +275,14 @@ export function keywordHighlight(
  * })
  * ```
  */
-export function loadCss(url: string, el?: HTMLElement): Promise<string> {
-  el = el || (document.querySelector('head') as any)
+export function loadCss(url: string, el = document.head): Promise<void> {
   return new Promise((resolve, reject) => {
     const link = document.createElement('link')
-    link.type = 'text/css'
     link.rel = 'stylesheet'
     link.href = url
-    link.onload = () => {
-      resolve('resolve')
-    }
-    link.onerror = () => {
-      reject(new Error('reject'))
-    }
-    el?.appendChild(link)
+    link.onload = () => resolve()
+    link.onerror = () => reject(new Error(`Failed to load CSS: ${url}`))
+    el.appendChild(link)
   })
 }
 
@@ -326,18 +310,12 @@ export function loadCss(url: string, el?: HTMLElement): Promise<string> {
  * })
  * ```
  */
-export function loadScript(url: string, el?: HTMLElement): Promise<string> {
+export function loadScript(url: string, el = document.head): Promise<string> {
   return new Promise((resolve, reject) => {
-    el = el || (document.querySelector('head') as any)
     const script = document.createElement('script')
-    script.type = 'text/javascript'
     script.src = url
-    script.onload = () => {
-      resolve('resolve')
-    }
-    script.onerror = () => {
-      reject(new Error('reject'))
-    }
+    script.onload = () => resolve('resolve')
+    script.onerror = () => reject(new Error(`Failed to load script: ${url}`))
     el?.appendChild(script)
   })
 }
