@@ -7,19 +7,20 @@ import { describe, expect, it } from 'vitest'
 
 import {
   escapeRegExp,
-  getFileExtension,
+  getFileExt,
   insertStr,
-  removeHtmlTag,
   replaceStr,
+  stripHtml,
   truncate,
 } from '../src/string'
 
 describe('string Utils', () => {
-  it('getFileExtension', () => {
-    expect(getFileExtension('utils.ts')).toEqual('ts')
-    expect(getFileExtension('img.PNG')).toEqual('png')
-    expect(getFileExtension('hello.js', true)).toEqual('.js')
+  it('getFileExt', () => {
+    expect(getFileExt('utils.ts')).toEqual('ts')
+    expect(getFileExt('img.PNG')).toEqual('png')
+    expect(getFileExt('hello.js', true)).toEqual('.js')
   })
+
   it('escapeRegExp', () => {
     expect(escapeRegExp('.')).toEqual('\\.')
     expect(escapeRegExp('[')).toEqual('\\[')
@@ -29,19 +30,23 @@ describe('string Utils', () => {
       'Hello World]',
     )
   })
-  it('removeHtmlTag', () => {
-    expect(removeHtmlTag('<html>123</html>')).toEqual('123')
-    expect(removeHtmlTag('<html></html>')).toEqual('')
+
+  it('stripHtml', () => {
+    expect(stripHtml('<html>123</html>')).toEqual('123')
+    expect(stripHtml('<html></html>')).toEqual('')
   })
+
   it('truncate', () => {
     expect(truncate('JavaScript', 4)).toEqual('Java...')
   })
+
   it('replaceStr', () => {
     expect(replaceStr('Hello World', 6, 11, 'TypeScript')).toEqual(
       'Hello TypeScript',
     )
     expect(replaceStr('Hello World', 6, 7, 'w')).toEqual('Hello world')
   })
+
   it('insertStr', () => {
     expect(insertStr('Hello World', 6, 'TypeScript ')).toEqual(
       'Hello TypeScript World',

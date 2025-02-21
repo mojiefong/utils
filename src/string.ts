@@ -13,11 +13,11 @@ import { isString } from './is'
  * @returns 返回文件后缀名
  * @example
  * ``` typescript
- * getFileExtension('file-name.pdf') // 'pdf'
- * getFileExtension('hello.js', true) // .js
+ * getFileExt('file-name.pdf') // 'pdf'
+ * getFileExt('hello.js', true) // .js
  * ```
  */
-export function getFileExtension(fileName: string, split = false) {
+export function getFileExt(fileName: string, split = false) {
   const ext = fileName.split('.').pop()?.toLowerCase()
   return split ? `.${ext}` : ext
 }
@@ -42,17 +42,17 @@ export function escapeRegExp(str: string) {
 }
 
 /**
- *  去除HTML标签
- * @param str 需要去除的html字符串
+ * 移除字符串中的HTML标签
+ * @param str 包含HTML标签的字符串
  * @category String
- * @returns 返回去除标签后的字符串
+ * @returns 返回清除HTML标签后的纯文本
  * @example
  * ``` typescript
- * removeHtmlTag('<html>123</html>') // '123'
- * removeHtmlTag('<html></html>') // ''
+ * stripHtml('<html>123</html>') // '123'
+ * stripHtml('<html></html>') // ''
  * ```
  */
-export const removeHtmlTag = (str: string) => str.replace(/<[^>]+>/g, '')
+export const stripHtml = (str: string) => str.replace(/<[^>]+>/g, '')
 
 /**
  * 字符串截取
